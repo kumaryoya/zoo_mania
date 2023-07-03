@@ -39,3 +39,7 @@ ZooManiaは、基本的には全ての方が利用対象ですが、特にしば
 * スタンプラリー機能  
 * 動物園人気ランキング機能  
 * Twitter共有機能  
+  
+## 画面遷移図
+https://www.figma.com/file/7KomC2qtTWJLnG5uO54opT/Untitled?type=design&node-id=0%3A1&mode=design&t=XFSZ2TPavEPW6g99-1  
+  
