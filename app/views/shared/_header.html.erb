@@ -1,0 +1,18 @@
+<header class= "py-20">
+  <div class="container mx-auto flex flex-wrap flex-col md:flex-row items-center">
+    <div>
+      <%= link_to "ZooMania", root_path, class: "text-5xl" %>
+    </div>
+    <div class="md:ml-auto flex flex-wrap items-center text-base md:text-xl justify-center">
+      <%= link_to (t 'study_times.new.title'), "#", class: "btn mr-5"%>
+      <%= link_to (t 'study_times.index.title'), "#", class: "btn mr-5"%>
+      <%= link_to (t "profiles.show.title"), "#", class: "btn mr-5" %>
+      <%= button_to (t 'defaults.logout'), "#", method: :delete, class: "btn mr-5" %>
+      <div class="avatar">
+        <div class="w-16 rounded-full">
+          <%#= image_tag current_user.avatar.url %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
