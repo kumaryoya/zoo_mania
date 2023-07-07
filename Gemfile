@@ -15,6 +15,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "sorcery"
 gem 'rails-i18n'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

@@ -5,6 +5,7 @@ ja:
     register: "登録"
     register_page: "登録ページへ"
     logout: "ログアウト"
+    edit: "編集"
   users:
     new:
       title: "ユーザー登録"
@@ -19,3 +20,11 @@ ja:
       fail: "ログインに失敗しました"
     destroy:
       success: "ログアウトしました"
+  profiles:
+    show:
+      title: "プロフィール"
+    edit:
+      title: "プロフィール編集"
+    update:
+      success: "更新しました"
+      fail: "更新できませんでした"
