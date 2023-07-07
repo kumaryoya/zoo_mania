@@ -7,18 +7,18 @@
       <% if logged_in? %>
         <%= link_to (t 'study_times.new.title'), "#", class: "btn mr-5"%>
         <%= link_to (t 'study_times.index.title'), "#", class: "btn mr-5"%>
-        <%= link_to (t "profiles.show.title"), "#", class: "btn mr-5" %>
+        <%= link_to (t "profiles.show.title"), profile_path, class: "btn mr-5" %>
         <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete }, class: "btn mr-5" %>
+        <div class="avatar">
+          <div class="w-16 rounded-full">
+            <%= image_tag current_user.avatar.url %>
+          </div>
+        </div>
       <% else %>
         <%= link_to (t 'study_times.index.title'), "#", class: "btn mr-5"%>
         <%= link_to (t 'defaults.loginpage'), login_path, class: "btn mr-5 text-headfoot"%>
         <%= link_to (t 'defaults.register_page'), new_user_path, class: "btn mr-5 text-headfoot"%>
       <% end %>
-      <div class="avatar">
-        <div class="w-16 rounded-full">
-          <%#= image_tag current_user.avatar.url %>
-        </div>
-      </div>
     </div>
   </div>
 </header>
