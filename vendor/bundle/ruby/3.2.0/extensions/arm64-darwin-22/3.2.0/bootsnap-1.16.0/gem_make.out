@@ -1,0 +1,18 @@
+current directory: /Users/ryoyaokuma/workspace/runteq/zoo_mania/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/ext/bootsnap
+/Users/ryoyaokuma/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/ryoyaokuma/workspace/runteq/zoo_mania/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20230707-26370-yzciam sitelibdir\=./.gem.20230707-26370-yzciam clean
+
+current directory: /Users/ryoyaokuma/workspace/runteq/zoo_mania/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20230707-26370-yzciam sitelibdir\=./.gem.20230707-26370-yzciam
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/ryoyaokuma/workspace/runteq/zoo_mania/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20230707-26370-yzciam sitelibdir\=./.gem.20230707-26370-yzciam install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20230707-26370-yzciam/bootsnap
+
+current directory: /Users/ryoyaokuma/workspace/runteq/zoo_mania/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20230707-26370-yzciam sitelibdir\=./.gem.20230707-26370-yzciam clean
