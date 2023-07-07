@@ -1,0 +1,29 @@
+<% content_for(:title, t('.title')) %>
+<div class="container px-5 py-20 mx-auto">
+  <div class="col-md-10 offset-md-1">
+    <div class="flex flex-col text-center w-full mb-5">
+      <div class="text-3xl mb-4"><%= t('.title') %></div>
+    </div>
+    <%= link_to t('defaults.edit'), edit_profile_path, class: 'btn btn-success float-right text-headfoot' %>
+    <table class="table">
+      <tr>
+        <th scope="row"><%= t(User.human_attribute_name(:email)) %></th>
+        <td><%= current_user.email %></td>
+      </tr>
+      <tr>
+        <th scope="row"><%= t(User.human_attribute_name(:name)) %></th>
+        <td><%= current_user.name %></td>
+      </tr>
+      <tr>
+        <th scope="row"><%= t(User.human_attribute_name(:avatar)) %></th>
+        <td>
+          <div class="avatar">
+            <div class="w-16 rounded-full">
+              <%= image_tag current_user.avatar.url %>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
