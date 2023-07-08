@@ -3,6 +3,7 @@ class CreateZoos < ActiveRecord::Migration[7.0]
     create_table :zoos do |t|
       t.string :name, null: false
       t.string :location, null: false
+      t.string :area, null: false
       t.string :link, null: false
       t.timestamps
     end
