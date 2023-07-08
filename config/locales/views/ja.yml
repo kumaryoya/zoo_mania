@@ -33,3 +33,8 @@ ja:
     update:
       success: "更新しました"
       fail: "更新できませんでした"
+  zoos:
+    index:
+      title: "動物園一覧"
+    show:
+      title: "動物園詳細"

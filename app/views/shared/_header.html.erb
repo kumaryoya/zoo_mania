@@ -5,8 +5,7 @@
     </div>
     <div class="md:ml-auto flex flex-wrap items-center text-base md:text-xl justify-center">
       <% if logged_in? %>
-        <%= link_to (t 'study_times.new.title'), "#", class: "btn mr-5"%>
-        <%= link_to (t 'study_times.index.title'), "#", class: "btn mr-5"%>
+        <%= link_to (t 'zoos.index.title'), zoos_path, class: "btn mr-5"%>
         <%= link_to (t "profiles.show.title"), profile_path, class: "btn mr-5" %>
         <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.logout?') }, class: "btn mr-5" %>
         <div class="avatar">
@@ -15,7 +14,7 @@
           </div>
         </div>
       <% else %>
-        <%= link_to (t 'study_times.index.title'), "#", class: "btn mr-5"%>
+        <%= link_to (t 'zoos.index.title'), zoos_path, class: "btn mr-5"%>
         <%= link_to (t 'defaults.loginpage'), login_path, class: "btn mr-5 text-headfoot"%>
         <%= link_to (t 'defaults.register_page'), new_user_path, class: "btn mr-5 text-headfoot"%>
       <% end %>

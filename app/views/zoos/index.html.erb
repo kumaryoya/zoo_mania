@@ -1,0 +1,15 @@
+<div class="flex flex-col justify-center text-center">
+  <div>
+    <h1 class="text-3xl my-5"><%= t('.title') %></h1>
+  </div>
+  <div>
+    <% @zoos_by_area.each do |area, zoos| %>
+      <h2><%= area %></h2>
+      <ul>
+        <% zoos.each do |zoo| %>
+          <li><%= link_to "#{zoo.name}", zoo_path(zoo) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
