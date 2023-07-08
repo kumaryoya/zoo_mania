@@ -1,3 +1,4 @@
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <div class="flex justify-center text-center">
   <div class="">
     <div class="">
@@ -16,5 +17,20 @@
         <%= f.submit (t 'defaults.login'), class: 'btn btn-primary text-headfoot' %>
       </div>
     <% end %>
+    <div class="flex justify-center my-5">
+      <div id="g_id_onload"
+        data-client_id="288360666860-8fku5g6vlc42pabvmc7ui2iuebef29un.apps.googleusercontent.com"
+        data-login_uri="http://localhost:3000/google_login_api/callback"
+        data-auto_prompt="false">
+      </div>
+      <div class="g_id_signin"
+        data-type="standard"
+        data-size="large"
+        data-theme="outline"
+        data-text="sign_in_with"
+        data-shape="rectangular"
+        data-logo_alignment="left">
+      </div>
+    </div>
   </div>
 </div>
