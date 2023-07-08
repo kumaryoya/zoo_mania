@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
+  post 'google_login_api/callback', to: 'google_login_api#callback'
   resource :profile,only: %i[show edit update]
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create] do
+    resource :password, only: [:edit, :update]
+  end
   resources :zoos, only: %i[index show]
 end

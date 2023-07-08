@@ -1,0 +1,22 @@
+<div class="flex justify-center text-center">
+  <div>
+    <h1 class="text-3xl my-5"><%= t('.title') %></h1>
+    <%= form_with model: @user, url: user_password_path, local: true do |f| %>
+      <div class="mb-3">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'w-full m-3 p-3' %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'w-full m-3 p-3' %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, class: 'w-full m-3 p-3' %>
+      </div>
+      <div class="d-grid mb-10">
+        <%= f.submit t('defaults.register'), class: 'btn btn-primary text-headfoot' %>
+      </div>
+    <% end %>
+  </div>
+</div>
