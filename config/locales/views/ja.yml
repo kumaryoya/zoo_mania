@@ -5,6 +5,7 @@ ja:
     register: "登録"
     register_page: "登録ページへ"
     logout: "ログアウト"
+    logout?: "ログアウトしますか？"
     edit: "編集"
   privacy_policy:
     title: "プライバシーポリシー"
