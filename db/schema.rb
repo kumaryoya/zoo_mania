@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_07_045058) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_07_222536) do
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -22,6 +22,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_07_045058) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "zoos", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "location", null: false
+    t.string "link", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["link"], name: "index_zoos_on_link", unique: true
+    t.index ["location"], name: "index_zoos_on_location", unique: true
+    t.index ["name"], name: "index_zoos_on_name", unique: true
   end
 
 end
