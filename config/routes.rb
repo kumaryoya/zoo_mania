@@ -11,5 +11,9 @@ Rails.application.routes.draw do
     resource :password, only: %i[edit update]
     resources :favorite_zoos, only: %i[new create edit update destroy]
   end
-  resources :zoos, only: %i[index show]
+  resources :zoos, only: %i[index show] do
+    collection do
+      get 'ranking', to: 'zoos#ranking'
+    end
+  end
 end

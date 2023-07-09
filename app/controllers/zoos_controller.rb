@@ -6,4 +6,8 @@ class ZoosController < ApplicationController
   def show
     @zoo = Zoo.find(params[:id])
   end
+
+  def ranking
+    @top_zoos = Zoo.top_ranked
+  end
 end
