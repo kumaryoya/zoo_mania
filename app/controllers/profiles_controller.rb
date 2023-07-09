@@ -3,7 +3,9 @@ class ProfilesController < ApplicationController
 
   def edit; end
 
-  def show; end
+  def show
+    @favorite_zoos = current_user.favorite_zoos.order(rank: :asc)
+  end
 
   def update
     if @user.update(user_params)
