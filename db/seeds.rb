@@ -1,3 +1,10 @@
+User.create!(
+  name: "aaa",
+  email: "aaa@aaa",
+  password: "aaa",
+  password_confirmation: "aaa",
+)
+
 #北海道地方
 Zoo.create!(
   [

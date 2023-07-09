@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   post 'google_login_api/callback', to: 'google_login_api#callback'
   resource :profile,only: %i[show edit update]
   resources :users, only: %i[new create] do
-    resource :password, only: [:edit, :update]
+    resource :password, only: %i[edit update]
+    resources :favorite_zoos, only: %i[new create edit update destroy]
   end
   resources :zoos, only: %i[index show]
 end

@@ -24,6 +24,18 @@
           </div>
         </td>
       </tr>
+      <tr>
+        <th>お気に入り動物園</th>
+        <td>
+          <% @favorite_zoos.each do |favorite_zoo| %>
+            <span><%= favorite_zoo.rank %></span>
+            <span><%= favorite_zoo.zoo.name %></span>
+            <%= link_to "編集", edit_user_favorite_zoo_path(current_user, favorite_zoo) %>
+            <%= link_to "削除", user_favorite_zoo_path(current_user, favorite_zoo), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.logout?') } %>
+            <br>
+          <% end %>
+        </td>
+      </tr>
     </table>
   </div>
 </div>
