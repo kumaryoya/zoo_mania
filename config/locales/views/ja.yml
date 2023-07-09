@@ -5,7 +5,12 @@ ja:
     register: "登録"
     register_page: "登録ページへ"
     logout: "ログアウト"
+    logout?: "ログアウトしますか？"
     edit: "編集"
+  privacy_policy:
+    title: "プライバシーポリシー"
+  terms_of_service:
+    title: "利用規約"
   users:
     new:
       title: "ユーザー登録"
@@ -20,6 +25,12 @@ ja:
       fail: "ログインに失敗しました"
     destroy:
       success: "ログアウトしました"
+  google_login_api:
+    callback:
+      success: "ログインしました"
+      reqire_change: "ニックネームとパスワードを変更してください"
+      fail: "ログインに失敗しました"
+      unauthorized_access: "不正なアクセスです"
   profiles:
     show:
       title: "プロフィール"
@@ -28,3 +39,14 @@ ja:
     update:
       success: "更新しました"
       fail: "更新できませんでした"
+  zoos:
+    index:
+      title: "動物園一覧"
+    show:
+      title: "動物園詳細"
+  passwords:
+    update:
+      success: "パスワードが更新されました"
+      fail: "パスワードが更新されませんでした"
+    edit:
+      no_authority: "編集権限がありません"

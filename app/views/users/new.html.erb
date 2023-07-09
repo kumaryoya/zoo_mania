@@ -1,8 +1,7 @@
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <div class="flex justify-center text-center">
-  <div class="">
-    <div class="">
-      <h1 class="text-3xl my-5"><%= t('.title') %></h1>
-    </div>
+  <div>
+    <h1 class="text-3xl my-5"><%= t('.title') %></h1>
     <%= form_with model: @user, local: true do |f| %>
       <div class="mb-3">
         <%= f.label :name %>
@@ -20,17 +19,24 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, class: 'w-full m-3 p-3' %>
       </div>
-      <div class="mb-3">
-        <%= f.label :avatar %>
-        <%= f.file_field :avatar, onchange: 'previewFileWithId(preview)', class: 'form-control w-full m-3 p-3', accept: 'image/*' %>
-        <%= f.hidden_field :avatar_cache %>
-      </div>
       <div class="d-grid mb-10">
         <%= f.submit t('defaults.register'), class: 'btn btn-primary text-headfoot' %>
       </div>
-      <div class='text-center'>
-        <%#= link_to (t 'defaults.loginpage'), login_path, class: "btn btn-primary text-headfoot"%>
-      </div>
     <% end %>
+    <div class="flex justify-center my-5">
+      <div id="g_id_onload"
+        data-client_id="288360666860-8fku5g6vlc42pabvmc7ui2iuebef29un.apps.googleusercontent.com"
+        data-login_uri="http://localhost:3000/google_login_api/callback"
+        data-auto_prompt="false">
+      </div>
+      <div class="g_id_signin"
+        data-type="standard"
+        data-size="large"
+        data-theme="outline"
+        data-text="sign_in_with"
+        data-shape="rectangular"
+        data-logo_alignment="left">
+      </div>
+    </div>
   </div>
 </div>

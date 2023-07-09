@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: "ユーザー"
+      zoo: "動物園"
     attributes:
       user:
         name: "ニックネーム"
@@ -10,3 +11,7 @@ ja:
         password_confirmation: "パスワード確認"
         avatar: "アバター"
         address: "生息エリア"
+      zoo:
+        name: "名称"
+        location: "所在地"
+        link: "ホームページ"
