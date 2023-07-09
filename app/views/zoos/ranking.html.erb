@@ -1,0 +1,7 @@
+<h1>動物園ランキング</h1>
+
+<ol>
+  <% @top_zoos.each_with_index do |zoo, index| %>
+    <li><%= index + 1 %>. <%= zoo.name %> (選ばれた回数: <%= zoo.selection_count %>)</li>
+  <% end %>
+</ol>

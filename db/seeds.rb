@@ -1,8 +1,18 @@
 User.create!(
-  name: "aaa",
-  email: "aaa@aaa",
-  password: "aaa",
-  password_confirmation: "aaa",
+  [
+    {
+      name: "aaa",
+      email: "aaa@aaa",
+      password: "aaa",
+      password_confirmation: "aaa",
+    },
+    {
+      name: "bbb",
+      email: "bbb@bbb",
+      password: "bbb",
+      password_confirmation: "bbb",
+    },
+  ]
 )
 
 #北海道地方
