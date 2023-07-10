@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   root "top#index"
   get 'privacy_policy', to: 'top#privacy_policy'
   get 'terms_of_service', to: 'top#terms_of_service'
@@ -16,4 +17,5 @@ Rails.application.routes.draw do
       get 'ranking', to: 'zoos#ranking'
     end
   end
+  resources :password_resets, only: %i[new create edit update]
 end
