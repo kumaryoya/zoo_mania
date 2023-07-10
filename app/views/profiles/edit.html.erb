@@ -1,0 +1,25 @@
+<div class="flex justify-center text-center">
+  <div class="">
+    <div class="">
+      <h1 class="text-3xl my-5"><%= t('.title') %></h1>
+    </div>
+    <%= form_with model: @user, url: profile_path, local: true do |f| %>
+      <div class="mb-3">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'w-full m-3 p-3' %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'w-full m-3 p-3' %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar, class: 'form-control mb-3', accept: 'image/*' %>
+        <%= f.hidden_field :avatar_cache %>
+      </div>
+      <div class="d-grid">
+        <%= f.submit class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
