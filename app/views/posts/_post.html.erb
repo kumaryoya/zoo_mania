@@ -1,0 +1,24 @@
+<div class="col-sm-12 col-lg-4 mb-3">
+  <div id="post-id-<%= post.id %>">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">
+          <a href="#">
+            <%= post.title %>
+          </a>
+        </h4>
+        </div>
+            <%= post.user.name %>
+          </li>
+            <%= l post.created_at, format: :long %>
+            <br>
+          <%= post.zoo.name%>
+          </li>
+          <%= link_to t('study_times.tweet'), "https://twitter.com/share?url=https://studying-tracker.fly.dev/&text=#{post.user.name}さんの今回の学習時間は%0A&hashtags=StudyingTracker", class: 'btn btn-info fa-brands fa-twitter fa-2xl text-twitter', target: '_blank' %>
+          <%= link_to  t('study_times.edit.edit_study_times'), edit_post_path(post), class: "btn btn-primary text-headfoot" %>
+          <%= link_to t('study_times.destroy'), post_path(post), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.logout?') }, class: "btn btn-secondary text-headfoot" %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
