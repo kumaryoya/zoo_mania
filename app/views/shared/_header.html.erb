@@ -13,6 +13,8 @@
           </ul>
         </details>
         <%= link_to "お気に入り新規作成", new_user_favorite_zoo_path(current_user), class: "btn mr-5"%>
+        <%= link_to "post", posts_path, class: "btn mr-5"%>
+        <%= link_to "newpost", new_post_path, class: "btn mr-5"%>
         <%= link_to (t "profiles.show.title"), profile_path, class: "btn mr-5" %>
         <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.logout?') }, class: "btn mr-5" %>
         <div class="avatar">
