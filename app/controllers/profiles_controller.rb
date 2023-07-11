@@ -1,9 +1,10 @@
 class ProfilesController < ApplicationController
-  before_action :set_user,only: %i[edit update]
+  before_action :set_user,only: %i[show edit update]
 
   def edit; end
 
   def show
+    @favorite_zoo = @user.favorite_zoos
     @favorite_zoos = current_user.favorite_zoos.order(rank: :asc)
   end
 
