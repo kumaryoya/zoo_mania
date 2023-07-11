@@ -18,4 +18,5 @@ Rails.application.routes.draw do
     end
   end
   resources :password_resets, only: %i[new create edit update]
+  resources :posts, only: %i[index new create edit update destroy]
 end
