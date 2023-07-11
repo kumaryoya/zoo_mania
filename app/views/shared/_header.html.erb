@@ -4,26 +4,40 @@
       <%= link_to "ZooMania", root_path, class: "text-5xl" %>
     </div>
     <div class="md:ml-auto flex flex-wrap items-center text-base md:text-xl justify-center">
+      <div class="dropdown dropdown-hover mr-5">
+        <label tabindex="0" class="btn m-1">動物園</label>
+        <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+          <%= link_to (t 'zoos.index.title'), zoos_path, class: "btn my-1"%>
+          <%= link_to "動物園ランキング", ranking_zoos_path, class: "btn my-1"%>
+        </ul>
+      </div>
+      <div class="dropdown dropdown-hover mr-5">
+        <label tabindex="0" class="btn m-1">投稿</label>
+        <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+          <%= link_to "新規投稿", new_post_path, class: "btn my-1"%>
+          <%= link_to "投稿一覧", posts_path, class: "btn my-1"%>
+          <%= link_to "投稿ランキング", "#", class: "btn my-1"%>
+        </ul>
+      </div>
+      <div class="dropdown dropdown-hover mr-5">
+        <label tabindex="0" class="btn m-1">ランキング</label>
+        <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+          <%= link_to "動物園ランキング", ranking_zoos_path, class: "btn my-1"%>
+          <%= link_to "投稿ランキング", "#", class: "btn my-1"%>
+        </ul>
+      </div>
       <% if logged_in? %>
-        <details class="dropdown mr-5">
-          <summary class="m-1 btn">動物園</summary>
-          <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-            <%= link_to (t 'zoos.index.title'), zoos_path, class: "btn my-1"%>
-            <%= link_to "動物園ランキング", ranking_zoos_path, class: "btn my-1"%>
+        <div class="dropdown dropdown-hover mr-5">
+          <label tabindex="0" class="btn m-1" style="background-color: transparent; border: none;">
+            <div class="w-16 rounded-full">
+              <%= image_tag current_user.avatar.url %>
+            </div>
+          </label>
+          <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+            <%= link_to (t "profiles.show.title"), profile_path, class: "btn my-1" %>
+            <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.logout?') }, class: "btn my-1" %>
           </ul>
-        </details>
-        <%= link_to "お気に入り新規作成", new_user_favorite_zoo_path(current_user), class: "btn mr-5"%>
-        <%= link_to "post", posts_path, class: "btn mr-5"%>
-        <%= link_to "newpost", new_post_path, class: "btn mr-5"%>
-        <%= link_to (t "profiles.show.title"), profile_path, class: "btn mr-5" %>
-        <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.logout?') }, class: "btn mr-5" %>
-        <div class="avatar">
-          <div class="w-16 rounded-full">
-            <%= image_tag current_user.avatar.url %>
-          </div>
-        </div>
       <% else %>
-        <%= link_to (t 'zoos.index.title'), zoos_path, class: "btn mr-5"%>
         <%= link_to (t 'defaults.loginpage'), login_path, class: "btn mr-5 text-headfoot"%>
         <%= link_to (t 'defaults.register_page'), new_user_path, class: "btn mr-5 text-headfoot"%>
       <% end %>
