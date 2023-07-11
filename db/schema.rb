@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_11_053106) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title", null: false
+    t.string "image", null: false
     t.integer "user_id", null: false
     t.integer "zoo_id", null: false
     t.datetime "created_at", null: false

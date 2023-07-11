@@ -14,7 +14,9 @@
       <div class="dropdown dropdown-hover mr-5">
         <label tabindex="0" class="btn m-1">投稿</label>
         <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-          <%= link_to "新規投稿", new_post_path, class: "btn my-1"%>
+          <% if logged_in? %>
+            <%= link_to "新規投稿", new_post_path, class: "btn my-1"%>
+          <% end %>
           <%= link_to "投稿一覧", posts_path, class: "btn my-1"%>
           <%= link_to "投稿ランキング", "#", class: "btn my-1"%>
         </ul>

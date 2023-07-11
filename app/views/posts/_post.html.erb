@@ -3,16 +3,17 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">
-          <a href="#">
             <%= post.title %>
-          </a>
         </h4>
+        <div class="card">
+          <%= image_tag post.image_url, class: 'card-img-top', size: '300x200' %>
+        <div class="card-body">
         </div>
-            <%= post.user.name %>
+          <%= post.user.name %>
           </li>
             <%= l post.created_at, format: :long %>
             <br>
-          <%= post.zoo.name%>
+            <%= post.zoo.name%>
           </li>
           <%= link_to t('study_times.tweet'), "https://twitter.com/share?url=https://studying-tracker.fly.dev/&text=#{post.user.name}さんの今回の学習時間は%0A&hashtags=StudyingTracker", class: 'btn btn-info fa-brands fa-twitter fa-2xl text-twitter', target: '_blank' %>
           <%= link_to  t('study_times.edit.edit_study_times'), edit_post_path(post), class: "btn btn-primary text-headfoot" %>
