@@ -1,3 +1,10 @@
 <% flash.each do |message_type, message| %>
-    <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <div class="alert alert-<%= message_type %>" style="background-color: inherit; border: none;">
+        <div class="avatar">
+            <div class="w-16 rounded-full">
+                <%= image_tag "animalface_zou.png", class: "message-image" %>
+            </div>
+        </div>
+        <%= message %>
+    </div>
 <% end %>
