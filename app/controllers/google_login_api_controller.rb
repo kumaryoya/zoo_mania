@@ -9,7 +9,7 @@ class GoogleLoginApiController < ApplicationController
       session[:user_id] = user.id
       redirect_to zoos_path, notice: t('.success')
     else
-      user = User.new(email: payload['email'], name: 'ライオン', password: 'password', password_confirmation: 'password')
+      user = User.new(email: payload['email'], name: 'name', password: 'password', password_confirmation: 'password')
       if user.save
         session[:user_id] = user.id
         redirect_to edit_user_password_path(user), notice: t('.reqire_change')
