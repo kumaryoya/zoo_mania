@@ -7,14 +7,14 @@ class FavoriteZoosController < ApplicationController
     if @favorite_zoo.save
       redirect_to profile_path, notice: t(".success_create_favotite_zoo")
     else
-      @favorite_zoos = current_user.favorite_zoos.order(rank: :asc)
+      @favorite_zoos = @user.favorite_zoos.order(rank: :asc)
       flash.now[:danger] = t(".fail_create_favotite_zoo")
       render template: "profiles/show", status: :unprocessable_entity
     end
   end
 
   def destroy
-    @favorite_zoo = current_user.favorite_zoos.find(params[:id])
+    @favorite_zoo = @user.favorite_zoos.find(params[:id])
     redirect_to profile_path, notice: t(".success_delete_favotite_zoo") if @favorite_zoo.destroy!
   end
 

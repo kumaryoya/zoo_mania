@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
   def edit; end
 
   def show
-    @favorite_zoo = @user.favorite_zoos
+    @favorite_zoo = @user.favorite_zoos.build
     @favorite_zoos = current_user.favorite_zoos.order(rank: :asc)
   end
 
