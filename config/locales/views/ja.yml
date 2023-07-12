@@ -7,46 +7,68 @@ ja:
     logout: "ログアウト"
     logout?: "ログアウトしますか？"
     edit: "編集"
-  privacy_policy:
-    title: "プライバシーポリシー"
-  terms_of_service:
-    title: "利用規約"
-  users:
-    new:
-      title: "ユーザー登録"
+  message:
+    require_login: "ログインしてほしいゾゥ"
+    no_authority: "アクセス権限がないゾゥ"
+  favorite_zoos:
     create:
-      success: "ユーザー登録が完了しました"
-      fail: "ユーザー登録に失敗しました"
+      success_create_favotite_zoo: "お気に入りの動物園を追加できたゾゥ"
+      fail_create_favotite_zoo: "お気に入りの動物園を追加できなかったゾゥ"
+    destroy:
+      success_delete_favotite_zoo: "お気に入りの動物園を削除できたゾゥ"
+  google_login_api:
+    callback:
+      success: "ログインできたゾゥ"
+      reqire_change: "ニックネームとパスワードを変更してほしいゾゥ"
+      fail: "ログインできなかったゾゥ"
+      unauthorized_access: "不正なアクセスだゾゥ"
+  password_resets:
+    create:
+      sent_email: "メールを送信したゾゥ"
+    update:
+      success_password_change: "パスワードを変更できたゾゥ"
+      fail_password_change: "パスワードが変更できなかったゾゥ"
+  passwords:
+    update:
+      success: "変更できたゾゥ"
+      fail: "変更できなかったゾゥ"
+  posts:
+    create:
+      success_create_post: "投稿できたゾゥ"
+      fail_create_post: "投稿できなかったゾゥ"
+    update:
+      success_update_post: "投稿を更新できたゾゥ"
+      fail_update_post: "投稿を更新できなかったゾゥ"
+    destroy:
+      success_delete_post: "投稿を削除できたゾゥ"
+  profiles:
+    edit:
+      title: "プロフィール編集"
+    show:
+      title: "プロフィール"
+    update:
+      success: "プロフィールを更新できたゾゥ"
+      fail: "プロフィールを更新できなかったゾゥ"
   user_sessions:
     new:
       title: "ログイン"
     create:
-      success: "ログインしました"
-      fail: "ログインに失敗しました"
+      success: "ログインできたゾゥ"
+      fail: "ログインできなかったゾゥ"
     destroy:
-      success: "ログアウトしました"
-  google_login_api:
-    callback:
-      success: "ログインしました"
-      reqire_change: "ニックネームとパスワードを変更してください"
-      fail: "ログインに失敗しました"
-      unauthorized_access: "不正なアクセスです"
-  profiles:
-    show:
-      title: "プロフィール"
-    edit:
-      title: "プロフィール編集"
-    update:
-      success: "更新しました"
-      fail: "更新できませんでした"
+      success: "ログアウトしたゾゥ"
+  users:
+    new:
+      title: "ユーザー登録"
+    create:
+      success: "ユーザー登録が完了したゾゥ"
+      fail: "ユーザー登録に失敗したゾゥ"
   zoos:
     index:
       title: "動物園一覧"
     show:
       title: "動物園詳細"
-  passwords:
-    update:
-      success: "パスワードが更新されました"
-      fail: "パスワードが更新されませんでした"
-    edit:
-      no_authority: "編集権限がありません"
+  privacy_policy:
+    title: "プライバシーポリシー"
+  terms_of_service:
+    title: "利用規約"
