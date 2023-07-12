@@ -1,8 +1,10 @@
+<% content_for(:title, t('.title')) %>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <div class="flex justify-center text-center">
   <div>
     <h1 class="text-3xl my-5"><%= t('.title') %></h1>
     <%= form_with model: @user, local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
       <div class="mb-3">
         <%= f.label :name %>
         <%= f.text_field :name, class: 'w-full m-3 p-3' %>

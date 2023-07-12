@@ -68,7 +68,10 @@ ja:
       title: "動物園一覧"
     show:
       title: "動物園詳細"
-  privacy_policy:
-    title: "プライバシーポリシー"
-  terms_of_service:
-    title: "利用規約"
+  top:
+    index:
+      title: "トップページ"
+    privacy_policy:
+      title: "プライバシーポリシー"
+    terms_of_service:
+      title: "利用規約"
