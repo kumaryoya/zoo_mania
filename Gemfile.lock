@@ -145,8 +145,6 @@ GEM
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
     ffi (1.15.5)
-    font-awesome-sass (6.4.0)
-      sassc (~> 2.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     googleauth (1.6.0)
@@ -166,8 +164,8 @@ GEM
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.6.0)
-    irb (1.7.1)
-      reline (>= 0.3.0)
+    irb (1.7.2)
+      reline (>= 0.3.6)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -380,7 +378,6 @@ DEPENDENCIES
   carrierwave
   config
   debug
-  font-awesome-sass
   googleauth
   importmap-rails
   jbuilder
