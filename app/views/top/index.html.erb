@@ -1,8 +1,17 @@
-<% content_for(:title, t('.title')) %>
-<div class="top-wrapper">
-  <div class="h-screen w-screen flex justify-center items-center">
-    <div class="top-inner-text">
-      <p class="text-4xl">ZooManiaのトップページ</p>
+<% content_for :title, t('.title') %>
+<div class="top-wrapper overflow-hidden text-brown main_image">
+  <div class="h-auto w-screen flex justify-center items-center">
+    <div class="top-inner-text overflow-hidden text-center text-align: center py-40">
+      <% if @random_post.present? %>
+        <div id="random-post">
+          <img id="post-image" src="<%= @random_post.image.url %>" style="width: 900px; height: 600px;">
+          <br>
+          <span id="post-info" style="display: flex; align-items: center; justify-content: center;" class="text-center text-xl">
+            <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full" %>
+            <%= "これは#{@random_post.user.name}さんが#{@random_post.zoo.name}で撮った写真だゾゥ" %>
+          </span>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

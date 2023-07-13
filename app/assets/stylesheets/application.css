@@ -14,3 +14,19 @@
  *= require_self
  */
 @import 'bootstrap';
+
+.background_image {
+  background-image: url("kabegami.jpg");
+}
+
+.main_image {
+  background-image: url("main.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.head_image {
+  background-image: url("midori.jpg");
+  background-size: cover;
+  background-position: center;
+}

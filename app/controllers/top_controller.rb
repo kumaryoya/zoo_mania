@@ -1,5 +1,7 @@
 class TopController < ApplicationController
-  def index; end
+  def index
+    @random_post = Post.all.sample
+  end
 
   def privacy_policy; end
 
