@@ -21,7 +21,6 @@ gem 'googleauth'
 gem 'config'
 gem 'letter_opener_web'
 gem 'bootstrap'
-gem 'font-awesome-sass'
 gem 'jquery-rails'
 
 group :development, :test do

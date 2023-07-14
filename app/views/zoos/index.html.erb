@@ -1,9 +1,9 @@
 <% content_for(:title, t('.title')) %>
-<div class="flex flex-col justify-center text-center">
+<div class="flex flex-col justify-center text-center main_image">
   <div>
     <h1 class="text-3xl my-5"><%= t('.title') %></h1>
   </div>
-  <div>
+  <div class="text-3xl my-5" >
     <% @zoos_by_area.each do |area, zoos| %>
       <h2><%= area %></h2>
       <ul>

@@ -14,5 +14,19 @@
  *= require_self
  */
 @import 'bootstrap';
-@import "font-awesome-sprockets";
-@import "font-awesome";
+
+.header_image {
+  background-image: url("header.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.footer_image {
+  background-image: url("footer.jpg");
+  background-position: center;
+}
+
+.main_image {
+  background-image: url("main.jpg");
+  background-position: center;
+}

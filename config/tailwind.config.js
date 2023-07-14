@@ -12,6 +12,10 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        "white": "#FFFFFF",
+        "brown": "#412E1D",
+      },
     },
   },
   plugins: [
@@ -20,5 +24,14 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
     require('daisyui'),
-  ]
+  ],
+  daisyui: {
+    themes: [
+      {
+      mytheme: {
+        "primary": "#412E1D",
+      },
+      },
+    ],
+  },
 }
