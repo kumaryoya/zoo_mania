@@ -15,18 +15,18 @@
  */
 @import 'bootstrap';
 
-.background_image {
-  background-image: url("kabegami.jpg");
-}
-
-.main_image {
-  background-image: url("main.jpg");
+.header_image {
+  background-image: url("header.jpeg");
   background-size: cover;
   background-position: center;
 }
 
-.head_image {
-  background-image: url("midori.jpg");
-  background-size: cover;
+.footer_image {
+  background-image: url("footer.jpg");
+  background-position: center;
+}
+
+.main_image {
+  background-image: url("main.jpg");
   background-position: center;
 }
