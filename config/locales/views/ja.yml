@@ -68,6 +68,8 @@ ja:
       title: "動物園一覧"
     show:
       title: "動物園詳細"
+    ranking:
+      title: "動物園ランキング"
   top:
     index:
       title: "トップページ"
@@ -75,3 +77,7 @@ ja:
       title: "プライバシーポリシー"
     terms_of_service:
       title: "利用規約"
+  password_reset:
+    new:
+      title: "パスワード再発行手続き"
+      to_page: "パスワードを忘れた場合"

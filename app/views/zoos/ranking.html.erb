@@ -1,6 +1,11 @@
-<h1>動物園ランキング</h1>
-<ol>
-  <% @top_zoos.each_with_index do |zoo, index| %>
-    <li><%= index + 1 %>. <%= zoo.name %> (選ばれた回数: <%= zoo.selection_count %>)</li>
-  <% end %>
-</ol>
+<% content_for(:title, t('.title')) %>
+<div class="flex flex-col justify-center text-center py-20 main_image">
+  <div>
+    <h1 class="text-3xl my-5"><%= t('.title') %></h1>
+  </div>
+  <ol>
+    <% @top_zoos.each_with_index do |zoo, index| %>
+      <li><%= index + 1 %>. <%= zoo.name %> (選ばれた回数: <%= zoo.selection_count %>)</li>
+    <% end %>
+  </ol>
+</div>

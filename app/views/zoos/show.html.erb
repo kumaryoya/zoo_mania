@@ -1,11 +1,16 @@
 <% content_for(:title, t('.title')) %>
-<div class="flex flex-col justify-center text-center">
+<div class="flex flex-col justify-center text-center py-20 main_image">
   <div>
     <h1 class="text-3xl my-5"><%= t('.title') %></h1>
   </div>
   <div>
     <h2 class="text-2xl font-bold my-10"><%= @zoo.name %></h2>
     <h2 class="text-2xl font-bold my-10">所在地：<%= @zoo.location %></h2>
-    <h2 class="text-2xl font-bold my-10">ホームページ：<%= link_to "#{@zoo.link}", @zoo.link %></h2>
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <h2 class="text-2xl font-bold">ホームページ：</h2>
+      <div class="link link-primary text-2xl font-bold">
+        <%= link_to "#{@zoo.link}", @zoo.link %>
+      </div>
+    </div>
   </div>
 </div>
