@@ -1,11 +1,15 @@
-<div class="row">
-  <div class="col-12">
-    <div class="row">
-      <% if @posts.present? %>
-        <%= render @posts %>
-      <% else %>
-        <p><%= t('.no_result') %></p>
-      <% end %>
+<% content_for(:title, t('.title')) %>
+<div class="main_image items-center justify-center text-center">
+  <h1 class="text-3xl py-16"><%= t '.title' %></h1>
+  <section class="main_image items-center justify-center text-center">
+    <div class="container px-2 mx-auto">
+      <div class="flex flex-wrap justify-center pb-16 pl-4">
+        <% if @posts.present? %>
+          <%= render @posts %>
+        <% else %>
+          <p><%= t('.no_result') %></p>
+        <% end %>
+      </div>
     </div>
-  </div>
+  </section>
 </div>

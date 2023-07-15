@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:edit, :update, :destroy]
+  before_action :require_login, only: %i[new create edit update destroy]
+  before_action :find_post, only: %i[edit update destroy]
 
   def index
     @posts = Post.all.includes(:user).includes(:zoo).order(created_at: :desc)
@@ -10,12 +11,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(post_params)#下記で説明
+    @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to posts_path, success: t('defaults.message.created', item: Post.model_name.human)
+      redirect_to posts_path, notice: t('.success_create_post')
     else
-      flash.now['danger'] = t('defaults.message.not_created', item: Post.model_name.human)
-      render :new
+      flash.now['danger'] = t('.fail_create_post')
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -23,16 +24,20 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to posts_path, success: t('defaults.message.updated', item: Post.model_name.human)
+      redirect_to posts_path, notice: t('.success_update_post')
     else
-      flash.now['danger'] = t('defaults.message.not_updated', item: Post.model_name.human)
-      render :edit
+      flash.now['danger'] = t('.fail_update_post')
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @post.destroy!
-    redirect_to posts_path, success: t('defaults.message.deleted', item: Post.model_name.human)
+    redirect_to posts_path, notice: t('.success_delete_post')
+  end
+
+  def ranking
+    @top_posts = Post.top_ranked
   end
 
   private

@@ -1,5 +1,5 @@
 class PasswordsController < ApplicationController
-  before_action :require_edit_permission, only: [:edit, :update]
+  before_action :require_edit_permission, only: %i[edit update]
 
   def edit; end
 
@@ -15,13 +15,13 @@ class PasswordsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation, :avatar, :avatar_cash)
+    params.require(:user).permit(:name, :password, :password_confirmation)
   end
 
   def require_edit_permission
     @user = User.find(params[:user_id])
     return if @user == current_user
-    redirect_to root_path, notice: t('.no_authority')
+    redirect_to root_path, notice: t('message.no_authority')
   end
 
   def password_changed?
