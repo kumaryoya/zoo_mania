@@ -33,9 +33,15 @@ ja:
       success: "変更できたゾゥ"
       fail: "変更できなかったゾゥ"
   posts:
+    index:
+      tilte: "投稿一覧"
+    new:
+      title: "新規投稿"
     create:
       success_create_post: "投稿できたゾゥ"
       fail_create_post: "投稿できなかったゾゥ"
+    edit:
+      title: "投稿編集"
     update:
       success_update_post: "投稿を更新できたゾゥ"
       fail_update_post: "投稿を更新できなかったゾゥ"

@@ -15,3 +15,7 @@ ja:
         name: "名称"
         location: "所在地"
         link: "ホームページ"
+      post:
+        title: "タイトル"
+        zoo_id: "動物園"
+        image: "画像"

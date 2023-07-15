@@ -1,17 +1,30 @@
 <%= form_with model: post, local: true do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control' %>
+  <div class="flex items-center justify-center text-center relative py-8">
+    <%= render 'shared/error_messages', object: f.object %>
   </div>
-  <div class="form-group">
-    <%= f.label :zoo_id %>
-    <%= f.collection_select :zoo_id, Zoo.all, :id, :name, class: 'form-control' %>
+  <div class="flex items-center justify-center text-center relative pb-5">
+    <div class="form-group items-center">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control input input-bordered input-primary input-lg w-full my-5' %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :image, class: 'form-control mb-3', accept: 'image/*' %>
-    <%= f.hidden_field :image_cache %>
+  <div class="flex items-center justify-center text-center relative py-5">
+    <div class="form-group items-center">
+      <%= f.label :zoo_id %>
+      <br>
+      <%= f.collection_select :zoo_id, Zoo.all, :id, :name, {}, class: 'form-control select select-primary text-xl w-full my-5' %>
+    </div>
   </div>
-  <%= f.submit class: 'btn btn-primary' %>
+  <div class="flex items-center justify-center text-center relative py-5">
+    <div class="form-group items-center">
+      <%= f.label :image %>
+      <%= f.file_field :image, class: 'form-control my-5', accept: 'image/*', style: 'border: 1px solid' %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+  </div>
+  <div class="flex items-center justify-center text-center relative">
+    <div class="form-group items-center">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+  </div>
 <% end %>
