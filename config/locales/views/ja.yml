@@ -7,6 +7,8 @@ ja:
     logout: "ログアウト"
     logout?: "ログアウトしますか？"
     edit: "編集"
+    destroy: "削除"
+    destroy?: "削除しますか？"
   message:
     require_login: "ログインしてほしいゾゥ"
     no_authority: "アクセス権限がないゾゥ"
@@ -33,9 +35,16 @@ ja:
       success: "変更できたゾゥ"
       fail: "変更できなかったゾゥ"
   posts:
+    index:
+      title: "投稿一覧"
+      no_result: "投稿がありません"
+    new:
+      title: "新規投稿"
     create:
       success_create_post: "投稿できたゾゥ"
       fail_create_post: "投稿できなかったゾゥ"
+    edit:
+      title: "投稿編集"
     update:
       success_update_post: "投稿を更新できたゾゥ"
       fail_update_post: "投稿を更新できなかったゾゥ"
@@ -68,6 +77,8 @@ ja:
       title: "動物園一覧"
     show:
       title: "動物園詳細"
+    ranking:
+      title: "動物園ランキング"
   top:
     index:
       title: "トップページ"
@@ -75,3 +86,7 @@ ja:
       title: "プライバシーポリシー"
     terms_of_service:
       title: "利用規約"
+  password_reset:
+    new:
+      title: "パスワード再発行手続き"
+      to_page: "パスワードを忘れた場合"

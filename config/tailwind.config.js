@@ -30,6 +30,7 @@ module.exports = {
       {
       mytheme: {
         "primary": "#412E1D",
+        "info": "#412E1D",
       },
       },
     ],

@@ -1,6 +1,6 @@
 <% content_for(:title, t('.title')) %>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
-<div class="flex justify-center text-center">
+<div class="flex justify-center text-center main_image py-20">
   <div class="">
     <div class="">
       <h1 class="text-3xl my-5"><%= t('.title') %></h1>
@@ -8,18 +8,18 @@
     <%= form_with model: @user, local: true do |f| %>
       <div class="mb-3">
         <%= f.label :email, User.human_attribute_name(:email) %>
-        <%= f.email_field :email, class: 'w-full m-3 p-3' %>
+        <%= f.email_field :email, class: 'input input-bordered input-primary input-lg w-full m-3 p-3' %>
       </div>
       <div class="mb-3">
         <%= f.label :password, User.human_attribute_name(:password) %>
-        <%= f.password_field :password, class: 'w-full m-3 p-3' %>
+        <%= f.password_field :password, class: 'input input-bordered input-primary input-lg w-full m-3 p-3' %>
       </div>
       <div class="actions">
-        <%= f.submit (t 'defaults.login'), class: 'btn btn-primary text-headfoot' %>
+        <%= f.submit (t 'defaults.login'), class: 'btn btn-primary btn-lg text-white' %>
       </div>
     <% end %>
-    <%= link_to (t 'reset_password'), new_password_reset_path, class: "btn mr-5 my-10"%>
-    <div class="flex justify-center my-5">
+    <%= link_to (t 'password_reset.new.to_page'), new_password_reset_path, class: "btn btn-primary btn-lg text-white my-10"%>
+    <div class="flex justify-center">
       <div id="g_id_onload"
         data-client_id="288360666860-8fku5g6vlc42pabvmc7ui2iuebef29un.apps.googleusercontent.com"
         data-login_uri="http://localhost:3000/google_login_api/callback"
