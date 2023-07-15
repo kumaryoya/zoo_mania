@@ -9,6 +9,8 @@ ja:
     edit: "編集"
     destroy: "削除"
     destroy?: "削除しますか？"
+    share: "共有"
+    inquiry: "お問い合わせ"
   message:
     require_login: "ログインしてほしいゾゥ"
     no_authority: "アクセス権限がないゾゥ"
@@ -50,6 +52,8 @@ ja:
       fail_update_post: "投稿を更新できなかったゾゥ"
     destroy:
       success_delete_post: "投稿を削除できたゾゥ"
+    ranking:
+      title: "投稿ランキング"
   profiles:
     edit:
       title: "プロフィール編集"

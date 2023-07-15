@@ -15,6 +15,7 @@ module.exports = {
       colors: {
         "white": "#FFFFFF",
         "brown": "#412E1D",
+        "twitter": "#3597DE",
       },
     },
   },
@@ -31,6 +32,12 @@ module.exports = {
       mytheme: {
         "primary": "#412E1D",
         "info": "#412E1D",
+        "secondary": "#3597DE",
+        "success": "#3597DE",
+        "accent": "#325B2F",
+        "warning": "#325B2F",
+        "neutral": "#69031E",
+        "error": "#69031E",
       },
       },
     ],

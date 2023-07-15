@@ -18,5 +18,10 @@ Rails.application.routes.draw do
     end
   end
   resources :password_resets, only: %i[new create edit update]
-  resources :posts, only: %i[index new create edit update destroy]
+  resources :posts, only: %i[index new create edit update destroy] do
+    resource :likes, only: [:create, :destroy]
+    collection do
+      get 'ranking', to: 'posts#ranking'
+    end
+  end
 end

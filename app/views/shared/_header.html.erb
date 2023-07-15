@@ -17,17 +17,17 @@
         <label tabindex="0" class="btn btn-primary btn-lg text-white m-1">投稿</label>
         <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
           <% if logged_in? %>
-            <%= link_to "新規投稿", new_post_path, class: "btn btn-primary text-white my-1" %>
+            <%= link_to (t 'posts.new.title'), new_post_path, class: "btn btn-primary text-white my-1" %>
           <% end %>
-          <%= link_to "投稿一覧", posts_path, class: "btn btn-primary text-white my-1" %>
-          <%= link_to "投稿ランキング", "#", class: "btn btn-primary text-white my-1" %>
+          <%= link_to (t 'posts.index.title'), posts_path, class: "btn btn-primary text-white my-1" %>
+          <%= link_to (t 'posts.ranking.title'), ranking_posts_path, class: "btn btn-primary text-white my-1" %>
         </ul>
       </div>
       <div class="dropdown dropdown-hover dropdown-end mr-5">
         <label tabindex="0" class="btn btn-primary btn-lg text-white m-1">ランキング</label>
         <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-          <%= link_to "動物園ランキング", ranking_zoos_path, class: "btn btn-primary text-white my-1" %>
-          <%= link_to "投稿ランキング", "#", class: "btn btn-primary text-white my-1" %>
+          <%= link_to (t 'zoos.ranking.title'), ranking_zoos_path, class: "btn btn-primary text-white my-1" %>
+          <%= link_to (t 'posts.ranking.title'), ranking_posts_path, class: "btn btn-primary text-white my-1" %>
         </ul>
       </div>
       <% if logged_in? %>

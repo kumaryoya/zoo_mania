@@ -6,11 +6,19 @@
     <p><%= post.zoo.name%></p>
     <div class="card-actions justify-end">
       <% if current_user == post.user %>
-        <%= link_to "共有", "https://twitter.com/share?url=https://studying-tracker.fly.dev/&text=#{post.user.name}さんの今回の学習時間は分でした！%0A&hashtags=StudyingTracker", class: 'btn btn-info fa-brands fa-twitter fa-2xl text-twitter', target: '_blank' %>
-        <%= link_to  t('defaults.edit'), edit_post_path(post), class: "btn btn-primary text-white" %>
-        <%= link_to t('defaults.destroy'), post_path(post), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-primary text-white" %>
+        <%= link_to t('defaults.share'), "https://twitter.com/share?url=https://studying-tracker.fly.dev/&text=#{post.user.name}さんの今回の学習時間は分でした！%0A&hashtags=StudyingTracker", class: 'btn btn-secondary text-white', target: '_blank' %>
+        <%= link_to  t('defaults.edit'), edit_post_path(post), class: "btn btn-accent text-white" %>
+        <%= link_to t('defaults.destroy'), post_path(post), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white fa-brands fa-twitter fa-2xl" %>
       <% else %>
-        <button class="btn btn-primary text-white">いいね</button>
+        <% if post.liked?(current_user) %>
+          <%= link_to post_likes_path(post), data: { turbo_method: :delete } do %>
+            <span class="text-4xl" style="color:yellow;">★</span>
+          <% end %>
+        <% else %>
+          <%= link_to post_likes_path(post), data: { turbo_method: :post } do %>
+            <span class="text-4xl" style="color:white;">★</span>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
   </div>
