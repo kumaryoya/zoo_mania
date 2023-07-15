@@ -5,7 +5,7 @@
   <div class="flex items-center justify-center text-center relative pb-5">
     <div class="form-group items-center">
       <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control input input-bordered input-primary input-lg w-full my-5' %>
+      <%= f.text_field :title, class: 'form-control input input-bordered input-primary w-full my-5' %>
     </div>
   </div>
   <div class="flex items-center justify-center text-center relative py-5">
@@ -18,13 +18,13 @@
   <div class="flex items-center justify-center text-center relative py-5">
     <div class="form-group items-center">
       <%= f.label :image %>
-      <%= f.file_field :image, class: 'form-control my-5', accept: 'image/*', style: 'border: 1px solid' %>
+      <%= f.file_field :image, class: 'form-control my-5 file-input file-input-bordered file-input-info w-full max-w-xs', accept: 'image/*' %>
       <%= f.hidden_field :image_cache %>
     </div>
   </div>
   <div class="flex items-center justify-center text-center relative">
     <div class="form-group items-center">
-      <%= f.submit class: 'btn btn-primary' %>
+      <%= f.submit class: 'btn btn-primary btn-lg font-bold text-white' %>
     </div>
   </div>
 <% end %>
