@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_11_053106) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_15_135722) do
   create_table "favorite_zoos", force: :cascade do |t|
     t.integer "user_id"
     t.integer "zoo_id"
@@ -19,6 +19,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_11_053106) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_favorite_zoos_on_user_id"
     t.index ["zoo_id"], name: "index_favorite_zoos_on_zoo_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -62,6 +71,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_11_053106) do
     t.index ["name"], name: "index_zoos_on_name", unique: true
   end
 
+  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "posts", "zoos"
 end

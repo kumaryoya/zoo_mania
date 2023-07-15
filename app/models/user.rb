@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :favorite_zoos
   has_many :zoos, through: :favorite_zoos
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   validates :name, presence: true
   validates :email,presence: true, uniqueness: true

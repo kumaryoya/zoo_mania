@@ -36,6 +36,10 @@ class PostsController < ApplicationController
     redirect_to posts_path, notice: t('.success_delete_post')
   end
 
+  def ranking
+    @top_posts = Post.top_ranked
+  end
+
   private
 
   def post_params
