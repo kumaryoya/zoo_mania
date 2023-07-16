@@ -11,6 +11,7 @@ ja:
     destroy?: "削除しますか？"
     share: "共有"
     inquiry: "お問い合わせ"
+    favorite_zoo: "お気に入り動物園"
   message:
     require_login: "ログインしてほしいゾゥ"
     no_authority: "アクセス権限がないゾゥ"

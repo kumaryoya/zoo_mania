@@ -23,7 +23,7 @@
           <%= link_to (t 'posts.ranking.title'), ranking_posts_path, class: "btn btn-primary text-white my-1" %>
         </ul>
       </div>
-      <div class="dropdown dropdown-hover dropdown-end mr-5">
+      <div class="dropdown dropdown-hover dropdown-end mr-2">
         <label tabindex="0" class="btn btn-primary btn-lg text-white m-1">ランキング</label>
         <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
           <%= link_to (t 'zoos.ranking.title'), ranking_zoos_path, class: "btn btn-primary text-white my-1" %>
@@ -33,8 +33,10 @@
       <% if logged_in? %>
         <div class="dropdown dropdown-hover dropdown-end">
           <label tabindex="0" class="btn m-1" style="background-color: transparent; border: none;">
-            <div class="w-20 rounded-full">
-              <%= image_tag current_user.avatar.url %>
+            <div class="avatar">
+              <div class="w-20 rounded-full">
+                <%= image_tag current_user.avatar.url %>
+              </div>
             </div>
           </label>
           <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
