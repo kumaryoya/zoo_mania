@@ -13,4 +13,18 @@
       </div>
     </div>
   </div>
+  <div class="main_image items-center justify-center text-center">
+    <h1 class="text-3xl py-16"><%= t 'defaults.posts' %></h1>
+    <section class="main_image items-center justify-center text-center">
+      <div class="container px-2 mx-auto">
+        <div class="flex flex-wrap justify-center pb-16">
+          <% if @posts.present? %>
+            <%= render @posts %>
+          <% else %>
+            <p class="text-2xl"><%= t('.no_result') %></p>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
