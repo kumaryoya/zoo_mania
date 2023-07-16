@@ -11,15 +11,11 @@
           <%= link_to  t('defaults.edit'), edit_post_path(post), class: "btn btn-accent text-white" %>
           <%= link_to t('defaults.destroy'), post_path(post), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white" %>
         <% else %>
-          <% if post.liked?(current_user) %>
-            <%= link_to post_likes_path(post), data: { turbo_method: :delete } do %>
-              <span class="text-4xl" style="color:yellow;">★</span>
-            <% end %>
-          <% else %>
-            <%= link_to post_likes_path(post), data: { turbo_method: :post } do %>
-              <span class="text-4xl" style="color:white;">★</span>
-            <% end %>
-          <% end %>
+          <td>
+            <div id="js-like-button-for-post-<%= post.id %>" data-turbo-frame="js-like-button-for-post-<%= post.id %>">
+              <%= render "likes/like", post: post %>
+            </div>
+          </td>
         <% end %>
       <% end %>
     </div>

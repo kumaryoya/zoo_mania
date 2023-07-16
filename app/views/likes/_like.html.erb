@@ -1,0 +1,9 @@
+<% if post.liked?(current_user) %>
+  <%= link_to post_likes_path(post), data: { turbo_method: :delete }, remote: true, id: "js-like-button-for-post-#{post.id}" do %>
+    <span class="text-4xl" style="color:yellow;">★</span>
+  <% end %>
+<% else %>
+  <%= link_to post_likes_path(post), data: { turbo_method: :post }, remote: true, id: "js-like-button-for-post-#{post.id}" do %>
+    <span class="text-4xl" style="color:white;">★</span>
+  <% end %>
+<% end %>
