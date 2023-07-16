@@ -12,6 +12,7 @@ ja:
     share: "共有"
     inquiry: "お問い合わせ"
     favorite_zoo: "お気に入り動物園"
+    posts: "投稿一覧"
   message:
     require_login: "ログインしてほしいゾゥ"
     no_authority: "アクセス権限がないゾゥ"
@@ -82,6 +83,7 @@ ja:
       title: "動物園一覧"
     show:
       title: "動物園詳細"
+      no_result: "投稿がありません"
     ranking:
       title: "動物園ランキング"
   top:
