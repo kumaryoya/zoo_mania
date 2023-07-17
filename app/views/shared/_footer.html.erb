@@ -1,10 +1,8 @@
-<footer class="p-16 text-xl text-white footer_image">
-  <div class="flex-wrap justify-center">
-    <p>Developed by おおくまりょうや</p>
-    <br>
-    <br>
-    <%= link_to (t 'top.privacy_policy.title'), privacy_policy_path, class: "btn btn-lg btn-primary text-white mr-5" %>
-    <%= link_to (t 'top.terms_of_service.title'), terms_of_service_path, class: "btn btn-lg btn-primary text-white mr-5" %>
-    <%= link_to (t "defaults.inquiry"), "https://forms.gle/Xay1BB4VppFYwK2FA", class: "btn btn-lg btn-primary text-white mr-5" %>
+<footer class="footer_image relative py-10">
+  <div class="md:ml-auto flex flex-wrap justify-center text-white pb-8">
+    <%= link_to (t 'top.privacy_policy.title'), privacy_policy_path, class: "btn btn-primary text-white mx-2" %>
+    <%= link_to (t 'top.terms_of_service.title'), terms_of_service_path, class: "btn btn-primary text-white mx-2" %>
+    <%= link_to (t "defaults.inquiry"), "https://forms.gle/Xay1BB4VppFYwK2FA", class: "btn btn-primary text-white mx-2" %>
   </div>
+  <p class="text-center text-white">&copy; 2023 ZooMania</p>
 </footer>
