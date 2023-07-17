@@ -1,31 +1,25 @@
 <% content_for(:title, t('.title')) %>
 <div class="main_image">
-  <div class="pt-20 pb-10 text-center">
-    <div class="text-4xl md:flex justify-center">
-      <div class="font-bold md:w-2/3 xl:w-1/3"><%= t('.title') %></div>
-    </div>
+  <div class="md:flex justify-center text-center">
+    <div class="text-3xl py-10 md:w-2/3 xl:w-1/3"><%= t('.title') %></div>
   </div>
   <div class="pb-10 md:text-2xl flex justify-center text-center">
-    <div class="">
-      <div class="">
-        <%= form_with model: @user, url: profile_path, local: true do |f| %>
-          <%= render 'shared/error_messages', object: f.object %>
-          <div class="form-group mb-3">
-            <div><%= f.label :name, class:"font-bold" %></div>
-            <div><%= f.text_field :name, class: 'form-control input input-bordered input-primary w-full mb-10' %></div>
-          </div>
-          <div class="form-group mb-3">
-            <div><%= f.label :email, class:"font-bold" %></div>
-            <div><%= f.email_field :email, class: 'form-control input input-bordered input-primary w-full mb-10' %></div>
-          </div>
-          <div class="form-group mb-3">
-            <div><%= f.label :avatar, class:"font-bold" %></div>
-            <div class="flex items-center justify-center"><%= f.file_field :avatar, class: 'form-control file-input file-input-bordered file-input-info w-full max-w-xs items-center justify-center mb-10', accept: 'image/*' %></div>
-            <div><%= f.hidden_field :avatar_cache %></div>
-          </div>
-          <%= f.submit class: 'btn btn-primary btn-lg font-bold text-white' %>
-        <% end %>
+    <%= form_with model: @user, url: profile_path, local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="form-group mb-5">
+        <div><%= f.label :name %></div>
+        <div><%= f.text_field :name, class: 'form-control input input-bordered input-primary w-full' %></div>
       </div>
-    </div>
+      <div class="form-group mb-5">
+        <div><%= f.label :email %></div>
+        <div><%= f.email_field :email, class: 'form-control input input-bordered input-primary w-full' %></div>
+      </div>
+      <div class="form-group mb-10">
+        <div><%= f.label :avatar %></div>
+        <div class="flex items-center justify-center"><%= f.file_field :avatar, class: 'form-control file-input file-input-bordered file-input-info w-full max-w-xs items-center justify-center', accept: 'image/*' %></div>
+        <div><%= f.hidden_field :avatar_cache %></div>
+      </div>
+      <%= f.submit class: 'btn btn-primary font-bold text-white' %>
+    <% end %>
   </div>
 </div>
