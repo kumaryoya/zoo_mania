@@ -9,7 +9,7 @@ class Zoo < ApplicationRecord
   validates :area, presence: true
   validates :link, presence: true, uniqueness: true
 
-  scope :top_ranked, -> {
+  scope :top_ranked, lambda {
     joins(:favorite_zoos)
       .select('zoos.*, COUNT(favorite_zoos.id) AS selection_count')
       .group('zoos.id')
