@@ -1,7 +1,7 @@
 <% content_for(:title, @post.title) %>
-<div class="py-20 main_image">
+<div class="main_image py-10">
   <div class="row">
-    <h1 class="text-3xl items-center justify-center text-center"><%= t '.title' %></h1>
+    <h1 class="text-3xl items-center justify-center text-center pb-10"><%= t '.title' %></h1>
     <%= render 'form', { post: @post } %>
   </div>
 </div>

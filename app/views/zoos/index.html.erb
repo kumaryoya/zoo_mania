@@ -1,17 +1,14 @@
 <% content_for(:title, t('.title')) %>
 <div class="flex flex-col justify-center text-center main_image">
-  <div>
-    <h1 class="text-4xl py-16"><%= t('.title') %></h1>
-  </div>
-  <div class="my-5" >
+  <h1 class="text-3xl pt-10 pb-5"><%= t('.title') %></h1>
+  <div class="pb-10">
     <% @zoos_by_area.each do |area, zoos| %>
-      <div class="text-3xl"><%= area %></div>
+      <div class="text-2xl mt-8 mb-2"><%= area %></div>
       <ul>
         <% zoos.each do |zoo| %>
-          <li class="text-xl link link-primary"><%= link_to "#{zoo.name}", zoo_path(zoo) %></li>
+          <li class="text-xl link link-primary pb-1"><%= link_to "#{zoo.name}", zoo_path(zoo) %></li>
         <% end %>
       </ul>
-      <br>
     <% end %>
   </div>
 </div>
