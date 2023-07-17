@@ -1,30 +1,29 @@
 <%= form_with model: post, local: true do |f| %>
-  <div class="flex items-center justify-center text-center relative py-8">
+  <div class="flex items-center justify-center text-center relative">
     <%= render 'shared/error_messages', object: f.object %>
   </div>
   <div class="flex items-center justify-center text-center relative pb-5">
-    <div class="form-group items-center">
+    <div class="form-group items-center text-2xl">
       <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control input input-bordered input-primary w-full my-5' %>
+      <%= f.text_field :title, class: 'form-control input input-bordered input-primary w-full' %>
     </div>
   </div>
-  <div class="flex items-center justify-center text-center relative py-5">
-    <div class="form-group items-center">
+  <div class="flex items-center justify-center text-center relative pb-5">
+    <div class="form-group items-center text-2xl">
       <%= f.label :zoo_id %>
-      <br>
-      <%= f.collection_select :zoo_id, Zoo.all, :id, :name, {}, class: 'form-control select select-primary text-xl w-full my-5' %>
-    </div>
-  </div>
-  <div class="flex items-center justify-center text-center relative py-5">
-    <div class="form-group items-center">
-      <%= f.label :image %>
-      <%= f.file_field :image, class: 'form-control my-5 file-input file-input-bordered file-input-info w-full max-w-xs', accept: 'image/*' %>
-      <%= f.hidden_field :image_cache %>
+      <%= f.collection_select :zoo_id, Zoo.all, :id, :name, {}, class: 'form-control select select-primary text-xl w-full' %>
     </div>
   </div>
   <div class="flex items-center justify-center text-center relative">
+    <div class="form-group items-center text-2xl">
+      <%= f.label :image %>
+      <%= f.file_field :image, class: 'form-control file-input file-input-bordered file-input-info w-full max-w-xs', accept: 'image/*' %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+  </div>
+  <div class="flex items-center justify-center text-center relative pt-10">
     <div class="form-group items-center">
-      <%= f.submit class: 'btn btn-primary btn-lg font-bold text-white' %>
+      <%= f.submit class: 'btn btn-primary font-bold text-white' %>
     </div>
   </div>
 <% end %>

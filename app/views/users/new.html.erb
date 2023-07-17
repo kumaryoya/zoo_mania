@@ -1,31 +1,31 @@
 <% content_for(:title, t('.title')) %>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
-<div class="flex justify-center text-center main_image py-20">
+<div class="flex justify-center text-center main_image">
   <div>
-    <h1 class="text-3xl my-5"><%= t('.title') %></h1>
+    <h1 class="text-3xl py-10"><%= t('.title') %></h1>
     <%= form_with model: @user, local: true do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      <div class="mb-3">
+      <div class="mb-5">
         <%= f.label :name %>
-        <%= f.text_field :name, class: 'input input-bordered input-primary input-lg w-full m-3 p-3' %>
+        <%= f.text_field :name, class: 'input input-bordered input-primary w-full' %>
       </div>
-      <div class="mb-3">
+      <div class="mb-5">
         <%= f.label :email %>
-        <%= f.email_field :email, class: 'input input-bordered input-primary input-lg w-full m-3 p-3' %>
+        <%= f.email_field :email, class: 'input input-bordered input-primary w-full' %>
       </div>
-      <div class="mb-3">
+      <div class="mb-5">
         <%= f.label :password %>
-        <%= f.password_field :password, class: 'input input-bordered input-primary input-lg w-full m-3 p-3' %>
+        <%= f.password_field :password, class: 'input input-bordered input-primary w-full' %>
       </div>
-      <div class="mb-3">
+      <div class="mb-5">
         <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, class: 'input input-bordered input-primary input-lg w-full m-3 p-3' %>
+        <%= f.password_field :password_confirmation, class: 'input input-bordered input-primary w-full' %>
       </div>
       <div class="d-grid mb-10">
-        <%= f.submit t('defaults.register'), class: 'btn btn-primary btn-lg text-white' %>
+        <%= f.submit t('defaults.register'), class: 'btn btn-primary text-white' %>
       </div>
     <% end %>
-    <div class="flex justify-center">
+    <div class="flex justify-center mb-10">
       <div id="g_id_onload"
         data-client_id="288360666860-8fku5g6vlc42pabvmc7ui2iuebef29un.apps.googleusercontent.com"
         data-login_uri="http://localhost:3000/google_login_api/callback"
