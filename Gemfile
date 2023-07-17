@@ -19,8 +19,8 @@ gem 'mini_magick'
 gem 'googleauth'
 gem 'config'
 gem 'letter_opener_web'
-gem 'bootstrap'
 gem 'jquery-rails'
+gem 'sitemap_generator'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
