@@ -33,8 +33,8 @@
             <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.logout?') }, class: "btn btn-primary text-white my-1" %>
           </ul>
       <% else %>
-        <%= link_to (t 'defaults.loginpage'), login_path, class: "btn btn-primary text-white mx-1"%>
-        <%= link_to (t 'defaults.register_page'), new_user_path, class: "btn btn-primary text-white mx-1"%>
+        <%= link_to (t 'defaults.loginpage'), login_path, class: "btn btn-primary text-white mx-2"%>
+        <%= link_to (t 'defaults.register_page'), new_user_path, class: "btn btn-primary text-white mx-2"%>
       <% end %>
     </div>
   </div>
