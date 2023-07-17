@@ -46,12 +46,15 @@
     <%= f.submit class: "btn btn-primary text-white font-bold my-5" %>
   <% end %>
 </div>
-        <div class="main_image items-center justify-center text-center">
+        <div class="main_image items-center justify-center text-center pb-20">
           <% @favorite_zoos.each do |favorite_zoo| %>
             <span>第<%= favorite_zoo.rank %>位</span>
             <span><%= favorite_zoo.zoo.name %></span>
             <%= link_to t('defaults.destroy'), user_favorite_zoo_path(current_user, favorite_zoo), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white mb-10" %>
             <br>
+          <% end %>
+          <%= link_to "https://twitter.com/share?url=#{request.url}&text=#{current_user.name}さんの今回の学習時間は分でした！%0A&hashtags=StudyingTracker", target: '_blank', class: 'btn btn-secondary text-white' do %>
+            <i class="fab fa-twitter fa-2xl"></i>
           <% end %>
         </div>
       </div>
