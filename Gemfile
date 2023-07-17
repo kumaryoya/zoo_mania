@@ -20,6 +20,8 @@ gem 'googleauth'
 gem 'config'
 gem 'letter_opener_web'
 gem 'jquery-rails'
+gem 'sitemap_generator'
+gem 'meta-tags'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
