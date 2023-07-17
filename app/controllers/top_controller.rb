@@ -1,6 +1,6 @@
 class TopController < ApplicationController
   def index
-    @random_post = Post.all.sample
+    @random_post = Post.order("RANDOM()").first
   end
 
   def privacy_policy; end
