@@ -1,13 +1,14 @@
 class LikesController < ApplicationController
   def create
-    @post_like = Like.new(user_id: current_user.id, post_id: params[:post_id])
-    @post_like.save
-    redirect_to posts_path
+    @post = Post.find(params[:post_id])
+    @post.likes.create(user: current_user)
+    respond_to(&:turbo_stream)
   end
 
   def destroy
-    @post_like = Like.find_by(user_id: current_user.id, post_id: params[:post_id])
-    @post_like.destroy
-    redirect_to post_path(params[:post_id])
+    @post = Post.find(params[:post_id])
+    @like = @post.likes.find_by(user: current_user)
+    @like.destroy
+    respond_to(&:turbo_stream)
   end
 end

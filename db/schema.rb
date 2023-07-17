@@ -47,7 +47,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_135722) do
     t.string "crypted_password"
     t.integer "role", default: 0, null: false
     t.string "avatar"
-    t.string "address"
     t.string "salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -10,7 +10,6 @@ ja:
         password: "パスワード"
         password_confirmation: "パスワード確認"
         avatar: "アバター"
-        address: "生息エリア"
       zoo:
         name: "名称"
         location: "所在地"
@@ -19,3 +18,7 @@ ja:
         title: "タイトル"
         zoo_id: "動物園"
         image: "画像"
+      favorite_zoo:
+        rank: "順位"
+        zoo: "動物園"
+        zoo_id: "動物園"

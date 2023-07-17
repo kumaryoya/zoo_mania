@@ -11,12 +11,12 @@ class FavoriteZoo < ApplicationRecord
   def validate_rank_uniqueness
     return unless rank.present? && user_id.present?
     existing_records = FavoriteZoo.where(user_id: user_id, rank: rank)
-    errors.add(:rank, "has already been taken") if existing_records.exists?
+    errors.add(:rank, "はすでに登録されています") if existing_records.exists?
   end
 
   def validate_zoo_uniqueness
     return unless zoo_id.present? && user_id.present?
     existing_records = FavoriteZoo.where(user_id: user_id, zoo_id: zoo_id)
-    errors.add(:zoo_id, "The same zoo cannot be selected") if existing_records.exists?
+    errors.add(:zoo_id, "すでに登録されています") if existing_records.exists?
   end
 end

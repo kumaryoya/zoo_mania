@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
   validates :image, presence: true
 
-  scope :top_ranked, -> {
+  scope :top_ranked, lambda {
     joins(:likes)
       .select('posts.*, COUNT(likes.id) AS selection_count')
       .group('posts.id')
