@@ -25,6 +25,8 @@ gem 'meta-tags'
 gem 'fog-aws'
 gem "aws-sdk-s3", require: false
 gem 'dotenv-rails'
+gem 'carrierwave-aws'
+gem 'fog'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

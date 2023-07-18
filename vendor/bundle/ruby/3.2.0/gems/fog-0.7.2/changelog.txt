@@ -1,0 +1,187 @@
+0.7.2 04/05/2011
+================
+
+[aws|cloudformation]
+	enabling region parameter for AWS cloud formation requests. thanks flessa
+
+[compute]
+	[aws]
+		remove CGI escape from create_security_group. thanks coliver
+		replace remaining specs with shindo tests
+		update #keypairs reference to #key_pairs. thanks pvande
+		Emulate volume unavailability when mocking. thanks mtodd
+		Raise error on non-existent snapshot for create_volume. thanks mtodd
+		Add tag to resource data when creating a mock tag. thanks betamatt
+		Add tag filtering to mocks for snapshots, volumes, instances. thanks betamatt
+		Add delete_tags mock. thanks betamatt
+		Support tag-key, tag-value, tag:key filters. thanks betamatt
+		Correct name of dns-filter filter. thanks betamatt
+		allow key pair to write into properly chmodded files. thanks gerred
+		Making key pair names a little less potentially brittle. thanks gerred
+	[rackspace]
+		fix public_ip_address accessors
+
+[core]
+	updated base parser to not eagerly strip return data. thanks bdorry
+	don't escape ssh commands. thanks pvande
+	Deal with missing FOG_RC/HOME env vars better. thanks outerim
+	fix push parser block passed to excon > 0.6.0
+
+[docs]
+	move fog.io stuff into docs directory
+	pull in and format data from README, wiki, blog posts
+
+[storage|rackspace]
+	head_object should use HEAD. thanks nate
+	Support for serving Rackspace CDN objects via SSL. thanks minter
+	Use URI.escape instead of CGI.escape. thanks minter
+
+0.7.1 03/21/2011
+================
+
+[aws|storage] normalize headers. thanks pweldon
+
+[mock] fix reset_data to not be called in Mock#initialize
+
+[rackspace] add support for using servicenet. thanks minter
+
+[storage] provide for non file/string files. thanks pweldon
+
+0.7.0 03/14/2011
+================
+
+[aws] added ap-northeast-1 (tokyo) region options
+
+[aws|cloudformation] add basic support. thanks crazed
+
+[aws|elb] add support for configuring https
+
+[aws|iam]
+  add support for server certificates. thanks bensie
+  add support for login profiles. thanks fcheung
+
+[aws|rds]
+  support basic rds operations. thanks fcheung
+  add support for restoring servers and security groups. thanks ktheory
+
+[cdn|rackspace] use post_container to update
+
+[compute]
+  [aws]
+    fix tag.destroy. thanks eabbott
+    allow deleting all tags (instead of just specific ones)
+    fix revoke_security_group method signature
+    FLAVORS is now a constant
+		allow for modifying server monitoring. thanks gilles
+  [brightbox] thanks tokengeek
+    Added listener management (add/remove) requests for Load Balancers
+    Added new Server console activation request
+    Added activate_console method to Brightbox servers
+    Set Server#private_ip_address to be the first interface
+  [rackspace] 'official' workaround for awful caching
+  [virtualbox] rough proof of concept/initial implementation
+
+[core]
+  fix behavior of slice on collections. thanks eabbott
+  fix reset_data to be instance method on mock connection (and work)
+  [credentials]
+    handle undefined ENV['HOME']
+    Allow string keys in credentials file [issue 179]. thanks ryanlower
+
+[dns|dnsimple] fix misc bugs in models. thanks ijonas
+
+[storage]
+  use shared parse_data across providers
+  [rackspace]
+    pass through explicit content-type
+    fix bug preventing file uploads to be streamed
+
+0.6.0 02/28/2011
+================
+
+[aws|compute] fix method signature for security group requests. Thanks crazed
+
+[aws|iam]
+	fleshing out support. Thanks bdorry and coliver
+	fix get_group parser to set Arn on group/member as appropriate
+
+[bluebox|dns] added support. Thanks ggoodale
+
+[compute]
+	add basic scp support. Thanks crazed
+  consolidate ip accessors
+
+[core]
+	added changelog, covering 0.5+
+	reset credentials when changing key or path. Thanks ctennis
+
+[dnsimple|dns] added support. Thanks dje
+
+[ecloud|compute] cleaned up and reworked as basis for future ecloud work
+
+[aws|storage] add static website configuration methods
+
+[local|storage] rewrite using nested directories (NOTE: not backwards compatible)
+
+[rackspace|storage] disable cdn when deleting container
+
+[voxel|compute] added support. Thanks splaspood
+
+remove long standing deprecations
+
+
+0.5.3 02/15/11
+==============
+
+[terremark|ecloud] (thanks freeformz) 
+  initial support for Disabled monitor types 
+  InternetService#disable_monitor and #enable_ping_monitor 
+  spec fixes and tests for the new monitor functions 
+fix logic error which prevented turning off persistent connections 
+fix _dump for collections/models 
+require json for to_json of collection/model 
+add some missing parens to fix warnings
+
+
+0.5.2 02/11/11
+==============
+
+[aws|compute] fix delete AWS tags to use proper method. Thanks ody 
+[aws|storage] 
+  add sort for multi part upload fields. Thanks gavin 
+  better RRS docs. Thanks bensie 
+  Temporary redirect should not execute the block. Thanks vivienschillis
+[tests] fix mock_helper load path to allow test runs in 1.9.2. Thanks aeden
+[compute] disable password auth for current user, rather than always root
+[aws&google|storage] properly handle custom headers in mocks 
+[aws&google|storage] make signature public method 
+[aws&google] finish fixing headers in mocks 
+[core] cleanup providers/services setup 
+[README] add contributing section, recommendations for blue shirts, move providers to fog.io, cleanup resources
+implicitly add not_implemented mocks
+
+
+0.5.1 01/31/11
+==============
+
+Bug fixes. 
+[aws|iam] add signing certificate and list groups for user. thanks crazed
+[gogrid|compute] added support for password api calls. thanks lum
+[fog|time] add date header formatting that is non-localized
+
+
+0.5.0 01/27/11
+==============
+
+[aws|compute] describe reserved instances offerings 
+[aws|dns] Fix variable typo create_hosted_zone. Thanks mitchellh 
+[aws|ses] basic support. Thanks adelcambre 
+[aws|storage] Escape the path for signatures. Thanks croaker 
+[aws&google|storage] mock fixes 
+[local|storage] support file#content_type 
+[ssh] use an agent if available instead of requiring explicit keys. thanks davidx and tomstuart 
+[gogrid|compute] fix several issues. Thanks cardmagic 
+[rackspace|compute] get new auth token when one expires 
+[rackspace|storage] remove nil query params in requests 
+[terremark|ecloud] getting started on ecloud specific implementation
+
