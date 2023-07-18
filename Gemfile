@@ -22,6 +22,9 @@ gem 'letter_opener_web'
 gem 'jquery-rails'
 gem 'sitemap_generator'
 gem 'meta-tags'
+gem 'fog-aws'
+gem "aws-sdk-s3", require: false
+gem 'dotenv-rails'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
