@@ -1,0 +1,4414 @@
+# frozen_string_literal: true
+
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the contributing guide for more information:
+# https://github.com/aws/aws-sdk-ruby/blob/version-3/CONTRIBUTING.md
+#
+# WARNING ABOUT GENERATED CODE
+
+require 'seahorse/client/plugins/content_length.rb'
+require 'aws-sdk-core/plugins/credentials_configuration.rb'
+require 'aws-sdk-core/plugins/logging.rb'
+require 'aws-sdk-core/plugins/param_converter.rb'
+require 'aws-sdk-core/plugins/param_validator.rb'
+require 'aws-sdk-core/plugins/user_agent.rb'
+require 'aws-sdk-core/plugins/helpful_socket_errors.rb'
+require 'aws-sdk-core/plugins/retry_errors.rb'
+require 'aws-sdk-core/plugins/global_configuration.rb'
+require 'aws-sdk-core/plugins/regional_endpoint.rb'
+require 'aws-sdk-core/plugins/endpoint_discovery.rb'
+require 'aws-sdk-core/plugins/endpoint_pattern.rb'
+require 'aws-sdk-core/plugins/response_paging.rb'
+require 'aws-sdk-core/plugins/stub_responses.rb'
+require 'aws-sdk-core/plugins/idempotency_token.rb'
+require 'aws-sdk-core/plugins/jsonvalue_converter.rb'
+require 'aws-sdk-core/plugins/client_metrics_plugin.rb'
+require 'aws-sdk-core/plugins/client_metrics_send_plugin.rb'
+require 'aws-sdk-core/plugins/transfer_encoding.rb'
+require 'aws-sdk-core/plugins/http_checksum.rb'
+require 'aws-sdk-core/plugins/checksum_algorithm.rb'
+require 'aws-sdk-core/plugins/request_compression.rb'
+require 'aws-sdk-core/plugins/defaults_mode.rb'
+require 'aws-sdk-core/plugins/recursion_detection.rb'
+require 'aws-sdk-core/plugins/sign.rb'
+require 'aws-sdk-core/plugins/protocols/rest_json.rb'
+
+Aws::Plugins::GlobalConfiguration.add_identifier(:guardduty)
+
+module Aws::GuardDuty
+  # An API client for GuardDuty.  To construct a client, you need to configure a `:region` and `:credentials`.
+  #
+  #     client = Aws::GuardDuty::Client.new(
+  #       region: region_name,
+  #       credentials: credentials,
+  #       # ...
+  #     )
+  #
+  # For details on configuring region and credentials see
+  # the [developer guide](/sdk-for-ruby/v3/developer-guide/setup-config.html).
+  #
+  # See {#initialize} for a full list of supported configuration options.
+  class Client < Seahorse::Client::Base
+
+    include Aws::ClientStubs
+
+    @identifier = :guardduty
+
+    set_api(ClientApi::API)
+
+    add_plugin(Seahorse::Client::Plugins::ContentLength)
+    add_plugin(Aws::Plugins::CredentialsConfiguration)
+    add_plugin(Aws::Plugins::Logging)
+    add_plugin(Aws::Plugins::ParamConverter)
+    add_plugin(Aws::Plugins::ParamValidator)
+    add_plugin(Aws::Plugins::UserAgent)
+    add_plugin(Aws::Plugins::HelpfulSocketErrors)
+    add_plugin(Aws::Plugins::RetryErrors)
+    add_plugin(Aws::Plugins::GlobalConfiguration)
+    add_plugin(Aws::Plugins::RegionalEndpoint)
+    add_plugin(Aws::Plugins::EndpointDiscovery)
+    add_plugin(Aws::Plugins::EndpointPattern)
+    add_plugin(Aws::Plugins::ResponsePaging)
+    add_plugin(Aws::Plugins::StubResponses)
+    add_plugin(Aws::Plugins::IdempotencyToken)
+    add_plugin(Aws::Plugins::JsonvalueConverter)
+    add_plugin(Aws::Plugins::ClientMetricsPlugin)
+    add_plugin(Aws::Plugins::ClientMetricsSendPlugin)
+    add_plugin(Aws::Plugins::TransferEncoding)
+    add_plugin(Aws::Plugins::HttpChecksum)
+    add_plugin(Aws::Plugins::ChecksumAlgorithm)
+    add_plugin(Aws::Plugins::RequestCompression)
+    add_plugin(Aws::Plugins::DefaultsMode)
+    add_plugin(Aws::Plugins::RecursionDetection)
+    add_plugin(Aws::Plugins::Sign)
+    add_plugin(Aws::Plugins::Protocols::RestJson)
+    add_plugin(Aws::GuardDuty::Plugins::Endpoints)
+
+    # @overload initialize(options)
+    #   @param [Hash] options
+    #   @option options [required, Aws::CredentialProvider] :credentials
+    #     Your AWS credentials. This can be an instance of any one of the
+    #     following classes:
+    #
+    #     * `Aws::Credentials` - Used for configuring static, non-refreshing
+    #       credentials.
+    #
+    #     * `Aws::SharedCredentials` - Used for loading static credentials from a
+    #       shared file, such as `~/.aws/config`.
+    #
+    #     * `Aws::AssumeRoleCredentials` - Used when you need to assume a role.
+    #
+    #     * `Aws::AssumeRoleWebIdentityCredentials` - Used when you need to
+    #       assume a role after providing credentials via the web.
+    #
+    #     * `Aws::SSOCredentials` - Used for loading credentials from AWS SSO using an
+    #       access token generated from `aws login`.
+    #
+    #     * `Aws::ProcessCredentials` - Used for loading credentials from a
+    #       process that outputs to stdout.
+    #
+    #     * `Aws::InstanceProfileCredentials` - Used for loading credentials
+    #       from an EC2 IMDS on an EC2 instance.
+    #
+    #     * `Aws::ECSCredentials` - Used for loading credentials from
+    #       instances running in ECS.
+    #
+    #     * `Aws::CognitoIdentityCredentials` - Used for loading credentials
+    #       from the Cognito Identity service.
+    #
+    #     When `:credentials` are not configured directly, the following
+    #     locations will be searched for credentials:
+    #
+    #     * `Aws.config[:credentials]`
+    #     * The `:access_key_id`, `:secret_access_key`, and `:session_token` options.
+    #     * ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']
+    #     * `~/.aws/credentials`
+    #     * `~/.aws/config`
+    #     * EC2/ECS IMDS instance profile - When used by default, the timeouts
+    #       are very aggressive. Construct and pass an instance of
+    #       `Aws::InstanceProfileCredentails` or `Aws::ECSCredentials` to
+    #       enable retries and extended timeouts. Instance profile credential
+    #       fetching can be disabled by setting ENV['AWS_EC2_METADATA_DISABLED']
+    #       to true.
+    #
+    #   @option options [required, String] :region
+    #     The AWS region to connect to.  The configured `:region` is
+    #     used to determine the service `:endpoint`. When not passed,
+    #     a default `:region` is searched for in the following locations:
+    #
+    #     * `Aws.config[:region]`
+    #     * `ENV['AWS_REGION']`
+    #     * `ENV['AMAZON_REGION']`
+    #     * `ENV['AWS_DEFAULT_REGION']`
+    #     * `~/.aws/credentials`
+    #     * `~/.aws/config`
+    #
+    #   @option options [String] :access_key_id
+    #
+    #   @option options [Boolean] :active_endpoint_cache (false)
+    #     When set to `true`, a thread polling for endpoints will be running in
+    #     the background every 60 secs (default). Defaults to `false`.
+    #
+    #   @option options [Boolean] :adaptive_retry_wait_to_fill (true)
+    #     Used only in `adaptive` retry mode.  When true, the request will sleep
+    #     until there is sufficent client side capacity to retry the request.
+    #     When false, the request will raise a `RetryCapacityNotAvailableError` and will
+    #     not retry instead of sleeping.
+    #
+    #   @option options [Boolean] :client_side_monitoring (false)
+    #     When `true`, client-side metrics will be collected for all API requests from
+    #     this client.
+    #
+    #   @option options [String] :client_side_monitoring_client_id ("")
+    #     Allows you to provide an identifier for this client which will be attached to
+    #     all generated client side metrics. Defaults to an empty string.
+    #
+    #   @option options [String] :client_side_monitoring_host ("127.0.0.1")
+    #     Allows you to specify the DNS hostname or IPv4 or IPv6 address that the client
+    #     side monitoring agent is running on, where client metrics will be published via UDP.
+    #
+    #   @option options [Integer] :client_side_monitoring_port (31000)
+    #     Required for publishing client metrics. The port that the client side monitoring
+    #     agent is running on, where client metrics will be published via UDP.
+    #
+    #   @option options [Aws::ClientSideMonitoring::Publisher] :client_side_monitoring_publisher (Aws::ClientSideMonitoring::Publisher)
+    #     Allows you to provide a custom client-side monitoring publisher class. By default,
+    #     will use the Client Side Monitoring Agent Publisher.
+    #
+    #   @option options [Boolean] :convert_params (true)
+    #     When `true`, an attempt is made to coerce request parameters into
+    #     the required types.
+    #
+    #   @option options [Boolean] :correct_clock_skew (true)
+    #     Used only in `standard` and adaptive retry modes. Specifies whether to apply
+    #     a clock skew correction and retry requests with skewed client clocks.
+    #
+    #   @option options [String] :defaults_mode ("legacy")
+    #     See {Aws::DefaultsModeConfiguration} for a list of the
+    #     accepted modes and the configuration defaults that are included.
+    #
+    #   @option options [Boolean] :disable_host_prefix_injection (false)
+    #     Set to true to disable SDK automatically adding host prefix
+    #     to default service endpoint when available.
+    #
+    #   @option options [Boolean] :disable_request_compression (false)
+    #     When set to 'true' the request body will not be compressed
+    #     for supported operations.
+    #
+    #   @option options [String] :endpoint
+    #     The client endpoint is normally constructed from the `:region`
+    #     option. You should only configure an `:endpoint` when connecting
+    #     to test or custom endpoints. This should be a valid HTTP(S) URI.
+    #
+    #   @option options [Integer] :endpoint_cache_max_entries (1000)
+    #     Used for the maximum size limit of the LRU cache storing endpoints data
+    #     for endpoint discovery enabled operations. Defaults to 1000.
+    #
+    #   @option options [Integer] :endpoint_cache_max_threads (10)
+    #     Used for the maximum threads in use for polling endpoints to be cached, defaults to 10.
+    #
+    #   @option options [Integer] :endpoint_cache_poll_interval (60)
+    #     When :endpoint_discovery and :active_endpoint_cache is enabled,
+    #     Use this option to config the time interval in seconds for making
+    #     requests fetching endpoints information. Defaults to 60 sec.
+    #
+    #   @option options [Boolean] :endpoint_discovery (false)
+    #     When set to `true`, endpoint discovery will be enabled for operations when available.
+    #
+    #   @option options [Boolean] :ignore_configured_endpoint_urls
+    #     Setting to true disables use of endpoint URLs provided via environment
+    #     variables and the shared configuration file.
+    #
+    #   @option options [Aws::Log::Formatter] :log_formatter (Aws::Log::Formatter.default)
+    #     The log formatter.
+    #
+    #   @option options [Symbol] :log_level (:info)
+    #     The log level to send messages to the `:logger` at.
+    #
+    #   @option options [Logger] :logger
+    #     The Logger instance to send log messages to.  If this option
+    #     is not set, logging will be disabled.
+    #
+    #   @option options [Integer] :max_attempts (3)
+    #     An integer representing the maximum number attempts that will be made for
+    #     a single request, including the initial attempt.  For example,
+    #     setting this value to 5 will result in a request being retried up to
+    #     4 times. Used in `standard` and `adaptive` retry modes.
+    #
+    #   @option options [String] :profile ("default")
+    #     Used when loading credentials from the shared credentials file
+    #     at HOME/.aws/credentials.  When not specified, 'default' is used.
+    #
+    #   @option options [Integer] :request_min_compression_size_bytes (10240)
+    #     The minimum size in bytes that triggers compression for request
+    #     bodies. The value must be non-negative integer value between 0
+    #     and 10485780 bytes inclusive.
+    #
+    #   @option options [Proc] :retry_backoff
+    #     A proc or lambda used for backoff. Defaults to 2**retries * retry_base_delay.
+    #     This option is only used in the `legacy` retry mode.
+    #
+    #   @option options [Float] :retry_base_delay (0.3)
+    #     The base delay in seconds used by the default backoff function. This option
+    #     is only used in the `legacy` retry mode.
+    #
+    #   @option options [Symbol] :retry_jitter (:none)
+    #     A delay randomiser function used by the default backoff function.
+    #     Some predefined functions can be referenced by name - :none, :equal, :full,
+    #     otherwise a Proc that takes and returns a number. This option is only used
+    #     in the `legacy` retry mode.
+    #
+    #     @see https://www.awsarchitectureblog.com/2015/03/backoff.html
+    #
+    #   @option options [Integer] :retry_limit (3)
+    #     The maximum number of times to retry failed requests.  Only
+    #     ~ 500 level server errors and certain ~ 400 level client errors
+    #     are retried.  Generally, these are throttling errors, data
+    #     checksum errors, networking errors, timeout errors, auth errors,
+    #     endpoint discovery, and errors from expired credentials.
+    #     This option is only used in the `legacy` retry mode.
+    #
+    #   @option options [Integer] :retry_max_delay (0)
+    #     The maximum number of seconds to delay between retries (0 for no limit)
+    #     used by the default backoff function. This option is only used in the
+    #     `legacy` retry mode.
+    #
+    #   @option options [String] :retry_mode ("legacy")
+    #     Specifies which retry algorithm to use. Values are:
+    #
+    #     * `legacy` - The pre-existing retry behavior.  This is default value if
+    #       no retry mode is provided.
+    #
+    #     * `standard` - A standardized set of retry rules across the AWS SDKs.
+    #       This includes support for retry quotas, which limit the number of
+    #       unsuccessful retries a client can make.
+    #
+    #     * `adaptive` - An experimental retry mode that includes all the
+    #       functionality of `standard` mode along with automatic client side
+    #       throttling.  This is a provisional mode that may change behavior
+    #       in the future.
+    #
+    #
+    #   @option options [String] :sdk_ua_app_id
+    #     A unique and opaque application ID that is appended to the
+    #     User-Agent header as app/<sdk_ua_app_id>. It should have a
+    #     maximum length of 50.
+    #
+    #   @option options [String] :secret_access_key
+    #
+    #   @option options [String] :session_token
+    #
+    #   @option options [Boolean] :stub_responses (false)
+    #     Causes the client to return stubbed responses. By default
+    #     fake responses are generated and returned. You can specify
+    #     the response data to return or errors to raise by calling
+    #     {ClientStubs#stub_responses}. See {ClientStubs} for more information.
+    #
+    #     ** Please note ** When response stubbing is enabled, no HTTP
+    #     requests are made, and retries are disabled.
+    #
+    #   @option options [Aws::TokenProvider] :token_provider
+    #     A Bearer Token Provider. This can be an instance of any one of the
+    #     following classes:
+    #
+    #     * `Aws::StaticTokenProvider` - Used for configuring static, non-refreshing
+    #       tokens.
+    #
+    #     * `Aws::SSOTokenProvider` - Used for loading tokens from AWS SSO using an
+    #       access token generated from `aws login`.
+    #
+    #     When `:token_provider` is not configured directly, the `Aws::TokenProviderChain`
+    #     will be used to search for tokens configured for your profile in shared configuration files.
+    #
+    #   @option options [Boolean] :use_dualstack_endpoint
+    #     When set to `true`, dualstack enabled endpoints (with `.aws` TLD)
+    #     will be used if available.
+    #
+    #   @option options [Boolean] :use_fips_endpoint
+    #     When set to `true`, fips compatible endpoints will be used if available.
+    #     When a `fips` region is used, the region is normalized and this config
+    #     is set to `true`.
+    #
+    #   @option options [Boolean] :validate_params (true)
+    #     When `true`, request parameters are validated before
+    #     sending the request.
+    #
+    #   @option options [Aws::GuardDuty::EndpointProvider] :endpoint_provider
+    #     The endpoint provider used to resolve endpoints. Any object that responds to `#resolve_endpoint(parameters)` where `parameters` is a Struct similar to `Aws::GuardDuty::EndpointParameters`
+    #
+    #   @option options [URI::HTTP,String] :http_proxy A proxy to send
+    #     requests through.  Formatted like 'http://proxy.com:123'.
+    #
+    #   @option options [Float] :http_open_timeout (15) The number of
+    #     seconds to wait when opening a HTTP session before raising a
+    #     `Timeout::Error`.
+    #
+    #   @option options [Float] :http_read_timeout (60) The default
+    #     number of seconds to wait for response data.  This value can
+    #     safely be set per-request on the session.
+    #
+    #   @option options [Float] :http_idle_timeout (5) The number of
+    #     seconds a connection is allowed to sit idle before it is
+    #     considered stale.  Stale connections are closed and removed
+    #     from the pool before making a request.
+    #
+    #   @option options [Float] :http_continue_timeout (1) The number of
+    #     seconds to wait for a 100-continue response before sending the
+    #     request body.  This option has no effect unless the request has
+    #     "Expect" header set to "100-continue".  Defaults to `nil` which
+    #     disables this behaviour.  This value can safely be set per
+    #     request on the session.
+    #
+    #   @option options [Float] :ssl_timeout (nil) Sets the SSL timeout
+    #     in seconds.
+    #
+    #   @option options [Boolean] :http_wire_trace (false) When `true`,
+    #     HTTP debug output will be sent to the `:logger`.
+    #
+    #   @option options [Boolean] :ssl_verify_peer (true) When `true`,
+    #     SSL peer certificates are verified when establishing a
+    #     connection.
+    #
+    #   @option options [String] :ssl_ca_bundle Full path to the SSL
+    #     certificate authority bundle file that should be used when
+    #     verifying peer certificates.  If you do not pass
+    #     `:ssl_ca_bundle` or `:ssl_ca_directory` the the system default
+    #     will be used if available.
+    #
+    #   @option options [String] :ssl_ca_directory Full path of the
+    #     directory that contains the unbundled SSL certificate
+    #     authority files for verifying peer certificates.  If you do
+    #     not pass `:ssl_ca_bundle` or `:ssl_ca_directory` the the
+    #     system default will be used if available.
+    #
+    def initialize(*args)
+      super
+    end
+
+    # @!group API Operations
+
+    # Accepts the invitation to be a member account and get monitored by a
+    # GuardDuty administrator account that sent the invitation.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty member account.
+    #
+    # @option params [required, String] :administrator_id
+    #   The account ID of the GuardDuty administrator account whose invitation
+    #   you're accepting.
+    #
+    # @option params [required, String] :invitation_id
+    #   The value that is used to validate the administrator account to the
+    #   member account.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.accept_administrator_invitation({
+    #     detector_id: "DetectorId", # required
+    #     administrator_id: "String", # required
+    #     invitation_id: "String", # required
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/AcceptAdministratorInvitation AWS API Documentation
+    #
+    # @overload accept_administrator_invitation(params = {})
+    # @param [Hash] params ({})
+    def accept_administrator_invitation(params = {}, options = {})
+      req = build_request(:accept_administrator_invitation, params)
+      req.send_request(options)
+    end
+
+    # Accepts the invitation to be monitored by a GuardDuty administrator
+    # account.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty member account.
+    #
+    # @option params [required, String] :master_id
+    #   The account ID of the GuardDuty administrator account whose invitation
+    #   you're accepting.
+    #
+    # @option params [required, String] :invitation_id
+    #   The value that is used to validate the administrator account to the
+    #   member account.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.accept_invitation({
+    #     detector_id: "DetectorId", # required
+    #     master_id: "String", # required
+    #     invitation_id: "String", # required
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/AcceptInvitation AWS API Documentation
+    #
+    # @overload accept_invitation(params = {})
+    # @param [Hash] params ({})
+    def accept_invitation(params = {}, options = {})
+      req = build_request(:accept_invitation, params)
+      req.send_request(options)
+    end
+
+    # Archives GuardDuty findings that are specified by the list of finding
+    # IDs.
+    #
+    # <note markdown="1"> Only the administrator account can archive findings. Member accounts
+    # don't have permission to archive findings from their accounts.
+    #
+    #  </note>
+    #
+    # @option params [required, String] :detector_id
+    #   The ID of the detector that specifies the GuardDuty service whose
+    #   findings you want to archive.
+    #
+    # @option params [required, Array<String>] :finding_ids
+    #   The IDs of the findings that you want to archive.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.archive_findings({
+    #     detector_id: "DetectorId", # required
+    #     finding_ids: ["FindingId"], # required
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ArchiveFindings AWS API Documentation
+    #
+    # @overload archive_findings(params = {})
+    # @param [Hash] params ({})
+    def archive_findings(params = {}, options = {})
+      req = build_request(:archive_findings, params)
+      req.send_request(options)
+    end
+
+    # Creates a single Amazon GuardDuty detector. A detector is a resource
+    # that represents the GuardDuty service. To start using GuardDuty, you
+    # must create a detector in each Region where you enable the service.
+    # You can have only one detector per account per Region. All data
+    # sources are enabled in a new detector by default.
+    #
+    # There might be regional differences because some data sources might
+    # not be available in all the Amazon Web Services Regions where
+    # GuardDuty is presently supported. For more information, see [Regions
+    # and endpoints][1].
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html
+    #
+    # @option params [required, Boolean] :enable
+    #   A Boolean value that specifies whether the detector is to be enabled.
+    #
+    # @option params [String] :client_token
+    #   The idempotency token for the create request.
+    #
+    #   **A suitable default value is auto-generated.** You should normally
+    #   not need to pass this option.**
+    #
+    # @option params [String] :finding_publishing_frequency
+    #   A value that specifies how frequently updated findings are exported.
+    #
+    # @option params [Types::DataSourceConfigurations] :data_sources
+    #   Describes which data sources will be enabled for the detector.
+    #
+    #   There might be regional differences because some data sources might
+    #   not be available in all the Amazon Web Services Regions where
+    #   GuardDuty is presently supported. For more information, see [Regions
+    #   and endpoints][1].
+    #
+    #
+    #
+    #   [1]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html
+    #
+    # @option params [Hash<String,String>] :tags
+    #   The tags to be added to a new detector resource.
+    #
+    # @option params [Array<Types::DetectorFeatureConfiguration>] :features
+    #   A list of features that will be configured for the detector.
+    #
+    # @return [Types::CreateDetectorResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::CreateDetectorResponse#detector_id #detector_id} => String
+    #   * {Types::CreateDetectorResponse#unprocessed_data_sources #unprocessed_data_sources} => Types::UnprocessedDataSourcesResult
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.create_detector({
+    #     enable: false, # required
+    #     client_token: "ClientToken",
+    #     finding_publishing_frequency: "FIFTEEN_MINUTES", # accepts FIFTEEN_MINUTES, ONE_HOUR, SIX_HOURS
+    #     data_sources: {
+    #       s3_logs: {
+    #         enable: false, # required
+    #       },
+    #       kubernetes: {
+    #         audit_logs: { # required
+    #           enable: false, # required
+    #         },
+    #       },
+    #       malware_protection: {
+    #         scan_ec2_instance_with_findings: {
+    #           ebs_volumes: false,
+    #         },
+    #       },
+    #     },
+    #     tags: {
+    #       "TagKey" => "TagValue",
+    #     },
+    #     features: [
+    #       {
+    #         name: "S3_DATA_EVENTS", # accepts S3_DATA_EVENTS, EKS_AUDIT_LOGS, EBS_MALWARE_PROTECTION, RDS_LOGIN_EVENTS, EKS_RUNTIME_MONITORING, LAMBDA_NETWORK_LOGS
+    #         status: "ENABLED", # accepts ENABLED, DISABLED
+    #         additional_configuration: [
+    #           {
+    #             name: "EKS_ADDON_MANAGEMENT", # accepts EKS_ADDON_MANAGEMENT
+    #             status: "ENABLED", # accepts ENABLED, DISABLED
+    #           },
+    #         ],
+    #       },
+    #     ],
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.detector_id #=> String
+    #   resp.unprocessed_data_sources.malware_protection.scan_ec2_instance_with_findings.ebs_volumes.status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.unprocessed_data_sources.malware_protection.scan_ec2_instance_with_findings.ebs_volumes.reason #=> String
+    #   resp.unprocessed_data_sources.malware_protection.service_role #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateDetector AWS API Documentation
+    #
+    # @overload create_detector(params = {})
+    # @param [Hash] params ({})
+    def create_detector(params = {}, options = {})
+      req = build_request(:create_detector, params)
+      req.send_request(options)
+    end
+
+    # Creates a filter using the specified finding criteria. The maximum
+    # number of saved filters per Amazon Web Services account per Region is
+    # 100. For more information, see [Quotas for GuardDuty][1].
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_limits.html
+    #
+    # @option params [required, String] :detector_id
+    #   The ID of the detector belonging to the GuardDuty account that you
+    #   want to create a filter for.
+    #
+    # @option params [required, String] :name
+    #   The name of the filter. Valid characters include period (.),
+    #   underscore (\_), dash (-), and alphanumeric characters. A whitespace
+    #   is considered to be an invalid character.
+    #
+    # @option params [String] :description
+    #   The description of the filter. Valid characters include alphanumeric
+    #   characters, and special characters such as hyphen, period, colon,
+    #   underscore, parentheses (`\{ \}`, `[ ]`, and `( )`), forward slash,
+    #   horizontal tab, vertical tab, newline, form feed, return, and
+    #   whitespace.
+    #
+    # @option params [String] :action
+    #   Specifies the action that is to be applied to the findings that match
+    #   the filter.
+    #
+    # @option params [Integer] :rank
+    #   Specifies the position of the filter in the list of current filters.
+    #   Also specifies the order in which this filter is applied to the
+    #   findings.
+    #
+    # @option params [required, Types::FindingCriteria] :finding_criteria
+    #   Represents the criteria to be used in the filter for querying
+    #   findings.
+    #
+    #   You can only use the following attributes to query findings:
+    #
+    #   * accountId
+    #
+    #   * region
+    #
+    #   * id
+    #
+    #   * resource.accessKeyDetails.accessKeyId
+    #
+    #   * resource.accessKeyDetails.principalId
+    #
+    #   * resource.accessKeyDetails.userName
+    #
+    #   * resource.accessKeyDetails.userType
+    #
+    #   * resource.instanceDetails.iamInstanceProfile.id
+    #
+    #   * resource.instanceDetails.imageId
+    #
+    #   * resource.instanceDetails.instanceId
+    #
+    #   * resource.instanceDetails.outpostArn
+    #
+    #   * resource.instanceDetails.networkInterfaces.ipv6Addresses
+    #
+    #   * resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress
+    #
+    #   * resource.instanceDetails.networkInterfaces.publicDnsName
+    #
+    #   * resource.instanceDetails.networkInterfaces.publicIp
+    #
+    #   * resource.instanceDetails.networkInterfaces.securityGroups.groupId
+    #
+    #   * resource.instanceDetails.networkInterfaces.securityGroups.groupName
+    #
+    #   * resource.instanceDetails.networkInterfaces.subnetId
+    #
+    #   * resource.instanceDetails.networkInterfaces.vpcId
+    #
+    #   * resource.instanceDetails.tags.key
+    #
+    #   * resource.instanceDetails.tags.value
+    #
+    #   * resource.resourceType
+    #
+    #   * service.action.actionType
+    #
+    #   * service.action.awsApiCallAction.api
+    #
+    #   * service.action.awsApiCallAction.callerType
+    #
+    #   * service.action.awsApiCallAction.errorCode
+    #
+    #   * service.action.awsApiCallAction.userAgent
+    #
+    #   * service.action.awsApiCallAction.remoteIpDetails.city.cityName
+    #
+    #   * service.action.awsApiCallAction.remoteIpDetails.country.countryName
+    #
+    #   * service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
+    #
+    #   * service.action.awsApiCallAction.remoteIpDetails.organization.asn
+    #
+    #   * service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
+    #
+    #   * service.action.awsApiCallAction.serviceName
+    #
+    #   * service.action.dnsRequestAction.domain
+    #
+    #   * service.action.networkConnectionAction.blocked
+    #
+    #   * service.action.networkConnectionAction.connectionDirection
+    #
+    #   * service.action.networkConnectionAction.localPortDetails.port
+    #
+    #   * service.action.networkConnectionAction.protocol
+    #
+    #   * service.action.networkConnectionAction.localIpDetails.ipAddressV4
+    #
+    #   * service.action.networkConnectionAction.remoteIpDetails.city.cityName
+    #
+    #   * service.action.networkConnectionAction.remoteIpDetails.country.countryName
+    #
+    #   * service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
+    #
+    #   * service.action.networkConnectionAction.remoteIpDetails.organization.asn
+    #
+    #   * service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
+    #
+    #   * service.action.networkConnectionAction.remotePortDetails.port
+    #
+    #   * service.additionalInfo.threatListName
+    #
+    #   * resource.s3BucketDetails.publicAccess.effectivePermissions
+    #
+    #   * resource.s3BucketDetails.name
+    #
+    #   * resource.s3BucketDetails.tags.key
+    #
+    #   * resource.s3BucketDetails.tags.value
+    #
+    #   * resource.s3BucketDetails.type
+    #
+    #   * service.resourceRole
+    #
+    #   * severity
+    #
+    #   * type
+    #
+    #   * updatedAt
+    #
+    #     Type: ISO 8601 string format: YYYY-MM-DDTHH:MM:SS.SSSZ or
+    #     YYYY-MM-DDTHH:MM:SSZ depending on whether the value contains
+    #     milliseconds.
+    #
+    # @option params [String] :client_token
+    #   The idempotency token for the create request.
+    #
+    #   **A suitable default value is auto-generated.** You should normally
+    #   not need to pass this option.**
+    #
+    # @option params [Hash<String,String>] :tags
+    #   The tags to be added to a new filter resource.
+    #
+    # @return [Types::CreateFilterResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::CreateFilterResponse#name #name} => String
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.create_filter({
+    #     detector_id: "DetectorId", # required
+    #     name: "FilterName", # required
+    #     description: "FilterDescription",
+    #     action: "NOOP", # accepts NOOP, ARCHIVE
+    #     rank: 1,
+    #     finding_criteria: { # required
+    #       criterion: {
+    #         "String" => {
+    #           eq: ["String"],
+    #           neq: ["String"],
+    #           gt: 1,
+    #           gte: 1,
+    #           lt: 1,
+    #           lte: 1,
+    #           equals: ["String"],
+    #           not_equals: ["String"],
+    #           greater_than: 1,
+    #           greater_than_or_equal: 1,
+    #           less_than: 1,
+    #           less_than_or_equal: 1,
+    #         },
+    #       },
+    #     },
+    #     client_token: "ClientToken",
+    #     tags: {
+    #       "TagKey" => "TagValue",
+    #     },
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.name #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateFilter AWS API Documentation
+    #
+    # @overload create_filter(params = {})
+    # @param [Hash] params ({})
+    def create_filter(params = {}, options = {})
+      req = build_request(:create_filter, params)
+      req.send_request(options)
+    end
+
+    # Creates a new IPSet, which is called a trusted IP list in the console
+    # user interface. An IPSet is a list of IP addresses that are trusted
+    # for secure communication with Amazon Web Services infrastructure and
+    # applications. GuardDuty doesn't generate findings for IP addresses
+    # that are included in IPSets. Only users from the administrator account
+    # can use this operation.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty account that you want
+    #   to create an IPSet for.
+    #
+    # @option params [required, String] :name
+    #   The user-friendly name to identify the IPSet.
+    #
+    #   Allowed characters are alphanumeric, whitespace, dash (-), and
+    #   underscores (\_).
+    #
+    # @option params [required, String] :format
+    #   The format of the file that contains the IPSet.
+    #
+    # @option params [required, String] :location
+    #   The URI of the file that contains the IPSet.
+    #
+    # @option params [required, Boolean] :activate
+    #   A Boolean value that indicates whether GuardDuty is to start using the
+    #   uploaded IPSet.
+    #
+    # @option params [String] :client_token
+    #   The idempotency token for the create request.
+    #
+    #   **A suitable default value is auto-generated.** You should normally
+    #   not need to pass this option.**
+    #
+    # @option params [Hash<String,String>] :tags
+    #   The tags to be added to a new IP set resource.
+    #
+    # @return [Types::CreateIPSetResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::CreateIPSetResponse#ip_set_id #ip_set_id} => String
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.create_ip_set({
+    #     detector_id: "DetectorId", # required
+    #     name: "Name", # required
+    #     format: "TXT", # required, accepts TXT, STIX, OTX_CSV, ALIEN_VAULT, PROOF_POINT, FIRE_EYE
+    #     location: "Location", # required
+    #     activate: false, # required
+    #     client_token: "ClientToken",
+    #     tags: {
+    #       "TagKey" => "TagValue",
+    #     },
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.ip_set_id #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateIPSet AWS API Documentation
+    #
+    # @overload create_ip_set(params = {})
+    # @param [Hash] params ({})
+    def create_ip_set(params = {}, options = {})
+      req = build_request(:create_ip_set, params)
+      req.send_request(options)
+    end
+
+    # Creates member accounts of the current Amazon Web Services account by
+    # specifying a list of Amazon Web Services account IDs. This step is a
+    # prerequisite for managing the associated member accounts either by
+    # invitation or through an organization.
+    #
+    # As a delegated administrator, using `CreateMembers` will enable
+    # GuardDuty in the added member accounts, with the exception of the
+    # organization delegated administrator account. A delegated
+    # administrator must enable GuardDuty prior to being added as a member.
+    #
+    # If you are adding accounts by invitation, before using
+    # [InviteMembers][1], use `CreateMembers` after GuardDuty has been
+    # enabled in potential member accounts.
+    #
+    # If you disassociate a member from a GuardDuty delegated administrator,
+    # the member account details obtained from this API, including the
+    # associated email addresses, will be retained. This is done so that the
+    # delegated administrator can invoke the [InviteMembers][1] API without
+    # the need to invoke the CreateMembers API again. To remove the details
+    # associated with a member account, the delegated administrator must
+    # invoke the [DeleteMembers][2] API.
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
+    # [2]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty account that you want
+    #   to associate member accounts with.
+    #
+    # @option params [required, Array<Types::AccountDetail>] :account_details
+    #   A list of account ID and email address pairs of the accounts that you
+    #   want to associate with the GuardDuty administrator account.
+    #
+    # @return [Types::CreateMembersResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::CreateMembersResponse#unprocessed_accounts #unprocessed_accounts} => Array&lt;Types::UnprocessedAccount&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.create_members({
+    #     detector_id: "DetectorId", # required
+    #     account_details: [ # required
+    #       {
+    #         account_id: "AccountId", # required
+    #         email: "Email", # required
+    #       },
+    #     ],
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.unprocessed_accounts #=> Array
+    #   resp.unprocessed_accounts[0].account_id #=> String
+    #   resp.unprocessed_accounts[0].result #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateMembers AWS API Documentation
+    #
+    # @overload create_members(params = {})
+    # @param [Hash] params ({})
+    def create_members(params = {}, options = {})
+      req = build_request(:create_members, params)
+      req.send_request(options)
+    end
+
+    # Creates a publishing destination to export findings to. The resource
+    # to export findings to must exist before you use this operation.
+    #
+    # @option params [required, String] :detector_id
+    #   The ID of the GuardDuty detector associated with the publishing
+    #   destination.
+    #
+    # @option params [required, String] :destination_type
+    #   The type of resource for the publishing destination. Currently only
+    #   Amazon S3 buckets are supported.
+    #
+    # @option params [required, Types::DestinationProperties] :destination_properties
+    #   The properties of the publishing destination, including the ARNs for
+    #   the destination and the KMS key used for encryption.
+    #
+    # @option params [String] :client_token
+    #   The idempotency token for the request.
+    #
+    #   **A suitable default value is auto-generated.** You should normally
+    #   not need to pass this option.**
+    #
+    # @return [Types::CreatePublishingDestinationResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::CreatePublishingDestinationResponse#destination_id #destination_id} => String
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.create_publishing_destination({
+    #     detector_id: "DetectorId", # required
+    #     destination_type: "S3", # required, accepts S3
+    #     destination_properties: { # required
+    #       destination_arn: "String",
+    #       kms_key_arn: "String",
+    #     },
+    #     client_token: "ClientToken",
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.destination_id #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreatePublishingDestination AWS API Documentation
+    #
+    # @overload create_publishing_destination(params = {})
+    # @param [Hash] params ({})
+    def create_publishing_destination(params = {}, options = {})
+      req = build_request(:create_publishing_destination, params)
+      req.send_request(options)
+    end
+
+    # Generates sample findings of types specified by the list of finding
+    # types. If 'NULL' is specified for `findingTypes`, the API generates
+    # sample findings of all supported finding types.
+    #
+    # @option params [required, String] :detector_id
+    #   The ID of the detector to create sample findings for.
+    #
+    # @option params [Array<String>] :finding_types
+    #   The types of sample findings to generate.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.create_sample_findings({
+    #     detector_id: "DetectorId", # required
+    #     finding_types: ["FindingType"],
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateSampleFindings AWS API Documentation
+    #
+    # @overload create_sample_findings(params = {})
+    # @param [Hash] params ({})
+    def create_sample_findings(params = {}, options = {})
+      req = build_request(:create_sample_findings, params)
+      req.send_request(options)
+    end
+
+    # Creates a new ThreatIntelSet. ThreatIntelSets consist of known
+    # malicious IP addresses. GuardDuty generates findings based on
+    # ThreatIntelSets. Only users of the administrator account can use this
+    # operation.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty account that you want
+    #   to create a threatIntelSet for.
+    #
+    # @option params [required, String] :name
+    #   A user-friendly ThreatIntelSet name displayed in all findings that are
+    #   generated by activity that involves IP addresses included in this
+    #   ThreatIntelSet.
+    #
+    # @option params [required, String] :format
+    #   The format of the file that contains the ThreatIntelSet.
+    #
+    # @option params [required, String] :location
+    #   The URI of the file that contains the ThreatIntelSet.
+    #
+    # @option params [required, Boolean] :activate
+    #   A Boolean value that indicates whether GuardDuty is to start using the
+    #   uploaded ThreatIntelSet.
+    #
+    # @option params [String] :client_token
+    #   The idempotency token for the create request.
+    #
+    #   **A suitable default value is auto-generated.** You should normally
+    #   not need to pass this option.**
+    #
+    # @option params [Hash<String,String>] :tags
+    #   The tags to be added to a new threat list resource.
+    #
+    # @return [Types::CreateThreatIntelSetResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::CreateThreatIntelSetResponse#threat_intel_set_id #threat_intel_set_id} => String
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.create_threat_intel_set({
+    #     detector_id: "DetectorId", # required
+    #     name: "Name", # required
+    #     format: "TXT", # required, accepts TXT, STIX, OTX_CSV, ALIEN_VAULT, PROOF_POINT, FIRE_EYE
+    #     location: "Location", # required
+    #     activate: false, # required
+    #     client_token: "ClientToken",
+    #     tags: {
+    #       "TagKey" => "TagValue",
+    #     },
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.threat_intel_set_id #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateThreatIntelSet AWS API Documentation
+    #
+    # @overload create_threat_intel_set(params = {})
+    # @param [Hash] params ({})
+    def create_threat_intel_set(params = {}, options = {})
+      req = build_request(:create_threat_intel_set, params)
+      req.send_request(options)
+    end
+
+    # Declines invitations sent to the current member account by Amazon Web
+    # Services accounts specified by their account IDs.
+    #
+    # @option params [required, Array<String>] :account_ids
+    #   A list of account IDs of the Amazon Web Services accounts that sent
+    #   invitations to the current member account that you want to decline
+    #   invitations from.
+    #
+    # @return [Types::DeclineInvitationsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::DeclineInvitationsResponse#unprocessed_accounts #unprocessed_accounts} => Array&lt;Types::UnprocessedAccount&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.decline_invitations({
+    #     account_ids: ["AccountId"], # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.unprocessed_accounts #=> Array
+    #   resp.unprocessed_accounts[0].account_id #=> String
+    #   resp.unprocessed_accounts[0].result #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DeclineInvitations AWS API Documentation
+    #
+    # @overload decline_invitations(params = {})
+    # @param [Hash] params ({})
+    def decline_invitations(params = {}, options = {})
+      req = build_request(:decline_invitations, params)
+      req.send_request(options)
+    end
+
+    # Deletes an Amazon GuardDuty detector that is specified by the detector
+    # ID.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector that you want to delete.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.delete_detector({
+    #     detector_id: "DetectorId", # required
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DeleteDetector AWS API Documentation
+    #
+    # @overload delete_detector(params = {})
+    # @param [Hash] params ({})
+    def delete_detector(params = {}, options = {})
+      req = build_request(:delete_detector, params)
+      req.send_request(options)
+    end
+
+    # Deletes the filter specified by the filter name.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector that the filter is associated with.
+    #
+    # @option params [required, String] :filter_name
+    #   The name of the filter that you want to delete.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.delete_filter({
+    #     detector_id: "DetectorId", # required
+    #     filter_name: "String", # required
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DeleteFilter AWS API Documentation
+    #
+    # @overload delete_filter(params = {})
+    # @param [Hash] params ({})
+    def delete_filter(params = {}, options = {})
+      req = build_request(:delete_filter, params)
+      req.send_request(options)
+    end
+
+    # Deletes the IPSet specified by the `ipSetId`. IPSets are called
+    # trusted IP lists in the console user interface.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector associated with the IPSet.
+    #
+    # @option params [required, String] :ip_set_id
+    #   The unique ID of the IPSet to delete.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.delete_ip_set({
+    #     detector_id: "DetectorId", # required
+    #     ip_set_id: "String", # required
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DeleteIPSet AWS API Documentation
+    #
+    # @overload delete_ip_set(params = {})
+    # @param [Hash] params ({})
+    def delete_ip_set(params = {}, options = {})
+      req = build_request(:delete_ip_set, params)
+      req.send_request(options)
+    end
+
+    # Deletes invitations sent to the current member account by Amazon Web
+    # Services accounts specified by their account IDs.
+    #
+    # @option params [required, Array<String>] :account_ids
+    #   A list of account IDs of the Amazon Web Services accounts that sent
+    #   invitations to the current member account that you want to delete
+    #   invitations from.
+    #
+    # @return [Types::DeleteInvitationsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::DeleteInvitationsResponse#unprocessed_accounts #unprocessed_accounts} => Array&lt;Types::UnprocessedAccount&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.delete_invitations({
+    #     account_ids: ["AccountId"], # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.unprocessed_accounts #=> Array
+    #   resp.unprocessed_accounts[0].account_id #=> String
+    #   resp.unprocessed_accounts[0].result #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DeleteInvitations AWS API Documentation
+    #
+    # @overload delete_invitations(params = {})
+    # @param [Hash] params ({})
+    def delete_invitations(params = {}, options = {})
+      req = build_request(:delete_invitations, params)
+      req.send_request(options)
+    end
+
+    # Deletes GuardDuty member accounts (to the current GuardDuty
+    # administrator account) specified by the account IDs.
+    #
+    # With `autoEnableOrganizationMembers` configuration for your
+    # organization set to `ALL`, you'll receive an error if you attempt to
+    # disable GuardDuty for a member account in your organization.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty account whose members
+    #   you want to delete.
+    #
+    # @option params [required, Array<String>] :account_ids
+    #   A list of account IDs of the GuardDuty member accounts that you want
+    #   to delete.
+    #
+    # @return [Types::DeleteMembersResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::DeleteMembersResponse#unprocessed_accounts #unprocessed_accounts} => Array&lt;Types::UnprocessedAccount&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.delete_members({
+    #     detector_id: "DetectorId", # required
+    #     account_ids: ["AccountId"], # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.unprocessed_accounts #=> Array
+    #   resp.unprocessed_accounts[0].account_id #=> String
+    #   resp.unprocessed_accounts[0].result #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DeleteMembers AWS API Documentation
+    #
+    # @overload delete_members(params = {})
+    # @param [Hash] params ({})
+    def delete_members(params = {}, options = {})
+      req = build_request(:delete_members, params)
+      req.send_request(options)
+    end
+
+    # Deletes the publishing definition with the specified `destinationId`.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector associated with the publishing
+    #   destination to delete.
+    #
+    # @option params [required, String] :destination_id
+    #   The ID of the publishing destination to delete.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.delete_publishing_destination({
+    #     detector_id: "DetectorId", # required
+    #     destination_id: "String", # required
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DeletePublishingDestination AWS API Documentation
+    #
+    # @overload delete_publishing_destination(params = {})
+    # @param [Hash] params ({})
+    def delete_publishing_destination(params = {}, options = {})
+      req = build_request(:delete_publishing_destination, params)
+      req.send_request(options)
+    end
+
+    # Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector that the threatIntelSet is associated
+    #   with.
+    #
+    # @option params [required, String] :threat_intel_set_id
+    #   The unique ID of the threatIntelSet that you want to delete.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.delete_threat_intel_set({
+    #     detector_id: "DetectorId", # required
+    #     threat_intel_set_id: "String", # required
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DeleteThreatIntelSet AWS API Documentation
+    #
+    # @overload delete_threat_intel_set(params = {})
+    # @param [Hash] params ({})
+    def delete_threat_intel_set(params = {}, options = {})
+      req = build_request(:delete_threat_intel_set, params)
+      req.send_request(options)
+    end
+
+    # Returns a list of malware scans. Each member account can view the
+    # malware scans for their own accounts. An administrator can view the
+    # malware scans for all the member accounts.
+    #
+    # There might be regional differences because some data sources might
+    # not be available in all the Amazon Web Services Regions where
+    # GuardDuty is presently supported. For more information, see [Regions
+    # and endpoints][1].
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector that the request is associated with.
+    #
+    # @option params [String] :next_token
+    #   You can use this parameter when paginating results. Set the value of
+    #   this parameter to null on your first call to the list action. For
+    #   subsequent calls to the action, fill nextToken in the request with the
+    #   value of NextToken from the previous response to continue listing
+    #   data.
+    #
+    # @option params [Integer] :max_results
+    #   You can use this parameter to indicate the maximum number of items
+    #   that you want in the response. The default value is 50. The maximum
+    #   value is 50.
+    #
+    # @option params [Types::FilterCriteria] :filter_criteria
+    #   Represents the criteria to be used in the filter for describing scan
+    #   entries.
+    #
+    # @option params [Types::SortCriteria] :sort_criteria
+    #   Represents the criteria used for sorting scan entries. The [
+    #   `attributeName` ][1] is required and it must be `scanStartTime`.
+    #
+    #
+    #
+    #   [1]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_SortCriteria.html#guardduty-Type-SortCriteria-attributeName
+    #
+    # @return [Types::DescribeMalwareScansResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::DescribeMalwareScansResponse#scans #scans} => Array&lt;Types::Scan&gt;
+    #   * {Types::DescribeMalwareScansResponse#next_token #next_token} => String
+    #
+    # The returned {Seahorse::Client::Response response} is a pageable response and is Enumerable. For details on usage see {Aws::PageableResponse PageableResponse}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.describe_malware_scans({
+    #     detector_id: "DetectorId", # required
+    #     next_token: "String",
+    #     max_results: 1,
+    #     filter_criteria: {
+    #       filter_criterion: [
+    #         {
+    #           criterion_key: "EC2_INSTANCE_ARN", # accepts EC2_INSTANCE_ARN, SCAN_ID, ACCOUNT_ID, GUARDDUTY_FINDING_ID, SCAN_START_TIME, SCAN_STATUS, SCAN_TYPE
+    #           filter_condition: {
+    #             equals_value: "NonEmptyString",
+    #             greater_than: 1,
+    #             less_than: 1,
+    #           },
+    #         },
+    #       ],
+    #     },
+    #     sort_criteria: {
+    #       attribute_name: "String",
+    #       order_by: "ASC", # accepts ASC, DESC
+    #     },
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.scans #=> Array
+    #   resp.scans[0].detector_id #=> String
+    #   resp.scans[0].admin_detector_id #=> String
+    #   resp.scans[0].scan_id #=> String
+    #   resp.scans[0].scan_status #=> String, one of "RUNNING", "COMPLETED", "FAILED", "SKIPPED"
+    #   resp.scans[0].failure_reason #=> String
+    #   resp.scans[0].scan_start_time #=> Time
+    #   resp.scans[0].scan_end_time #=> Time
+    #   resp.scans[0].trigger_details.guard_duty_finding_id #=> String
+    #   resp.scans[0].trigger_details.description #=> String
+    #   resp.scans[0].resource_details.instance_arn #=> String
+    #   resp.scans[0].scan_result_details.scan_result #=> String, one of "CLEAN", "INFECTED"
+    #   resp.scans[0].account_id #=> String
+    #   resp.scans[0].total_bytes #=> Integer
+    #   resp.scans[0].file_count #=> Integer
+    #   resp.scans[0].attached_volumes #=> Array
+    #   resp.scans[0].attached_volumes[0].volume_arn #=> String
+    #   resp.scans[0].attached_volumes[0].volume_type #=> String
+    #   resp.scans[0].attached_volumes[0].device_name #=> String
+    #   resp.scans[0].attached_volumes[0].volume_size_in_gb #=> Integer
+    #   resp.scans[0].attached_volumes[0].encryption_type #=> String
+    #   resp.scans[0].attached_volumes[0].snapshot_arn #=> String
+    #   resp.scans[0].attached_volumes[0].kms_key_arn #=> String
+    #   resp.scans[0].scan_type #=> String, one of "GUARDDUTY_INITIATED", "ON_DEMAND"
+    #   resp.next_token #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DescribeMalwareScans AWS API Documentation
+    #
+    # @overload describe_malware_scans(params = {})
+    # @param [Hash] params ({})
+    def describe_malware_scans(params = {}, options = {})
+      req = build_request(:describe_malware_scans, params)
+      req.send_request(options)
+    end
+
+    # Returns information about the account selected as the delegated
+    # administrator for GuardDuty.
+    #
+    # There might be regional differences because some data sources might
+    # not be available in all the Amazon Web Services Regions where
+    # GuardDuty is presently supported. For more information, see [Regions
+    # and endpoints][1].
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html
+    #
+    # @option params [required, String] :detector_id
+    #   The ID of the detector to retrieve information about the delegated
+    #   administrator from.
+    #
+    # @option params [Integer] :max_results
+    #   You can use this parameter to indicate the maximum number of items
+    #   that you want in the response.
+    #
+    # @option params [String] :next_token
+    #   You can use this parameter when paginating results. Set the value of
+    #   this parameter to null on your first call to the list action. For
+    #   subsequent calls to the action, fill `nextToken` in the request with
+    #   the value of `NextToken` from the previous response to continue
+    #   listing data.
+    #
+    # @return [Types::DescribeOrganizationConfigurationResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::DescribeOrganizationConfigurationResponse#auto_enable #auto_enable} => Boolean
+    #   * {Types::DescribeOrganizationConfigurationResponse#member_account_limit_reached #member_account_limit_reached} => Boolean
+    #   * {Types::DescribeOrganizationConfigurationResponse#data_sources #data_sources} => Types::OrganizationDataSourceConfigurationsResult
+    #   * {Types::DescribeOrganizationConfigurationResponse#features #features} => Array&lt;Types::OrganizationFeatureConfigurationResult&gt;
+    #   * {Types::DescribeOrganizationConfigurationResponse#next_token #next_token} => String
+    #   * {Types::DescribeOrganizationConfigurationResponse#auto_enable_organization_members #auto_enable_organization_members} => String
+    #
+    # The returned {Seahorse::Client::Response response} is a pageable response and is Enumerable. For details on usage see {Aws::PageableResponse PageableResponse}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.describe_organization_configuration({
+    #     detector_id: "DetectorId", # required
+    #     max_results: 1,
+    #     next_token: "String",
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.auto_enable #=> Boolean
+    #   resp.member_account_limit_reached #=> Boolean
+    #   resp.data_sources.s3_logs.auto_enable #=> Boolean
+    #   resp.data_sources.kubernetes.audit_logs.auto_enable #=> Boolean
+    #   resp.data_sources.malware_protection.scan_ec2_instance_with_findings.ebs_volumes.auto_enable #=> Boolean
+    #   resp.features #=> Array
+    #   resp.features[0].name #=> String, one of "S3_DATA_EVENTS", "EKS_AUDIT_LOGS", "EBS_MALWARE_PROTECTION", "RDS_LOGIN_EVENTS", "EKS_RUNTIME_MONITORING", "LAMBDA_NETWORK_LOGS"
+    #   resp.features[0].auto_enable #=> String, one of "NEW", "NONE"
+    #   resp.features[0].additional_configuration #=> Array
+    #   resp.features[0].additional_configuration[0].name #=> String, one of "EKS_ADDON_MANAGEMENT"
+    #   resp.features[0].additional_configuration[0].auto_enable #=> String, one of "NEW", "NONE"
+    #   resp.next_token #=> String
+    #   resp.auto_enable_organization_members #=> String, one of "NEW", "ALL", "NONE"
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DescribeOrganizationConfiguration AWS API Documentation
+    #
+    # @overload describe_organization_configuration(params = {})
+    # @param [Hash] params ({})
+    def describe_organization_configuration(params = {}, options = {})
+      req = build_request(:describe_organization_configuration, params)
+      req.send_request(options)
+    end
+
+    # Returns information about the publishing destination specified by the
+    # provided `destinationId`.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector associated with the publishing
+    #   destination to retrieve.
+    #
+    # @option params [required, String] :destination_id
+    #   The ID of the publishing destination to retrieve.
+    #
+    # @return [Types::DescribePublishingDestinationResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::DescribePublishingDestinationResponse#destination_id #destination_id} => String
+    #   * {Types::DescribePublishingDestinationResponse#destination_type #destination_type} => String
+    #   * {Types::DescribePublishingDestinationResponse#status #status} => String
+    #   * {Types::DescribePublishingDestinationResponse#publishing_failure_start_timestamp #publishing_failure_start_timestamp} => Integer
+    #   * {Types::DescribePublishingDestinationResponse#destination_properties #destination_properties} => Types::DestinationProperties
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.describe_publishing_destination({
+    #     detector_id: "DetectorId", # required
+    #     destination_id: "String", # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.destination_id #=> String
+    #   resp.destination_type #=> String, one of "S3"
+    #   resp.status #=> String, one of "PENDING_VERIFICATION", "PUBLISHING", "UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY", "STOPPED"
+    #   resp.publishing_failure_start_timestamp #=> Integer
+    #   resp.destination_properties.destination_arn #=> String
+    #   resp.destination_properties.kms_key_arn #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DescribePublishingDestination AWS API Documentation
+    #
+    # @overload describe_publishing_destination(params = {})
+    # @param [Hash] params ({})
+    def describe_publishing_destination(params = {}, options = {})
+      req = build_request(:describe_publishing_destination, params)
+      req.send_request(options)
+    end
+
+    # Disables an Amazon Web Services account within the Organization as the
+    # GuardDuty delegated administrator.
+    #
+    # @option params [required, String] :admin_account_id
+    #   The Amazon Web Services Account ID for the organizations account to be
+    #   disabled as a GuardDuty delegated administrator.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.disable_organization_admin_account({
+    #     admin_account_id: "String", # required
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DisableOrganizationAdminAccount AWS API Documentation
+    #
+    # @overload disable_organization_admin_account(params = {})
+    # @param [Hash] params ({})
+    def disable_organization_admin_account(params = {}, options = {})
+      req = build_request(:disable_organization_admin_account, params)
+      req.send_request(options)
+    end
+
+    # Disassociates the current GuardDuty member account from its
+    # administrator account.
+    #
+    # When you disassociate an invited member from a GuardDuty delegated
+    # administrator, the member account details obtained from the
+    # [CreateMembers][1] API, including the associated email addresses, are
+    # retained. This is done so that the delegated administrator can invoke
+    # the [InviteMembers][2] API without the need to invoke the
+    # CreateMembers API again. To remove the details associated with a
+    # member account, the delegated administrator must invoke the
+    # [DeleteMembers][3] API.
+    #
+    # With `autoEnableOrganizationMembers` configuration for your
+    # organization set to `ALL`, you'll receive an error if you attempt to
+    # disable GuardDuty in a member account.
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
+    # [2]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
+    # [3]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty member account.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.disassociate_from_administrator_account({
+    #     detector_id: "DetectorId", # required
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DisassociateFromAdministratorAccount AWS API Documentation
+    #
+    # @overload disassociate_from_administrator_account(params = {})
+    # @param [Hash] params ({})
+    def disassociate_from_administrator_account(params = {}, options = {})
+      req = build_request(:disassociate_from_administrator_account, params)
+      req.send_request(options)
+    end
+
+    # Disassociates the current GuardDuty member account from its
+    # administrator account.
+    #
+    # When you disassociate an invited member from a GuardDuty delegated
+    # administrator, the member account details obtained from the
+    # [CreateMembers][1] API, including the associated email addresses, are
+    # retained. This is done so that the delegated administrator can invoke
+    # the [InviteMembers][2] API without the need to invoke the
+    # CreateMembers API again. To remove the details associated with a
+    # member account, the delegated administrator must invoke the
+    # [DeleteMembers][3] API.
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
+    # [2]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
+    # [3]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty member account.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.disassociate_from_master_account({
+    #     detector_id: "DetectorId", # required
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DisassociateFromMasterAccount AWS API Documentation
+    #
+    # @overload disassociate_from_master_account(params = {})
+    # @param [Hash] params ({})
+    def disassociate_from_master_account(params = {}, options = {})
+      req = build_request(:disassociate_from_master_account, params)
+      req.send_request(options)
+    end
+
+    # Disassociates GuardDuty member accounts (from the current
+    # administrator account) specified by the account IDs.
+    #
+    # When you disassociate an invited member from a GuardDuty delegated
+    # administrator, the member account details obtained from the
+    # [CreateMembers][1] API, including the associated email addresses, are
+    # retained. This is done so that the delegated administrator can invoke
+    # the [InviteMembers][2] API without the need to invoke the
+    # CreateMembers API again. To remove the details associated with a
+    # member account, the delegated administrator must invoke the
+    # [DeleteMembers][3] API.
+    #
+    # With `autoEnableOrganizationMembers` configuration for your
+    # organization set to `ALL`, you'll receive an error if you attempt to
+    # disassociate a member account before removing them from your Amazon
+    # Web Services organization.
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
+    # [2]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html
+    # [3]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty account whose members
+    #   you want to disassociate from the administrator account.
+    #
+    # @option params [required, Array<String>] :account_ids
+    #   A list of account IDs of the GuardDuty member accounts that you want
+    #   to disassociate from the administrator account.
+    #
+    # @return [Types::DisassociateMembersResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::DisassociateMembersResponse#unprocessed_accounts #unprocessed_accounts} => Array&lt;Types::UnprocessedAccount&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.disassociate_members({
+    #     detector_id: "DetectorId", # required
+    #     account_ids: ["AccountId"], # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.unprocessed_accounts #=> Array
+    #   resp.unprocessed_accounts[0].account_id #=> String
+    #   resp.unprocessed_accounts[0].result #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DisassociateMembers AWS API Documentation
+    #
+    # @overload disassociate_members(params = {})
+    # @param [Hash] params ({})
+    def disassociate_members(params = {}, options = {})
+      req = build_request(:disassociate_members, params)
+      req.send_request(options)
+    end
+
+    # Enables an Amazon Web Services account within the organization as the
+    # GuardDuty delegated administrator.
+    #
+    # @option params [required, String] :admin_account_id
+    #   The Amazon Web Services Account ID for the organization account to be
+    #   enabled as a GuardDuty delegated administrator.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.enable_organization_admin_account({
+    #     admin_account_id: "String", # required
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/EnableOrganizationAdminAccount AWS API Documentation
+    #
+    # @overload enable_organization_admin_account(params = {})
+    # @param [Hash] params ({})
+    def enable_organization_admin_account(params = {}, options = {})
+      req = build_request(:enable_organization_admin_account, params)
+      req.send_request(options)
+    end
+
+    # Provides the details for the GuardDuty administrator account
+    # associated with the current GuardDuty member account.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty member account.
+    #
+    # @return [Types::GetAdministratorAccountResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetAdministratorAccountResponse#administrator #administrator} => Types::Administrator
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.get_administrator_account({
+    #     detector_id: "DetectorId", # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.administrator.account_id #=> String
+    #   resp.administrator.invitation_id #=> String
+    #   resp.administrator.relationship_status #=> String
+    #   resp.administrator.invited_at #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetAdministratorAccount AWS API Documentation
+    #
+    # @overload get_administrator_account(params = {})
+    # @param [Hash] params ({})
+    def get_administrator_account(params = {}, options = {})
+      req = build_request(:get_administrator_account, params)
+      req.send_request(options)
+    end
+
+    # Retrieves aggregated statistics for your account. If you are a
+    # GuardDuty administrator, you can retrieve the statistics for all the
+    # resources associated with the active member accounts in your
+    # organization who have enabled EKS Runtime Monitoring and have the
+    # GuardDuty agent running on their EKS nodes.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the GuardDuty detector associated to the coverage
+    #   statistics.
+    #
+    # @option params [Types::CoverageFilterCriteria] :filter_criteria
+    #   Represents the criteria used to filter the coverage statistics
+    #
+    # @option params [required, Array<String>] :statistics_type
+    #   Represents the statistics type used to aggregate the coverage details.
+    #
+    # @return [Types::GetCoverageStatisticsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetCoverageStatisticsResponse#coverage_statistics #coverage_statistics} => Types::CoverageStatistics
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.get_coverage_statistics({
+    #     detector_id: "DetectorId", # required
+    #     filter_criteria: {
+    #       filter_criterion: [
+    #         {
+    #           criterion_key: "ACCOUNT_ID", # accepts ACCOUNT_ID, CLUSTER_NAME, RESOURCE_TYPE, COVERAGE_STATUS, ADDON_VERSION
+    #           filter_condition: {
+    #             equals: ["String"],
+    #             not_equals: ["String"],
+    #           },
+    #         },
+    #       ],
+    #     },
+    #     statistics_type: ["COUNT_BY_RESOURCE_TYPE"], # required, accepts COUNT_BY_RESOURCE_TYPE, COUNT_BY_COVERAGE_STATUS
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.coverage_statistics.count_by_resource_type #=> Hash
+    #   resp.coverage_statistics.count_by_resource_type["ResourceType"] #=> Integer
+    #   resp.coverage_statistics.count_by_coverage_status #=> Hash
+    #   resp.coverage_statistics.count_by_coverage_status["CoverageStatus"] #=> Integer
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetCoverageStatistics AWS API Documentation
+    #
+    # @overload get_coverage_statistics(params = {})
+    # @param [Hash] params ({})
+    def get_coverage_statistics(params = {}, options = {})
+      req = build_request(:get_coverage_statistics, params)
+      req.send_request(options)
+    end
+
+    # Retrieves an Amazon GuardDuty detector specified by the detectorId.
+    #
+    # There might be regional differences because some data sources might
+    # not be available in all the Amazon Web Services Regions where
+    # GuardDuty is presently supported. For more information, see [Regions
+    # and endpoints][1].
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector that you want to get.
+    #
+    # @return [Types::GetDetectorResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetDetectorResponse#created_at #created_at} => String
+    #   * {Types::GetDetectorResponse#finding_publishing_frequency #finding_publishing_frequency} => String
+    #   * {Types::GetDetectorResponse#service_role #service_role} => String
+    #   * {Types::GetDetectorResponse#status #status} => String
+    #   * {Types::GetDetectorResponse#updated_at #updated_at} => String
+    #   * {Types::GetDetectorResponse#data_sources #data_sources} => Types::DataSourceConfigurationsResult
+    #   * {Types::GetDetectorResponse#tags #tags} => Hash&lt;String,String&gt;
+    #   * {Types::GetDetectorResponse#features #features} => Array&lt;Types::DetectorFeatureConfigurationResult&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.get_detector({
+    #     detector_id: "DetectorId", # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.created_at #=> String
+    #   resp.finding_publishing_frequency #=> String, one of "FIFTEEN_MINUTES", "ONE_HOUR", "SIX_HOURS"
+    #   resp.service_role #=> String
+    #   resp.status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.updated_at #=> String
+    #   resp.data_sources.cloud_trail.status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.data_sources.dns_logs.status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.data_sources.flow_logs.status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.data_sources.s3_logs.status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.data_sources.kubernetes.audit_logs.status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.data_sources.malware_protection.scan_ec2_instance_with_findings.ebs_volumes.status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.data_sources.malware_protection.scan_ec2_instance_with_findings.ebs_volumes.reason #=> String
+    #   resp.data_sources.malware_protection.service_role #=> String
+    #   resp.tags #=> Hash
+    #   resp.tags["TagKey"] #=> String
+    #   resp.features #=> Array
+    #   resp.features[0].name #=> String, one of "FLOW_LOGS", "CLOUD_TRAIL", "DNS_LOGS", "S3_DATA_EVENTS", "EKS_AUDIT_LOGS", "EBS_MALWARE_PROTECTION", "RDS_LOGIN_EVENTS", "EKS_RUNTIME_MONITORING", "LAMBDA_NETWORK_LOGS"
+    #   resp.features[0].status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.features[0].updated_at #=> Time
+    #   resp.features[0].additional_configuration #=> Array
+    #   resp.features[0].additional_configuration[0].name #=> String, one of "EKS_ADDON_MANAGEMENT"
+    #   resp.features[0].additional_configuration[0].status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.features[0].additional_configuration[0].updated_at #=> Time
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetDetector AWS API Documentation
+    #
+    # @overload get_detector(params = {})
+    # @param [Hash] params ({})
+    def get_detector(params = {}, options = {})
+      req = build_request(:get_detector, params)
+      req.send_request(options)
+    end
+
+    # Returns the details of the filter specified by the filter name.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector that the filter is associated with.
+    #
+    # @option params [required, String] :filter_name
+    #   The name of the filter you want to get.
+    #
+    # @return [Types::GetFilterResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetFilterResponse#name #name} => String
+    #   * {Types::GetFilterResponse#description #description} => String
+    #   * {Types::GetFilterResponse#action #action} => String
+    #   * {Types::GetFilterResponse#rank #rank} => Integer
+    #   * {Types::GetFilterResponse#finding_criteria #finding_criteria} => Types::FindingCriteria
+    #   * {Types::GetFilterResponse#tags #tags} => Hash&lt;String,String&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.get_filter({
+    #     detector_id: "DetectorId", # required
+    #     filter_name: "String", # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.name #=> String
+    #   resp.description #=> String
+    #   resp.action #=> String, one of "NOOP", "ARCHIVE"
+    #   resp.rank #=> Integer
+    #   resp.finding_criteria.criterion #=> Hash
+    #   resp.finding_criteria.criterion["String"].eq #=> Array
+    #   resp.finding_criteria.criterion["String"].eq[0] #=> String
+    #   resp.finding_criteria.criterion["String"].neq #=> Array
+    #   resp.finding_criteria.criterion["String"].neq[0] #=> String
+    #   resp.finding_criteria.criterion["String"].gt #=> Integer
+    #   resp.finding_criteria.criterion["String"].gte #=> Integer
+    #   resp.finding_criteria.criterion["String"].lt #=> Integer
+    #   resp.finding_criteria.criterion["String"].lte #=> Integer
+    #   resp.finding_criteria.criterion["String"].equals #=> Array
+    #   resp.finding_criteria.criterion["String"].equals[0] #=> String
+    #   resp.finding_criteria.criterion["String"].not_equals #=> Array
+    #   resp.finding_criteria.criterion["String"].not_equals[0] #=> String
+    #   resp.finding_criteria.criterion["String"].greater_than #=> Integer
+    #   resp.finding_criteria.criterion["String"].greater_than_or_equal #=> Integer
+    #   resp.finding_criteria.criterion["String"].less_than #=> Integer
+    #   resp.finding_criteria.criterion["String"].less_than_or_equal #=> Integer
+    #   resp.tags #=> Hash
+    #   resp.tags["TagKey"] #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetFilter AWS API Documentation
+    #
+    # @overload get_filter(params = {})
+    # @param [Hash] params ({})
+    def get_filter(params = {}, options = {})
+      req = build_request(:get_filter, params)
+      req.send_request(options)
+    end
+
+    # Describes Amazon GuardDuty findings specified by finding IDs.
+    #
+    # @option params [required, String] :detector_id
+    #   The ID of the detector that specifies the GuardDuty service whose
+    #   findings you want to retrieve.
+    #
+    # @option params [required, Array<String>] :finding_ids
+    #   The IDs of the findings that you want to retrieve.
+    #
+    # @option params [Types::SortCriteria] :sort_criteria
+    #   Represents the criteria used for sorting findings.
+    #
+    # @return [Types::GetFindingsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetFindingsResponse#findings #findings} => Array&lt;Types::Finding&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.get_findings({
+    #     detector_id: "DetectorId", # required
+    #     finding_ids: ["FindingId"], # required
+    #     sort_criteria: {
+    #       attribute_name: "String",
+    #       order_by: "ASC", # accepts ASC, DESC
+    #     },
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.findings #=> Array
+    #   resp.findings[0].account_id #=> String
+    #   resp.findings[0].arn #=> String
+    #   resp.findings[0].confidence #=> Float
+    #   resp.findings[0].created_at #=> String
+    #   resp.findings[0].description #=> String
+    #   resp.findings[0].id #=> String
+    #   resp.findings[0].partition #=> String
+    #   resp.findings[0].region #=> String
+    #   resp.findings[0].resource.access_key_details.access_key_id #=> String
+    #   resp.findings[0].resource.access_key_details.principal_id #=> String
+    #   resp.findings[0].resource.access_key_details.user_name #=> String
+    #   resp.findings[0].resource.access_key_details.user_type #=> String
+    #   resp.findings[0].resource.s3_bucket_details #=> Array
+    #   resp.findings[0].resource.s3_bucket_details[0].arn #=> String
+    #   resp.findings[0].resource.s3_bucket_details[0].name #=> String
+    #   resp.findings[0].resource.s3_bucket_details[0].type #=> String
+    #   resp.findings[0].resource.s3_bucket_details[0].created_at #=> Time
+    #   resp.findings[0].resource.s3_bucket_details[0].owner.id #=> String
+    #   resp.findings[0].resource.s3_bucket_details[0].tags #=> Array
+    #   resp.findings[0].resource.s3_bucket_details[0].tags[0].key #=> String
+    #   resp.findings[0].resource.s3_bucket_details[0].tags[0].value #=> String
+    #   resp.findings[0].resource.s3_bucket_details[0].default_server_side_encryption.encryption_type #=> String
+    #   resp.findings[0].resource.s3_bucket_details[0].default_server_side_encryption.kms_master_key_arn #=> String
+    #   resp.findings[0].resource.s3_bucket_details[0].public_access.permission_configuration.bucket_level_permissions.access_control_list.allows_public_read_access #=> Boolean
+    #   resp.findings[0].resource.s3_bucket_details[0].public_access.permission_configuration.bucket_level_permissions.access_control_list.allows_public_write_access #=> Boolean
+    #   resp.findings[0].resource.s3_bucket_details[0].public_access.permission_configuration.bucket_level_permissions.bucket_policy.allows_public_read_access #=> Boolean
+    #   resp.findings[0].resource.s3_bucket_details[0].public_access.permission_configuration.bucket_level_permissions.bucket_policy.allows_public_write_access #=> Boolean
+    #   resp.findings[0].resource.s3_bucket_details[0].public_access.permission_configuration.bucket_level_permissions.block_public_access.ignore_public_acls #=> Boolean
+    #   resp.findings[0].resource.s3_bucket_details[0].public_access.permission_configuration.bucket_level_permissions.block_public_access.restrict_public_buckets #=> Boolean
+    #   resp.findings[0].resource.s3_bucket_details[0].public_access.permission_configuration.bucket_level_permissions.block_public_access.block_public_acls #=> Boolean
+    #   resp.findings[0].resource.s3_bucket_details[0].public_access.permission_configuration.bucket_level_permissions.block_public_access.block_public_policy #=> Boolean
+    #   resp.findings[0].resource.s3_bucket_details[0].public_access.permission_configuration.account_level_permissions.block_public_access.ignore_public_acls #=> Boolean
+    #   resp.findings[0].resource.s3_bucket_details[0].public_access.permission_configuration.account_level_permissions.block_public_access.restrict_public_buckets #=> Boolean
+    #   resp.findings[0].resource.s3_bucket_details[0].public_access.permission_configuration.account_level_permissions.block_public_access.block_public_acls #=> Boolean
+    #   resp.findings[0].resource.s3_bucket_details[0].public_access.permission_configuration.account_level_permissions.block_public_access.block_public_policy #=> Boolean
+    #   resp.findings[0].resource.s3_bucket_details[0].public_access.effective_permission #=> String
+    #   resp.findings[0].resource.instance_details.availability_zone #=> String
+    #   resp.findings[0].resource.instance_details.iam_instance_profile.arn #=> String
+    #   resp.findings[0].resource.instance_details.iam_instance_profile.id #=> String
+    #   resp.findings[0].resource.instance_details.image_description #=> String
+    #   resp.findings[0].resource.instance_details.image_id #=> String
+    #   resp.findings[0].resource.instance_details.instance_id #=> String
+    #   resp.findings[0].resource.instance_details.instance_state #=> String
+    #   resp.findings[0].resource.instance_details.instance_type #=> String
+    #   resp.findings[0].resource.instance_details.outpost_arn #=> String
+    #   resp.findings[0].resource.instance_details.launch_time #=> String
+    #   resp.findings[0].resource.instance_details.network_interfaces #=> Array
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].ipv_6_addresses #=> Array
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].ipv_6_addresses[0] #=> String
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].network_interface_id #=> String
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].private_dns_name #=> String
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].private_ip_address #=> String
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].private_ip_addresses #=> Array
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].private_ip_addresses[0].private_dns_name #=> String
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].private_ip_addresses[0].private_ip_address #=> String
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].public_dns_name #=> String
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].public_ip #=> String
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].security_groups #=> Array
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].security_groups[0].group_id #=> String
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].security_groups[0].group_name #=> String
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].subnet_id #=> String
+    #   resp.findings[0].resource.instance_details.network_interfaces[0].vpc_id #=> String
+    #   resp.findings[0].resource.instance_details.platform #=> String
+    #   resp.findings[0].resource.instance_details.product_codes #=> Array
+    #   resp.findings[0].resource.instance_details.product_codes[0].code #=> String
+    #   resp.findings[0].resource.instance_details.product_codes[0].product_type #=> String
+    #   resp.findings[0].resource.instance_details.tags #=> Array
+    #   resp.findings[0].resource.instance_details.tags[0].key #=> String
+    #   resp.findings[0].resource.instance_details.tags[0].value #=> String
+    #   resp.findings[0].resource.eks_cluster_details.name #=> String
+    #   resp.findings[0].resource.eks_cluster_details.arn #=> String
+    #   resp.findings[0].resource.eks_cluster_details.vpc_id #=> String
+    #   resp.findings[0].resource.eks_cluster_details.status #=> String
+    #   resp.findings[0].resource.eks_cluster_details.tags #=> Array
+    #   resp.findings[0].resource.eks_cluster_details.tags[0].key #=> String
+    #   resp.findings[0].resource.eks_cluster_details.tags[0].value #=> String
+    #   resp.findings[0].resource.eks_cluster_details.created_at #=> Time
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_user_details.username #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_user_details.uid #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_user_details.groups #=> Array
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_user_details.groups[0] #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_user_details.session_name #=> Array
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_user_details.session_name[0] #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.name #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.type #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.uid #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.namespace #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.host_network #=> Boolean
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.containers #=> Array
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.containers[0].container_runtime #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.containers[0].id #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.containers[0].name #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.containers[0].image #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.containers[0].image_prefix #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.containers[0].volume_mounts #=> Array
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.containers[0].volume_mounts[0].name #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.containers[0].volume_mounts[0].mount_path #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.containers[0].security_context.privileged #=> Boolean
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.volumes #=> Array
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.volumes[0].name #=> String
+    #   resp.findings[0].resource.kubernetes_details.kubernetes_workload_details.volumes[0].host_path.path #=> String
+    #   resp.findings[0].resource.resource_type #=> String
+    #   resp.findings[0].resource.ebs_volume_details.scanned_volume_details #=> Array
+    #   resp.findings[0].resource.ebs_volume_details.scanned_volume_details[0].volume_arn #=> String
+    #   resp.findings[0].resource.ebs_volume_details.scanned_volume_details[0].volume_type #=> String
+    #   resp.findings[0].resource.ebs_volume_details.scanned_volume_details[0].device_name #=> String
+    #   resp.findings[0].resource.ebs_volume_details.scanned_volume_details[0].volume_size_in_gb #=> Integer
+    #   resp.findings[0].resource.ebs_volume_details.scanned_volume_details[0].encryption_type #=> String
+    #   resp.findings[0].resource.ebs_volume_details.scanned_volume_details[0].snapshot_arn #=> String
+    #   resp.findings[0].resource.ebs_volume_details.scanned_volume_details[0].kms_key_arn #=> String
+    #   resp.findings[0].resource.ebs_volume_details.skipped_volume_details #=> Array
+    #   resp.findings[0].resource.ebs_volume_details.skipped_volume_details[0].volume_arn #=> String
+    #   resp.findings[0].resource.ebs_volume_details.skipped_volume_details[0].volume_type #=> String
+    #   resp.findings[0].resource.ebs_volume_details.skipped_volume_details[0].device_name #=> String
+    #   resp.findings[0].resource.ebs_volume_details.skipped_volume_details[0].volume_size_in_gb #=> Integer
+    #   resp.findings[0].resource.ebs_volume_details.skipped_volume_details[0].encryption_type #=> String
+    #   resp.findings[0].resource.ebs_volume_details.skipped_volume_details[0].snapshot_arn #=> String
+    #   resp.findings[0].resource.ebs_volume_details.skipped_volume_details[0].kms_key_arn #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.name #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.arn #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.status #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.active_services_count #=> Integer
+    #   resp.findings[0].resource.ecs_cluster_details.registered_container_instances_count #=> Integer
+    #   resp.findings[0].resource.ecs_cluster_details.running_tasks_count #=> Integer
+    #   resp.findings[0].resource.ecs_cluster_details.tags #=> Array
+    #   resp.findings[0].resource.ecs_cluster_details.tags[0].key #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.tags[0].value #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.arn #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.definition_arn #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.version #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.task_created_at #=> Time
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.started_at #=> Time
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.started_by #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.tags #=> Array
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.tags[0].key #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.tags[0].value #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.volumes #=> Array
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.volumes[0].name #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.volumes[0].host_path.path #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.containers #=> Array
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.containers[0].container_runtime #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.containers[0].id #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.containers[0].name #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.containers[0].image #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.containers[0].image_prefix #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.containers[0].volume_mounts #=> Array
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.containers[0].volume_mounts[0].name #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.containers[0].volume_mounts[0].mount_path #=> String
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.containers[0].security_context.privileged #=> Boolean
+    #   resp.findings[0].resource.ecs_cluster_details.task_details.group #=> String
+    #   resp.findings[0].resource.container_details.container_runtime #=> String
+    #   resp.findings[0].resource.container_details.id #=> String
+    #   resp.findings[0].resource.container_details.name #=> String
+    #   resp.findings[0].resource.container_details.image #=> String
+    #   resp.findings[0].resource.container_details.image_prefix #=> String
+    #   resp.findings[0].resource.container_details.volume_mounts #=> Array
+    #   resp.findings[0].resource.container_details.volume_mounts[0].name #=> String
+    #   resp.findings[0].resource.container_details.volume_mounts[0].mount_path #=> String
+    #   resp.findings[0].resource.container_details.security_context.privileged #=> Boolean
+    #   resp.findings[0].resource.rds_db_instance_details.db_instance_identifier #=> String
+    #   resp.findings[0].resource.rds_db_instance_details.engine #=> String
+    #   resp.findings[0].resource.rds_db_instance_details.engine_version #=> String
+    #   resp.findings[0].resource.rds_db_instance_details.db_cluster_identifier #=> String
+    #   resp.findings[0].resource.rds_db_instance_details.db_instance_arn #=> String
+    #   resp.findings[0].resource.rds_db_instance_details.tags #=> Array
+    #   resp.findings[0].resource.rds_db_instance_details.tags[0].key #=> String
+    #   resp.findings[0].resource.rds_db_instance_details.tags[0].value #=> String
+    #   resp.findings[0].resource.rds_db_user_details.user #=> String
+    #   resp.findings[0].resource.rds_db_user_details.application #=> String
+    #   resp.findings[0].resource.rds_db_user_details.database #=> String
+    #   resp.findings[0].resource.rds_db_user_details.ssl #=> String
+    #   resp.findings[0].resource.rds_db_user_details.auth_method #=> String
+    #   resp.findings[0].resource.lambda_details.function_arn #=> String
+    #   resp.findings[0].resource.lambda_details.function_name #=> String
+    #   resp.findings[0].resource.lambda_details.description #=> String
+    #   resp.findings[0].resource.lambda_details.last_modified_at #=> Time
+    #   resp.findings[0].resource.lambda_details.revision_id #=> String
+    #   resp.findings[0].resource.lambda_details.function_version #=> String
+    #   resp.findings[0].resource.lambda_details.role #=> String
+    #   resp.findings[0].resource.lambda_details.vpc_config.subnet_ids #=> Array
+    #   resp.findings[0].resource.lambda_details.vpc_config.subnet_ids[0] #=> String
+    #   resp.findings[0].resource.lambda_details.vpc_config.vpc_id #=> String
+    #   resp.findings[0].resource.lambda_details.vpc_config.security_groups #=> Array
+    #   resp.findings[0].resource.lambda_details.vpc_config.security_groups[0].group_id #=> String
+    #   resp.findings[0].resource.lambda_details.vpc_config.security_groups[0].group_name #=> String
+    #   resp.findings[0].resource.lambda_details.tags #=> Array
+    #   resp.findings[0].resource.lambda_details.tags[0].key #=> String
+    #   resp.findings[0].resource.lambda_details.tags[0].value #=> String
+    #   resp.findings[0].schema_version #=> String
+    #   resp.findings[0].service.action.action_type #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.api #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.caller_type #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.domain_details.domain #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.error_code #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.user_agent #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.remote_ip_details.city.city_name #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.remote_ip_details.country.country_code #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.remote_ip_details.country.country_name #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.remote_ip_details.geo_location.lat #=> Float
+    #   resp.findings[0].service.action.aws_api_call_action.remote_ip_details.geo_location.lon #=> Float
+    #   resp.findings[0].service.action.aws_api_call_action.remote_ip_details.ip_address_v4 #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.remote_ip_details.organization.asn #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.remote_ip_details.organization.asn_org #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.remote_ip_details.organization.isp #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.remote_ip_details.organization.org #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.service_name #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.remote_account_details.account_id #=> String
+    #   resp.findings[0].service.action.aws_api_call_action.remote_account_details.affiliated #=> Boolean
+    #   resp.findings[0].service.action.aws_api_call_action.affected_resources #=> Hash
+    #   resp.findings[0].service.action.aws_api_call_action.affected_resources["String"] #=> String
+    #   resp.findings[0].service.action.dns_request_action.domain #=> String
+    #   resp.findings[0].service.action.dns_request_action.protocol #=> String
+    #   resp.findings[0].service.action.dns_request_action.blocked #=> Boolean
+    #   resp.findings[0].service.action.network_connection_action.blocked #=> Boolean
+    #   resp.findings[0].service.action.network_connection_action.connection_direction #=> String
+    #   resp.findings[0].service.action.network_connection_action.local_port_details.port #=> Integer
+    #   resp.findings[0].service.action.network_connection_action.local_port_details.port_name #=> String
+    #   resp.findings[0].service.action.network_connection_action.protocol #=> String
+    #   resp.findings[0].service.action.network_connection_action.local_ip_details.ip_address_v4 #=> String
+    #   resp.findings[0].service.action.network_connection_action.remote_ip_details.city.city_name #=> String
+    #   resp.findings[0].service.action.network_connection_action.remote_ip_details.country.country_code #=> String
+    #   resp.findings[0].service.action.network_connection_action.remote_ip_details.country.country_name #=> String
+    #   resp.findings[0].service.action.network_connection_action.remote_ip_details.geo_location.lat #=> Float
+    #   resp.findings[0].service.action.network_connection_action.remote_ip_details.geo_location.lon #=> Float
+    #   resp.findings[0].service.action.network_connection_action.remote_ip_details.ip_address_v4 #=> String
+    #   resp.findings[0].service.action.network_connection_action.remote_ip_details.organization.asn #=> String
+    #   resp.findings[0].service.action.network_connection_action.remote_ip_details.organization.asn_org #=> String
+    #   resp.findings[0].service.action.network_connection_action.remote_ip_details.organization.isp #=> String
+    #   resp.findings[0].service.action.network_connection_action.remote_ip_details.organization.org #=> String
+    #   resp.findings[0].service.action.network_connection_action.remote_port_details.port #=> Integer
+    #   resp.findings[0].service.action.network_connection_action.remote_port_details.port_name #=> String
+    #   resp.findings[0].service.action.port_probe_action.blocked #=> Boolean
+    #   resp.findings[0].service.action.port_probe_action.port_probe_details #=> Array
+    #   resp.findings[0].service.action.port_probe_action.port_probe_details[0].local_port_details.port #=> Integer
+    #   resp.findings[0].service.action.port_probe_action.port_probe_details[0].local_port_details.port_name #=> String
+    #   resp.findings[0].service.action.port_probe_action.port_probe_details[0].local_ip_details.ip_address_v4 #=> String
+    #   resp.findings[0].service.action.port_probe_action.port_probe_details[0].remote_ip_details.city.city_name #=> String
+    #   resp.findings[0].service.action.port_probe_action.port_probe_details[0].remote_ip_details.country.country_code #=> String
+    #   resp.findings[0].service.action.port_probe_action.port_probe_details[0].remote_ip_details.country.country_name #=> String
+    #   resp.findings[0].service.action.port_probe_action.port_probe_details[0].remote_ip_details.geo_location.lat #=> Float
+    #   resp.findings[0].service.action.port_probe_action.port_probe_details[0].remote_ip_details.geo_location.lon #=> Float
+    #   resp.findings[0].service.action.port_probe_action.port_probe_details[0].remote_ip_details.ip_address_v4 #=> String
+    #   resp.findings[0].service.action.port_probe_action.port_probe_details[0].remote_ip_details.organization.asn #=> String
+    #   resp.findings[0].service.action.port_probe_action.port_probe_details[0].remote_ip_details.organization.asn_org #=> String
+    #   resp.findings[0].service.action.port_probe_action.port_probe_details[0].remote_ip_details.organization.isp #=> String
+    #   resp.findings[0].service.action.port_probe_action.port_probe_details[0].remote_ip_details.organization.org #=> String
+    #   resp.findings[0].service.action.kubernetes_api_call_action.request_uri #=> String
+    #   resp.findings[0].service.action.kubernetes_api_call_action.verb #=> String
+    #   resp.findings[0].service.action.kubernetes_api_call_action.source_ips #=> Array
+    #   resp.findings[0].service.action.kubernetes_api_call_action.source_ips[0] #=> String
+    #   resp.findings[0].service.action.kubernetes_api_call_action.user_agent #=> String
+    #   resp.findings[0].service.action.kubernetes_api_call_action.remote_ip_details.city.city_name #=> String
+    #   resp.findings[0].service.action.kubernetes_api_call_action.remote_ip_details.country.country_code #=> String
+    #   resp.findings[0].service.action.kubernetes_api_call_action.remote_ip_details.country.country_name #=> String
+    #   resp.findings[0].service.action.kubernetes_api_call_action.remote_ip_details.geo_location.lat #=> Float
+    #   resp.findings[0].service.action.kubernetes_api_call_action.remote_ip_details.geo_location.lon #=> Float
+    #   resp.findings[0].service.action.kubernetes_api_call_action.remote_ip_details.ip_address_v4 #=> String
+    #   resp.findings[0].service.action.kubernetes_api_call_action.remote_ip_details.organization.asn #=> String
+    #   resp.findings[0].service.action.kubernetes_api_call_action.remote_ip_details.organization.asn_org #=> String
+    #   resp.findings[0].service.action.kubernetes_api_call_action.remote_ip_details.organization.isp #=> String
+    #   resp.findings[0].service.action.kubernetes_api_call_action.remote_ip_details.organization.org #=> String
+    #   resp.findings[0].service.action.kubernetes_api_call_action.status_code #=> Integer
+    #   resp.findings[0].service.action.kubernetes_api_call_action.parameters #=> String
+    #   resp.findings[0].service.action.rds_login_attempt_action.remote_ip_details.city.city_name #=> String
+    #   resp.findings[0].service.action.rds_login_attempt_action.remote_ip_details.country.country_code #=> String
+    #   resp.findings[0].service.action.rds_login_attempt_action.remote_ip_details.country.country_name #=> String
+    #   resp.findings[0].service.action.rds_login_attempt_action.remote_ip_details.geo_location.lat #=> Float
+    #   resp.findings[0].service.action.rds_login_attempt_action.remote_ip_details.geo_location.lon #=> Float
+    #   resp.findings[0].service.action.rds_login_attempt_action.remote_ip_details.ip_address_v4 #=> String
+    #   resp.findings[0].service.action.rds_login_attempt_action.remote_ip_details.organization.asn #=> String
+    #   resp.findings[0].service.action.rds_login_attempt_action.remote_ip_details.organization.asn_org #=> String
+    #   resp.findings[0].service.action.rds_login_attempt_action.remote_ip_details.organization.isp #=> String
+    #   resp.findings[0].service.action.rds_login_attempt_action.remote_ip_details.organization.org #=> String
+    #   resp.findings[0].service.action.rds_login_attempt_action.login_attributes #=> Array
+    #   resp.findings[0].service.action.rds_login_attempt_action.login_attributes[0].user #=> String
+    #   resp.findings[0].service.action.rds_login_attempt_action.login_attributes[0].application #=> String
+    #   resp.findings[0].service.action.rds_login_attempt_action.login_attributes[0].failed_login_attempts #=> Integer
+    #   resp.findings[0].service.action.rds_login_attempt_action.login_attributes[0].successful_login_attempts #=> Integer
+    #   resp.findings[0].service.evidence.threat_intelligence_details #=> Array
+    #   resp.findings[0].service.evidence.threat_intelligence_details[0].threat_list_name #=> String
+    #   resp.findings[0].service.evidence.threat_intelligence_details[0].threat_names #=> Array
+    #   resp.findings[0].service.evidence.threat_intelligence_details[0].threat_names[0] #=> String
+    #   resp.findings[0].service.archived #=> Boolean
+    #   resp.findings[0].service.count #=> Integer
+    #   resp.findings[0].service.detector_id #=> String
+    #   resp.findings[0].service.event_first_seen #=> String
+    #   resp.findings[0].service.event_last_seen #=> String
+    #   resp.findings[0].service.resource_role #=> String
+    #   resp.findings[0].service.service_name #=> String
+    #   resp.findings[0].service.user_feedback #=> String
+    #   resp.findings[0].service.additional_info.value #=> String
+    #   resp.findings[0].service.additional_info.type #=> String
+    #   resp.findings[0].service.feature_name #=> String
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_id #=> String
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_started_at #=> Time
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_completed_at #=> Time
+    #   resp.findings[0].service.ebs_volume_scan_details.trigger_finding_id #=> String
+    #   resp.findings[0].service.ebs_volume_scan_details.sources #=> Array
+    #   resp.findings[0].service.ebs_volume_scan_details.sources[0] #=> String
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.scanned_item_count.total_gb #=> Integer
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.scanned_item_count.files #=> Integer
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.scanned_item_count.volumes #=> Integer
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.threats_detected_item_count.files #=> Integer
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.highest_severity_threat_details.severity #=> String
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.highest_severity_threat_details.threat_name #=> String
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.highest_severity_threat_details.count #=> Integer
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.threat_detected_by_name.item_count #=> Integer
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.threat_detected_by_name.unique_threat_name_count #=> Integer
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.threat_detected_by_name.shortened #=> Boolean
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.threat_detected_by_name.threat_names #=> Array
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.threat_detected_by_name.threat_names[0].name #=> String
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.threat_detected_by_name.threat_names[0].severity #=> String
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.threat_detected_by_name.threat_names[0].item_count #=> Integer
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.threat_detected_by_name.threat_names[0].file_paths #=> Array
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.threat_detected_by_name.threat_names[0].file_paths[0].file_path #=> String
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.threat_detected_by_name.threat_names[0].file_paths[0].volume_arn #=> String
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.threat_detected_by_name.threat_names[0].file_paths[0].hash #=> String
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_detections.threat_detected_by_name.threat_names[0].file_paths[0].file_name #=> String
+    #   resp.findings[0].service.ebs_volume_scan_details.scan_type #=> String, one of "GUARDDUTY_INITIATED", "ON_DEMAND"
+    #   resp.findings[0].service.runtime_details.process.name #=> String
+    #   resp.findings[0].service.runtime_details.process.executable_path #=> String
+    #   resp.findings[0].service.runtime_details.process.executable_sha_256 #=> String
+    #   resp.findings[0].service.runtime_details.process.namespace_pid #=> Integer
+    #   resp.findings[0].service.runtime_details.process.pwd #=> String
+    #   resp.findings[0].service.runtime_details.process.pid #=> Integer
+    #   resp.findings[0].service.runtime_details.process.start_time #=> Time
+    #   resp.findings[0].service.runtime_details.process.uuid #=> String
+    #   resp.findings[0].service.runtime_details.process.parent_uuid #=> String
+    #   resp.findings[0].service.runtime_details.process.user #=> String
+    #   resp.findings[0].service.runtime_details.process.user_id #=> Integer
+    #   resp.findings[0].service.runtime_details.process.euid #=> Integer
+    #   resp.findings[0].service.runtime_details.process.lineage #=> Array
+    #   resp.findings[0].service.runtime_details.process.lineage[0].start_time #=> Time
+    #   resp.findings[0].service.runtime_details.process.lineage[0].namespace_pid #=> Integer
+    #   resp.findings[0].service.runtime_details.process.lineage[0].user_id #=> Integer
+    #   resp.findings[0].service.runtime_details.process.lineage[0].name #=> String
+    #   resp.findings[0].service.runtime_details.process.lineage[0].pid #=> Integer
+    #   resp.findings[0].service.runtime_details.process.lineage[0].uuid #=> String
+    #   resp.findings[0].service.runtime_details.process.lineage[0].executable_path #=> String
+    #   resp.findings[0].service.runtime_details.process.lineage[0].euid #=> Integer
+    #   resp.findings[0].service.runtime_details.process.lineage[0].parent_uuid #=> String
+    #   resp.findings[0].service.runtime_details.context.modifying_process.name #=> String
+    #   resp.findings[0].service.runtime_details.context.modifying_process.executable_path #=> String
+    #   resp.findings[0].service.runtime_details.context.modifying_process.executable_sha_256 #=> String
+    #   resp.findings[0].service.runtime_details.context.modifying_process.namespace_pid #=> Integer
+    #   resp.findings[0].service.runtime_details.context.modifying_process.pwd #=> String
+    #   resp.findings[0].service.runtime_details.context.modifying_process.pid #=> Integer
+    #   resp.findings[0].service.runtime_details.context.modifying_process.start_time #=> Time
+    #   resp.findings[0].service.runtime_details.context.modifying_process.uuid #=> String
+    #   resp.findings[0].service.runtime_details.context.modifying_process.parent_uuid #=> String
+    #   resp.findings[0].service.runtime_details.context.modifying_process.user #=> String
+    #   resp.findings[0].service.runtime_details.context.modifying_process.user_id #=> Integer
+    #   resp.findings[0].service.runtime_details.context.modifying_process.euid #=> Integer
+    #   resp.findings[0].service.runtime_details.context.modifying_process.lineage #=> Array
+    #   resp.findings[0].service.runtime_details.context.modifying_process.lineage[0].start_time #=> Time
+    #   resp.findings[0].service.runtime_details.context.modifying_process.lineage[0].namespace_pid #=> Integer
+    #   resp.findings[0].service.runtime_details.context.modifying_process.lineage[0].user_id #=> Integer
+    #   resp.findings[0].service.runtime_details.context.modifying_process.lineage[0].name #=> String
+    #   resp.findings[0].service.runtime_details.context.modifying_process.lineage[0].pid #=> Integer
+    #   resp.findings[0].service.runtime_details.context.modifying_process.lineage[0].uuid #=> String
+    #   resp.findings[0].service.runtime_details.context.modifying_process.lineage[0].executable_path #=> String
+    #   resp.findings[0].service.runtime_details.context.modifying_process.lineage[0].euid #=> Integer
+    #   resp.findings[0].service.runtime_details.context.modifying_process.lineage[0].parent_uuid #=> String
+    #   resp.findings[0].service.runtime_details.context.modified_at #=> Time
+    #   resp.findings[0].service.runtime_details.context.script_path #=> String
+    #   resp.findings[0].service.runtime_details.context.library_path #=> String
+    #   resp.findings[0].service.runtime_details.context.ld_preload_value #=> String
+    #   resp.findings[0].service.runtime_details.context.socket_path #=> String
+    #   resp.findings[0].service.runtime_details.context.runc_binary_path #=> String
+    #   resp.findings[0].service.runtime_details.context.release_agent_path #=> String
+    #   resp.findings[0].service.runtime_details.context.mount_source #=> String
+    #   resp.findings[0].service.runtime_details.context.mount_target #=> String
+    #   resp.findings[0].service.runtime_details.context.file_system_type #=> String
+    #   resp.findings[0].service.runtime_details.context.flags #=> Array
+    #   resp.findings[0].service.runtime_details.context.flags[0] #=> String
+    #   resp.findings[0].service.runtime_details.context.module_name #=> String
+    #   resp.findings[0].service.runtime_details.context.module_file_path #=> String
+    #   resp.findings[0].service.runtime_details.context.module_sha_256 #=> String
+    #   resp.findings[0].service.runtime_details.context.shell_history_file_path #=> String
+    #   resp.findings[0].service.runtime_details.context.target_process.name #=> String
+    #   resp.findings[0].service.runtime_details.context.target_process.executable_path #=> String
+    #   resp.findings[0].service.runtime_details.context.target_process.executable_sha_256 #=> String
+    #   resp.findings[0].service.runtime_details.context.target_process.namespace_pid #=> Integer
+    #   resp.findings[0].service.runtime_details.context.target_process.pwd #=> String
+    #   resp.findings[0].service.runtime_details.context.target_process.pid #=> Integer
+    #   resp.findings[0].service.runtime_details.context.target_process.start_time #=> Time
+    #   resp.findings[0].service.runtime_details.context.target_process.uuid #=> String
+    #   resp.findings[0].service.runtime_details.context.target_process.parent_uuid #=> String
+    #   resp.findings[0].service.runtime_details.context.target_process.user #=> String
+    #   resp.findings[0].service.runtime_details.context.target_process.user_id #=> Integer
+    #   resp.findings[0].service.runtime_details.context.target_process.euid #=> Integer
+    #   resp.findings[0].service.runtime_details.context.target_process.lineage #=> Array
+    #   resp.findings[0].service.runtime_details.context.target_process.lineage[0].start_time #=> Time
+    #   resp.findings[0].service.runtime_details.context.target_process.lineage[0].namespace_pid #=> Integer
+    #   resp.findings[0].service.runtime_details.context.target_process.lineage[0].user_id #=> Integer
+    #   resp.findings[0].service.runtime_details.context.target_process.lineage[0].name #=> String
+    #   resp.findings[0].service.runtime_details.context.target_process.lineage[0].pid #=> Integer
+    #   resp.findings[0].service.runtime_details.context.target_process.lineage[0].uuid #=> String
+    #   resp.findings[0].service.runtime_details.context.target_process.lineage[0].executable_path #=> String
+    #   resp.findings[0].service.runtime_details.context.target_process.lineage[0].euid #=> Integer
+    #   resp.findings[0].service.runtime_details.context.target_process.lineage[0].parent_uuid #=> String
+    #   resp.findings[0].service.runtime_details.context.address_family #=> String
+    #   resp.findings[0].service.runtime_details.context.iana_protocol_number #=> Integer
+    #   resp.findings[0].service.runtime_details.context.memory_regions #=> Array
+    #   resp.findings[0].service.runtime_details.context.memory_regions[0] #=> String
+    #   resp.findings[0].severity #=> Float
+    #   resp.findings[0].title #=> String
+    #   resp.findings[0].type #=> String
+    #   resp.findings[0].updated_at #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetFindings AWS API Documentation
+    #
+    # @overload get_findings(params = {})
+    # @param [Hash] params ({})
+    def get_findings(params = {}, options = {})
+      req = build_request(:get_findings, params)
+      req.send_request(options)
+    end
+
+    # Lists Amazon GuardDuty findings statistics for the specified detector
+    # ID.
+    #
+    # @option params [required, String] :detector_id
+    #   The ID of the detector that specifies the GuardDuty service whose
+    #   findings' statistics you want to retrieve.
+    #
+    # @option params [required, Array<String>] :finding_statistic_types
+    #   The types of finding statistics to retrieve.
+    #
+    # @option params [Types::FindingCriteria] :finding_criteria
+    #   Represents the criteria that is used for querying findings.
+    #
+    # @return [Types::GetFindingsStatisticsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetFindingsStatisticsResponse#finding_statistics #finding_statistics} => Types::FindingStatistics
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.get_findings_statistics({
+    #     detector_id: "DetectorId", # required
+    #     finding_statistic_types: ["COUNT_BY_SEVERITY"], # required, accepts COUNT_BY_SEVERITY
+    #     finding_criteria: {
+    #       criterion: {
+    #         "String" => {
+    #           eq: ["String"],
+    #           neq: ["String"],
+    #           gt: 1,
+    #           gte: 1,
+    #           lt: 1,
+    #           lte: 1,
+    #           equals: ["String"],
+    #           not_equals: ["String"],
+    #           greater_than: 1,
+    #           greater_than_or_equal: 1,
+    #           less_than: 1,
+    #           less_than_or_equal: 1,
+    #         },
+    #       },
+    #     },
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.finding_statistics.count_by_severity #=> Hash
+    #   resp.finding_statistics.count_by_severity["String"] #=> Integer
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetFindingsStatistics AWS API Documentation
+    #
+    # @overload get_findings_statistics(params = {})
+    # @param [Hash] params ({})
+    def get_findings_statistics(params = {}, options = {})
+      req = build_request(:get_findings_statistics, params)
+      req.send_request(options)
+    end
+
+    # Retrieves the IPSet specified by the `ipSetId`.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector that the IPSet is associated with.
+    #
+    # @option params [required, String] :ip_set_id
+    #   The unique ID of the IPSet to retrieve.
+    #
+    # @return [Types::GetIPSetResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetIPSetResponse#name #name} => String
+    #   * {Types::GetIPSetResponse#format #format} => String
+    #   * {Types::GetIPSetResponse#location #location} => String
+    #   * {Types::GetIPSetResponse#status #status} => String
+    #   * {Types::GetIPSetResponse#tags #tags} => Hash&lt;String,String&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.get_ip_set({
+    #     detector_id: "DetectorId", # required
+    #     ip_set_id: "String", # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.name #=> String
+    #   resp.format #=> String, one of "TXT", "STIX", "OTX_CSV", "ALIEN_VAULT", "PROOF_POINT", "FIRE_EYE"
+    #   resp.location #=> String
+    #   resp.status #=> String, one of "INACTIVE", "ACTIVATING", "ACTIVE", "DEACTIVATING", "ERROR", "DELETE_PENDING", "DELETED"
+    #   resp.tags #=> Hash
+    #   resp.tags["TagKey"] #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetIPSet AWS API Documentation
+    #
+    # @overload get_ip_set(params = {})
+    # @param [Hash] params ({})
+    def get_ip_set(params = {}, options = {})
+      req = build_request(:get_ip_set, params)
+      req.send_request(options)
+    end
+
+    # Returns the count of all GuardDuty membership invitations that were
+    # sent to the current member account except the currently accepted
+    # invitation.
+    #
+    # @return [Types::GetInvitationsCountResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetInvitationsCountResponse#invitations_count #invitations_count} => Integer
+    #
+    # @example Response structure
+    #
+    #   resp.invitations_count #=> Integer
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetInvitationsCount AWS API Documentation
+    #
+    # @overload get_invitations_count(params = {})
+    # @param [Hash] params ({})
+    def get_invitations_count(params = {}, options = {})
+      req = build_request(:get_invitations_count, params)
+      req.send_request(options)
+    end
+
+    # Returns the details of the malware scan settings.
+    #
+    # There might be regional differences because some data sources might
+    # not be available in all the Amazon Web Services Regions where
+    # GuardDuty is presently supported. For more information, see [Regions
+    # and endpoints][1].
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector that the scan setting is associated
+    #   with.
+    #
+    # @return [Types::GetMalwareScanSettingsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetMalwareScanSettingsResponse#scan_resource_criteria #scan_resource_criteria} => Types::ScanResourceCriteria
+    #   * {Types::GetMalwareScanSettingsResponse#ebs_snapshot_preservation #ebs_snapshot_preservation} => String
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.get_malware_scan_settings({
+    #     detector_id: "DetectorId", # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.scan_resource_criteria.include #=> Hash
+    #   resp.scan_resource_criteria.include["ScanCriterionKey"].map_equals #=> Array
+    #   resp.scan_resource_criteria.include["ScanCriterionKey"].map_equals[0].key #=> String
+    #   resp.scan_resource_criteria.include["ScanCriterionKey"].map_equals[0].value #=> String
+    #   resp.scan_resource_criteria.exclude #=> Hash
+    #   resp.scan_resource_criteria.exclude["ScanCriterionKey"].map_equals #=> Array
+    #   resp.scan_resource_criteria.exclude["ScanCriterionKey"].map_equals[0].key #=> String
+    #   resp.scan_resource_criteria.exclude["ScanCriterionKey"].map_equals[0].value #=> String
+    #   resp.ebs_snapshot_preservation #=> String, one of "NO_RETENTION", "RETENTION_WITH_FINDING"
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetMalwareScanSettings AWS API Documentation
+    #
+    # @overload get_malware_scan_settings(params = {})
+    # @param [Hash] params ({})
+    def get_malware_scan_settings(params = {}, options = {})
+      req = build_request(:get_malware_scan_settings, params)
+      req.send_request(options)
+    end
+
+    # Provides the details for the GuardDuty administrator account
+    # associated with the current GuardDuty member account.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty member account.
+    #
+    # @return [Types::GetMasterAccountResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetMasterAccountResponse#master #master} => Types::Master
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.get_master_account({
+    #     detector_id: "DetectorId", # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.master.account_id #=> String
+    #   resp.master.invitation_id #=> String
+    #   resp.master.relationship_status #=> String
+    #   resp.master.invited_at #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetMasterAccount AWS API Documentation
+    #
+    # @overload get_master_account(params = {})
+    # @param [Hash] params ({})
+    def get_master_account(params = {}, options = {})
+      req = build_request(:get_master_account, params)
+      req.send_request(options)
+    end
+
+    # Describes which data sources are enabled for the member account's
+    # detector.
+    #
+    # There might be regional differences because some data sources might
+    # not be available in all the Amazon Web Services Regions where
+    # GuardDuty is presently supported. For more information, see [Regions
+    # and endpoints][1].
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html
+    #
+    # @option params [required, String] :detector_id
+    #   The detector ID for the administrator account.
+    #
+    # @option params [required, Array<String>] :account_ids
+    #   The account ID of the member account.
+    #
+    # @return [Types::GetMemberDetectorsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetMemberDetectorsResponse#member_data_source_configurations #member_data_source_configurations} => Array&lt;Types::MemberDataSourceConfiguration&gt;
+    #   * {Types::GetMemberDetectorsResponse#unprocessed_accounts #unprocessed_accounts} => Array&lt;Types::UnprocessedAccount&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.get_member_detectors({
+    #     detector_id: "DetectorId", # required
+    #     account_ids: ["AccountId"], # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.member_data_source_configurations #=> Array
+    #   resp.member_data_source_configurations[0].account_id #=> String
+    #   resp.member_data_source_configurations[0].data_sources.cloud_trail.status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.member_data_source_configurations[0].data_sources.dns_logs.status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.member_data_source_configurations[0].data_sources.flow_logs.status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.member_data_source_configurations[0].data_sources.s3_logs.status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.member_data_source_configurations[0].data_sources.kubernetes.audit_logs.status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.member_data_source_configurations[0].data_sources.malware_protection.scan_ec2_instance_with_findings.ebs_volumes.status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.member_data_source_configurations[0].data_sources.malware_protection.scan_ec2_instance_with_findings.ebs_volumes.reason #=> String
+    #   resp.member_data_source_configurations[0].data_sources.malware_protection.service_role #=> String
+    #   resp.member_data_source_configurations[0].features #=> Array
+    #   resp.member_data_source_configurations[0].features[0].name #=> String, one of "S3_DATA_EVENTS", "EKS_AUDIT_LOGS", "EBS_MALWARE_PROTECTION", "RDS_LOGIN_EVENTS", "EKS_RUNTIME_MONITORING", "LAMBDA_NETWORK_LOGS"
+    #   resp.member_data_source_configurations[0].features[0].status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.member_data_source_configurations[0].features[0].updated_at #=> Time
+    #   resp.member_data_source_configurations[0].features[0].additional_configuration #=> Array
+    #   resp.member_data_source_configurations[0].features[0].additional_configuration[0].name #=> String, one of "EKS_ADDON_MANAGEMENT"
+    #   resp.member_data_source_configurations[0].features[0].additional_configuration[0].status #=> String, one of "ENABLED", "DISABLED"
+    #   resp.member_data_source_configurations[0].features[0].additional_configuration[0].updated_at #=> Time
+    #   resp.unprocessed_accounts #=> Array
+    #   resp.unprocessed_accounts[0].account_id #=> String
+    #   resp.unprocessed_accounts[0].result #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetMemberDetectors AWS API Documentation
+    #
+    # @overload get_member_detectors(params = {})
+    # @param [Hash] params ({})
+    def get_member_detectors(params = {}, options = {})
+      req = build_request(:get_member_detectors, params)
+      req.send_request(options)
+    end
+
+    # Retrieves GuardDuty member accounts (of the current GuardDuty
+    # administrator account) specified by the account IDs.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty account whose members
+    #   you want to retrieve.
+    #
+    # @option params [required, Array<String>] :account_ids
+    #   A list of account IDs of the GuardDuty member accounts that you want
+    #   to describe.
+    #
+    # @return [Types::GetMembersResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetMembersResponse#members #members} => Array&lt;Types::Member&gt;
+    #   * {Types::GetMembersResponse#unprocessed_accounts #unprocessed_accounts} => Array&lt;Types::UnprocessedAccount&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.get_members({
+    #     detector_id: "DetectorId", # required
+    #     account_ids: ["AccountId"], # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.members #=> Array
+    #   resp.members[0].account_id #=> String
+    #   resp.members[0].detector_id #=> String
+    #   resp.members[0].master_id #=> String
+    #   resp.members[0].email #=> String
+    #   resp.members[0].relationship_status #=> String
+    #   resp.members[0].invited_at #=> String
+    #   resp.members[0].updated_at #=> String
+    #   resp.members[0].administrator_id #=> String
+    #   resp.unprocessed_accounts #=> Array
+    #   resp.unprocessed_accounts[0].account_id #=> String
+    #   resp.unprocessed_accounts[0].result #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetMembers AWS API Documentation
+    #
+    # @overload get_members(params = {})
+    # @param [Hash] params ({})
+    def get_members(params = {}, options = {})
+      req = build_request(:get_members, params)
+      req.send_request(options)
+    end
+
+    # Provides the number of days left for each data source used in the free
+    # trial period.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty member account.
+    #
+    # @option params [Array<String>] :account_ids
+    #   A list of account identifiers of the GuardDuty member account.
+    #
+    # @return [Types::GetRemainingFreeTrialDaysResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetRemainingFreeTrialDaysResponse#accounts #accounts} => Array&lt;Types::AccountFreeTrialInfo&gt;
+    #   * {Types::GetRemainingFreeTrialDaysResponse#unprocessed_accounts #unprocessed_accounts} => Array&lt;Types::UnprocessedAccount&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.get_remaining_free_trial_days({
+    #     detector_id: "DetectorId", # required
+    #     account_ids: ["AccountId"],
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.accounts #=> Array
+    #   resp.accounts[0].account_id #=> String
+    #   resp.accounts[0].data_sources.cloud_trail.free_trial_days_remaining #=> Integer
+    #   resp.accounts[0].data_sources.dns_logs.free_trial_days_remaining #=> Integer
+    #   resp.accounts[0].data_sources.flow_logs.free_trial_days_remaining #=> Integer
+    #   resp.accounts[0].data_sources.s3_logs.free_trial_days_remaining #=> Integer
+    #   resp.accounts[0].data_sources.kubernetes.audit_logs.free_trial_days_remaining #=> Integer
+    #   resp.accounts[0].data_sources.malware_protection.scan_ec2_instance_with_findings.free_trial_days_remaining #=> Integer
+    #   resp.accounts[0].features #=> Array
+    #   resp.accounts[0].features[0].name #=> String, one of "FLOW_LOGS", "CLOUD_TRAIL", "DNS_LOGS", "S3_DATA_EVENTS", "EKS_AUDIT_LOGS", "EBS_MALWARE_PROTECTION", "RDS_LOGIN_EVENTS", "EKS_RUNTIME_MONITORING", "LAMBDA_NETWORK_LOGS"
+    #   resp.accounts[0].features[0].free_trial_days_remaining #=> Integer
+    #   resp.unprocessed_accounts #=> Array
+    #   resp.unprocessed_accounts[0].account_id #=> String
+    #   resp.unprocessed_accounts[0].result #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetRemainingFreeTrialDays AWS API Documentation
+    #
+    # @overload get_remaining_free_trial_days(params = {})
+    # @param [Hash] params ({})
+    def get_remaining_free_trial_days(params = {}, options = {})
+      req = build_request(:get_remaining_free_trial_days, params)
+      req.send_request(options)
+    end
+
+    # Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet
+    # ID.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector that the threatIntelSet is associated
+    #   with.
+    #
+    # @option params [required, String] :threat_intel_set_id
+    #   The unique ID of the threatIntelSet that you want to get.
+    #
+    # @return [Types::GetThreatIntelSetResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetThreatIntelSetResponse#name #name} => String
+    #   * {Types::GetThreatIntelSetResponse#format #format} => String
+    #   * {Types::GetThreatIntelSetResponse#location #location} => String
+    #   * {Types::GetThreatIntelSetResponse#status #status} => String
+    #   * {Types::GetThreatIntelSetResponse#tags #tags} => Hash&lt;String,String&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.get_threat_intel_set({
+    #     detector_id: "DetectorId", # required
+    #     threat_intel_set_id: "String", # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.name #=> String
+    #   resp.format #=> String, one of "TXT", "STIX", "OTX_CSV", "ALIEN_VAULT", "PROOF_POINT", "FIRE_EYE"
+    #   resp.location #=> String
+    #   resp.status #=> String, one of "INACTIVE", "ACTIVATING", "ACTIVE", "DEACTIVATING", "ERROR", "DELETE_PENDING", "DELETED"
+    #   resp.tags #=> Hash
+    #   resp.tags["TagKey"] #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetThreatIntelSet AWS API Documentation
+    #
+    # @overload get_threat_intel_set(params = {})
+    # @param [Hash] params ({})
+    def get_threat_intel_set(params = {}, options = {})
+      req = build_request(:get_threat_intel_set, params)
+      req.send_request(options)
+    end
+
+    # Lists Amazon GuardDuty usage statistics over the last 30 days for the
+    # specified detector ID. For newly enabled detectors or data sources,
+    # the cost returned will include only the usage so far under 30 days.
+    # This may differ from the cost metrics in the console, which project
+    # usage over 30 days to provide a monthly cost estimate. For more
+    # information, see [Understanding How Usage Costs are Calculated][1].
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations
+    #
+    # @option params [required, String] :detector_id
+    #   The ID of the detector that specifies the GuardDuty service whose
+    #   usage statistics you want to retrieve.
+    #
+    # @option params [required, String] :usage_statistic_type
+    #   The type of usage statistics to retrieve.
+    #
+    # @option params [required, Types::UsageCriteria] :usage_criteria
+    #   Represents the criteria used for querying usage.
+    #
+    # @option params [String] :unit
+    #   The currency unit you would like to view your usage statistics in.
+    #   Current valid values are USD.
+    #
+    # @option params [Integer] :max_results
+    #   The maximum number of results to return in the response.
+    #
+    # @option params [String] :next_token
+    #   A token to use for paginating results that are returned in the
+    #   response. Set the value of this parameter to null for the first
+    #   request to a list action. For subsequent calls, use the NextToken
+    #   value returned from the previous request to continue listing results
+    #   after the first page.
+    #
+    # @return [Types::GetUsageStatisticsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::GetUsageStatisticsResponse#usage_statistics #usage_statistics} => Types::UsageStatistics
+    #   * {Types::GetUsageStatisticsResponse#next_token #next_token} => String
+    #
+    # The returned {Seahorse::Client::Response response} is a pageable response and is Enumerable. For details on usage see {Aws::PageableResponse PageableResponse}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.get_usage_statistics({
+    #     detector_id: "DetectorId", # required
+    #     usage_statistic_type: "SUM_BY_ACCOUNT", # required, accepts SUM_BY_ACCOUNT, SUM_BY_DATA_SOURCE, SUM_BY_RESOURCE, TOP_RESOURCES, SUM_BY_FEATURES
+    #     usage_criteria: { # required
+    #       account_ids: ["AccountId"],
+    #       data_sources: ["FLOW_LOGS"], # accepts FLOW_LOGS, CLOUD_TRAIL, DNS_LOGS, S3_LOGS, KUBERNETES_AUDIT_LOGS, EC2_MALWARE_SCAN
+    #       resources: ["String"],
+    #       features: ["FLOW_LOGS"], # accepts FLOW_LOGS, CLOUD_TRAIL, DNS_LOGS, S3_DATA_EVENTS, EKS_AUDIT_LOGS, EBS_MALWARE_PROTECTION, RDS_LOGIN_EVENTS, LAMBDA_NETWORK_LOGS, EKS_RUNTIME_MONITORING
+    #     },
+    #     unit: "String",
+    #     max_results: 1,
+    #     next_token: "String",
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.usage_statistics.sum_by_account #=> Array
+    #   resp.usage_statistics.sum_by_account[0].account_id #=> String
+    #   resp.usage_statistics.sum_by_account[0].total.amount #=> String
+    #   resp.usage_statistics.sum_by_account[0].total.unit #=> String
+    #   resp.usage_statistics.sum_by_data_source #=> Array
+    #   resp.usage_statistics.sum_by_data_source[0].data_source #=> String, one of "FLOW_LOGS", "CLOUD_TRAIL", "DNS_LOGS", "S3_LOGS", "KUBERNETES_AUDIT_LOGS", "EC2_MALWARE_SCAN"
+    #   resp.usage_statistics.sum_by_data_source[0].total.amount #=> String
+    #   resp.usage_statistics.sum_by_data_source[0].total.unit #=> String
+    #   resp.usage_statistics.sum_by_resource #=> Array
+    #   resp.usage_statistics.sum_by_resource[0].resource #=> String
+    #   resp.usage_statistics.sum_by_resource[0].total.amount #=> String
+    #   resp.usage_statistics.sum_by_resource[0].total.unit #=> String
+    #   resp.usage_statistics.top_resources #=> Array
+    #   resp.usage_statistics.top_resources[0].resource #=> String
+    #   resp.usage_statistics.top_resources[0].total.amount #=> String
+    #   resp.usage_statistics.top_resources[0].total.unit #=> String
+    #   resp.usage_statistics.sum_by_feature #=> Array
+    #   resp.usage_statistics.sum_by_feature[0].feature #=> String, one of "FLOW_LOGS", "CLOUD_TRAIL", "DNS_LOGS", "S3_DATA_EVENTS", "EKS_AUDIT_LOGS", "EBS_MALWARE_PROTECTION", "RDS_LOGIN_EVENTS", "LAMBDA_NETWORK_LOGS", "EKS_RUNTIME_MONITORING"
+    #   resp.usage_statistics.sum_by_feature[0].total.amount #=> String
+    #   resp.usage_statistics.sum_by_feature[0].total.unit #=> String
+    #   resp.next_token #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetUsageStatistics AWS API Documentation
+    #
+    # @overload get_usage_statistics(params = {})
+    # @param [Hash] params ({})
+    def get_usage_statistics(params = {}, options = {})
+      req = build_request(:get_usage_statistics, params)
+      req.send_request(options)
+    end
+
+    # Invites Amazon Web Services accounts to become members of an
+    # organization administered by the Amazon Web Services account that
+    # invokes this API. If you are using Amazon Web Services Organizations
+    # to manager your GuardDuty environment, this step is not needed. For
+    # more information, see [Managing accounts with Amazon Web Services
+    # Organizations][1].
+    #
+    # To invite Amazon Web Services accounts, the first step is to ensure
+    # that GuardDuty has been enabled in the potential member accounts. You
+    # can now invoke this API to add accounts by invitation. The invited
+    # accounts can either accept or decline the invitation from their
+    # GuardDuty accounts. Each invited Amazon Web Services account can
+    # choose to accept the invitation from only one Amazon Web Services
+    # account. For more information, see [Managing GuardDuty accounts by
+    # invitation][2].
+    #
+    # After the invite has been accepted and you choose to disassociate a
+    # member account (by using [DisassociateMembers][3]) from your account,
+    # the details of the member account obtained by invoking
+    # [CreateMembers][4], including the associated email addresses, will be
+    # retained. This is done so that you can invoke InviteMembers without
+    # the need to invoke [CreateMembers][4] again. To remove the details
+    # associated with a member account, you must also invoke
+    # [DeleteMembers][5].
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html
+    # [2]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_invitations.html
+    # [3]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DisassociateMembers.html
+    # [4]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
+    # [5]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty account that you want
+    #   to invite members with.
+    #
+    # @option params [required, Array<String>] :account_ids
+    #   A list of account IDs of the accounts that you want to invite to
+    #   GuardDuty as members.
+    #
+    # @option params [Boolean] :disable_email_notification
+    #   A Boolean value that specifies whether you want to disable email
+    #   notification to the accounts that you are inviting to GuardDuty as
+    #   members.
+    #
+    # @option params [String] :message
+    #   The invitation message that you want to send to the accounts that
+    #   you're inviting to GuardDuty as members.
+    #
+    # @return [Types::InviteMembersResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::InviteMembersResponse#unprocessed_accounts #unprocessed_accounts} => Array&lt;Types::UnprocessedAccount&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.invite_members({
+    #     detector_id: "DetectorId", # required
+    #     account_ids: ["AccountId"], # required
+    #     disable_email_notification: false,
+    #     message: "String",
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.unprocessed_accounts #=> Array
+    #   resp.unprocessed_accounts[0].account_id #=> String
+    #   resp.unprocessed_accounts[0].result #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/InviteMembers AWS API Documentation
+    #
+    # @overload invite_members(params = {})
+    # @param [Hash] params ({})
+    def invite_members(params = {}, options = {})
+      req = build_request(:invite_members, params)
+      req.send_request(options)
+    end
+
+    # Lists coverage details for your GuardDuty account. If you're a
+    # GuardDuty administrator, you can retrieve all resources associated
+    # with the active member accounts in your organization.
+    #
+    # Make sure the accounts have EKS Runtime Monitoring enabled and
+    # GuardDuty agent running on their EKS nodes.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector whose coverage details you want to
+    #   retrieve.
+    #
+    # @option params [String] :next_token
+    #   A token to use for paginating results that are returned in the
+    #   response. Set the value of this parameter to null for the first
+    #   request to a list action. For subsequent calls, use the NextToken
+    #   value returned from the previous request to continue listing results
+    #   after the first page.
+    #
+    # @option params [Integer] :max_results
+    #   The maximum number of results to return in the response.
+    #
+    # @option params [Types::CoverageFilterCriteria] :filter_criteria
+    #   Represents the criteria used to filter the coverage details.
+    #
+    # @option params [Types::CoverageSortCriteria] :sort_criteria
+    #   Represents the criteria used to sort the coverage details.
+    #
+    # @return [Types::ListCoverageResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::ListCoverageResponse#resources #resources} => Array&lt;Types::CoverageResource&gt;
+    #   * {Types::ListCoverageResponse#next_token #next_token} => String
+    #
+    # The returned {Seahorse::Client::Response response} is a pageable response and is Enumerable. For details on usage see {Aws::PageableResponse PageableResponse}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.list_coverage({
+    #     detector_id: "DetectorId", # required
+    #     next_token: "String",
+    #     max_results: 1,
+    #     filter_criteria: {
+    #       filter_criterion: [
+    #         {
+    #           criterion_key: "ACCOUNT_ID", # accepts ACCOUNT_ID, CLUSTER_NAME, RESOURCE_TYPE, COVERAGE_STATUS, ADDON_VERSION
+    #           filter_condition: {
+    #             equals: ["String"],
+    #             not_equals: ["String"],
+    #           },
+    #         },
+    #       ],
+    #     },
+    #     sort_criteria: {
+    #       attribute_name: "ACCOUNT_ID", # accepts ACCOUNT_ID, CLUSTER_NAME, COVERAGE_STATUS, ISSUE, ADDON_VERSION, UPDATED_AT
+    #       order_by: "ASC", # accepts ASC, DESC
+    #     },
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.resources #=> Array
+    #   resp.resources[0].resource_id #=> String
+    #   resp.resources[0].detector_id #=> String
+    #   resp.resources[0].account_id #=> String
+    #   resp.resources[0].resource_details.eks_cluster_details.cluster_name #=> String
+    #   resp.resources[0].resource_details.eks_cluster_details.covered_nodes #=> Integer
+    #   resp.resources[0].resource_details.eks_cluster_details.compatible_nodes #=> Integer
+    #   resp.resources[0].resource_details.eks_cluster_details.addon_details.addon_version #=> String
+    #   resp.resources[0].resource_details.eks_cluster_details.addon_details.addon_status #=> String
+    #   resp.resources[0].resource_details.resource_type #=> String, one of "EKS"
+    #   resp.resources[0].coverage_status #=> String, one of "HEALTHY", "UNHEALTHY"
+    #   resp.resources[0].issue #=> String
+    #   resp.resources[0].updated_at #=> Time
+    #   resp.next_token #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListCoverage AWS API Documentation
+    #
+    # @overload list_coverage(params = {})
+    # @param [Hash] params ({})
+    def list_coverage(params = {}, options = {})
+      req = build_request(:list_coverage, params)
+      req.send_request(options)
+    end
+
+    # Lists detectorIds of all the existing Amazon GuardDuty detector
+    # resources.
+    #
+    # @option params [Integer] :max_results
+    #   You can use this parameter to indicate the maximum number of items
+    #   that you want in the response. The default value is 50. The maximum
+    #   value is 50.
+    #
+    # @option params [String] :next_token
+    #   You can use this parameter when paginating results. Set the value of
+    #   this parameter to null on your first call to the list action. For
+    #   subsequent calls to the action, fill nextToken in the request with the
+    #   value of NextToken from the previous response to continue listing
+    #   data.
+    #
+    # @return [Types::ListDetectorsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::ListDetectorsResponse#detector_ids #detector_ids} => Array&lt;String&gt;
+    #   * {Types::ListDetectorsResponse#next_token #next_token} => String
+    #
+    # The returned {Seahorse::Client::Response response} is a pageable response and is Enumerable. For details on usage see {Aws::PageableResponse PageableResponse}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.list_detectors({
+    #     max_results: 1,
+    #     next_token: "String",
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.detector_ids #=> Array
+    #   resp.detector_ids[0] #=> String
+    #   resp.next_token #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListDetectors AWS API Documentation
+    #
+    # @overload list_detectors(params = {})
+    # @param [Hash] params ({})
+    def list_detectors(params = {}, options = {})
+      req = build_request(:list_detectors, params)
+      req.send_request(options)
+    end
+
+    # Returns a paginated list of the current filters.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector that the filter is associated with.
+    #
+    # @option params [Integer] :max_results
+    #   You can use this parameter to indicate the maximum number of items
+    #   that you want in the response. The default value is 50. The maximum
+    #   value is 50.
+    #
+    # @option params [String] :next_token
+    #   You can use this parameter when paginating results. Set the value of
+    #   this parameter to null on your first call to the list action. For
+    #   subsequent calls to the action, fill nextToken in the request with the
+    #   value of NextToken from the previous response to continue listing
+    #   data.
+    #
+    # @return [Types::ListFiltersResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::ListFiltersResponse#filter_names #filter_names} => Array&lt;String&gt;
+    #   * {Types::ListFiltersResponse#next_token #next_token} => String
+    #
+    # The returned {Seahorse::Client::Response response} is a pageable response and is Enumerable. For details on usage see {Aws::PageableResponse PageableResponse}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.list_filters({
+    #     detector_id: "DetectorId", # required
+    #     max_results: 1,
+    #     next_token: "String",
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.filter_names #=> Array
+    #   resp.filter_names[0] #=> String
+    #   resp.next_token #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListFilters AWS API Documentation
+    #
+    # @overload list_filters(params = {})
+    # @param [Hash] params ({})
+    def list_filters(params = {}, options = {})
+      req = build_request(:list_filters, params)
+      req.send_request(options)
+    end
+
+    # Lists Amazon GuardDuty findings for the specified detector ID.
+    #
+    # @option params [required, String] :detector_id
+    #   The ID of the detector that specifies the GuardDuty service whose
+    #   findings you want to list.
+    #
+    # @option params [Types::FindingCriteria] :finding_criteria
+    #   Represents the criteria used for querying findings. Valid values
+    #   include:
+    #
+    #   * JSON field name
+    #
+    #   * accountId
+    #
+    #   * region
+    #
+    #   * confidence
+    #
+    #   * id
+    #
+    #   * resource.accessKeyDetails.accessKeyId
+    #
+    #   * resource.accessKeyDetails.principalId
+    #
+    #   * resource.accessKeyDetails.userName
+    #
+    #   * resource.accessKeyDetails.userType
+    #
+    #   * resource.instanceDetails.iamInstanceProfile.id
+    #
+    #   * resource.instanceDetails.imageId
+    #
+    #   * resource.instanceDetails.instanceId
+    #
+    #   * resource.instanceDetails.networkInterfaces.ipv6Addresses
+    #
+    #   * resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress
+    #
+    #   * resource.instanceDetails.networkInterfaces.publicDnsName
+    #
+    #   * resource.instanceDetails.networkInterfaces.publicIp
+    #
+    #   * resource.instanceDetails.networkInterfaces.securityGroups.groupId
+    #
+    #   * resource.instanceDetails.networkInterfaces.securityGroups.groupName
+    #
+    #   * resource.instanceDetails.networkInterfaces.subnetId
+    #
+    #   * resource.instanceDetails.networkInterfaces.vpcId
+    #
+    #   * resource.instanceDetails.tags.key
+    #
+    #   * resource.instanceDetails.tags.value
+    #
+    #   * resource.resourceType
+    #
+    #   * service.action.actionType
+    #
+    #   * service.action.awsApiCallAction.api
+    #
+    #   * service.action.awsApiCallAction.callerType
+    #
+    #   * service.action.awsApiCallAction.remoteIpDetails.city.cityName
+    #
+    #   * service.action.awsApiCallAction.remoteIpDetails.country.countryName
+    #
+    #   * service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
+    #
+    #   * service.action.awsApiCallAction.remoteIpDetails.organization.asn
+    #
+    #   * service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
+    #
+    #   * service.action.awsApiCallAction.serviceName
+    #
+    #   * service.action.dnsRequestAction.domain
+    #
+    #   * service.action.networkConnectionAction.blocked
+    #
+    #   * service.action.networkConnectionAction.connectionDirection
+    #
+    #   * service.action.networkConnectionAction.localPortDetails.port
+    #
+    #   * service.action.networkConnectionAction.protocol
+    #
+    #   * service.action.networkConnectionAction.remoteIpDetails.country.countryName
+    #
+    #   * service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
+    #
+    #   * service.action.networkConnectionAction.remoteIpDetails.organization.asn
+    #
+    #   * service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
+    #
+    #   * service.action.networkConnectionAction.remotePortDetails.port
+    #
+    #   * service.additionalInfo.threatListName
+    #
+    #   * service.archived
+    #
+    #     When this attribute is set to 'true', only archived findings are
+    #     listed. When it's set to 'false', only unarchived findings are
+    #     listed. When this attribute is not set, all existing findings are
+    #     listed.
+    #
+    #   * service.resourceRole
+    #
+    #   * severity
+    #
+    #   * type
+    #
+    #   * updatedAt
+    #
+    #     Type: Timestamp in Unix Epoch millisecond format: 1486685375000
+    #
+    # @option params [Types::SortCriteria] :sort_criteria
+    #   Represents the criteria used for sorting findings.
+    #
+    # @option params [Integer] :max_results
+    #   You can use this parameter to indicate the maximum number of items you
+    #   want in the response. The default value is 50. The maximum value is
+    #   50.
+    #
+    # @option params [String] :next_token
+    #   You can use this parameter when paginating results. Set the value of
+    #   this parameter to null on your first call to the list action. For
+    #   subsequent calls to the action, fill nextToken in the request with the
+    #   value of NextToken from the previous response to continue listing
+    #   data.
+    #
+    # @return [Types::ListFindingsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::ListFindingsResponse#finding_ids #finding_ids} => Array&lt;String&gt;
+    #   * {Types::ListFindingsResponse#next_token #next_token} => String
+    #
+    # The returned {Seahorse::Client::Response response} is a pageable response and is Enumerable. For details on usage see {Aws::PageableResponse PageableResponse}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.list_findings({
+    #     detector_id: "DetectorId", # required
+    #     finding_criteria: {
+    #       criterion: {
+    #         "String" => {
+    #           eq: ["String"],
+    #           neq: ["String"],
+    #           gt: 1,
+    #           gte: 1,
+    #           lt: 1,
+    #           lte: 1,
+    #           equals: ["String"],
+    #           not_equals: ["String"],
+    #           greater_than: 1,
+    #           greater_than_or_equal: 1,
+    #           less_than: 1,
+    #           less_than_or_equal: 1,
+    #         },
+    #       },
+    #     },
+    #     sort_criteria: {
+    #       attribute_name: "String",
+    #       order_by: "ASC", # accepts ASC, DESC
+    #     },
+    #     max_results: 1,
+    #     next_token: "String",
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.finding_ids #=> Array
+    #   resp.finding_ids[0] #=> String
+    #   resp.next_token #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListFindings AWS API Documentation
+    #
+    # @overload list_findings(params = {})
+    # @param [Hash] params ({})
+    def list_findings(params = {}, options = {})
+      req = build_request(:list_findings, params)
+      req.send_request(options)
+    end
+
+    # Lists the IPSets of the GuardDuty service specified by the detector
+    # ID. If you use this operation from a member account, the IPSets
+    # returned are the IPSets from the associated administrator account.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector that the IPSet is associated with.
+    #
+    # @option params [Integer] :max_results
+    #   You can use this parameter to indicate the maximum number of items you
+    #   want in the response. The default value is 50. The maximum value is
+    #   50.
+    #
+    # @option params [String] :next_token
+    #   You can use this parameter when paginating results. Set the value of
+    #   this parameter to null on your first call to the list action. For
+    #   subsequent calls to the action, fill nextToken in the request with the
+    #   value of NextToken from the previous response to continue listing
+    #   data.
+    #
+    # @return [Types::ListIPSetsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::ListIPSetsResponse#ip_set_ids #ip_set_ids} => Array&lt;String&gt;
+    #   * {Types::ListIPSetsResponse#next_token #next_token} => String
+    #
+    # The returned {Seahorse::Client::Response response} is a pageable response and is Enumerable. For details on usage see {Aws::PageableResponse PageableResponse}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.list_ip_sets({
+    #     detector_id: "DetectorId", # required
+    #     max_results: 1,
+    #     next_token: "String",
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.ip_set_ids #=> Array
+    #   resp.ip_set_ids[0] #=> String
+    #   resp.next_token #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListIPSets AWS API Documentation
+    #
+    # @overload list_ip_sets(params = {})
+    # @param [Hash] params ({})
+    def list_ip_sets(params = {}, options = {})
+      req = build_request(:list_ip_sets, params)
+      req.send_request(options)
+    end
+
+    # Lists all GuardDuty membership invitations that were sent to the
+    # current Amazon Web Services account.
+    #
+    # @option params [Integer] :max_results
+    #   You can use this parameter to indicate the maximum number of items
+    #   that you want in the response. The default value is 50. The maximum
+    #   value is 50.
+    #
+    # @option params [String] :next_token
+    #   You can use this parameter when paginating results. Set the value of
+    #   this parameter to null on your first call to the list action. For
+    #   subsequent calls to the action, fill nextToken in the request with the
+    #   value of NextToken from the previous response to continue listing
+    #   data.
+    #
+    # @return [Types::ListInvitationsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::ListInvitationsResponse#invitations #invitations} => Array&lt;Types::Invitation&gt;
+    #   * {Types::ListInvitationsResponse#next_token #next_token} => String
+    #
+    # The returned {Seahorse::Client::Response response} is a pageable response and is Enumerable. For details on usage see {Aws::PageableResponse PageableResponse}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.list_invitations({
+    #     max_results: 1,
+    #     next_token: "String",
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.invitations #=> Array
+    #   resp.invitations[0].account_id #=> String
+    #   resp.invitations[0].invitation_id #=> String
+    #   resp.invitations[0].relationship_status #=> String
+    #   resp.invitations[0].invited_at #=> String
+    #   resp.next_token #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListInvitations AWS API Documentation
+    #
+    # @overload list_invitations(params = {})
+    # @param [Hash] params ({})
+    def list_invitations(params = {}, options = {})
+      req = build_request(:list_invitations, params)
+      req.send_request(options)
+    end
+
+    # Lists details about all member accounts for the current GuardDuty
+    # administrator account.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector the member is associated with.
+    #
+    # @option params [Integer] :max_results
+    #   You can use this parameter to indicate the maximum number of items you
+    #   want in the response. The default value is 50. The maximum value is
+    #   50.
+    #
+    # @option params [String] :next_token
+    #   You can use this parameter when paginating results. Set the value of
+    #   this parameter to null on your first call to the list action. For
+    #   subsequent calls to the action, fill nextToken in the request with the
+    #   value of NextToken from the previous response to continue listing
+    #   data.
+    #
+    # @option params [String] :only_associated
+    #   Specifies whether to only return associated members or to return all
+    #   members (including members who haven't been invited yet or have been
+    #   disassociated). Member accounts must have been previously associated
+    #   with the GuardDuty administrator account using [ `Create Members`
+    #   ][1].
+    #
+    #
+    #
+    #   [1]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html
+    #
+    # @return [Types::ListMembersResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::ListMembersResponse#members #members} => Array&lt;Types::Member&gt;
+    #   * {Types::ListMembersResponse#next_token #next_token} => String
+    #
+    # The returned {Seahorse::Client::Response response} is a pageable response and is Enumerable. For details on usage see {Aws::PageableResponse PageableResponse}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.list_members({
+    #     detector_id: "DetectorId", # required
+    #     max_results: 1,
+    #     next_token: "String",
+    #     only_associated: "String",
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.members #=> Array
+    #   resp.members[0].account_id #=> String
+    #   resp.members[0].detector_id #=> String
+    #   resp.members[0].master_id #=> String
+    #   resp.members[0].email #=> String
+    #   resp.members[0].relationship_status #=> String
+    #   resp.members[0].invited_at #=> String
+    #   resp.members[0].updated_at #=> String
+    #   resp.members[0].administrator_id #=> String
+    #   resp.next_token #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListMembers AWS API Documentation
+    #
+    # @overload list_members(params = {})
+    # @param [Hash] params ({})
+    def list_members(params = {}, options = {})
+      req = build_request(:list_members, params)
+      req.send_request(options)
+    end
+
+    # Lists the accounts configured as GuardDuty delegated administrators.
+    #
+    # @option params [Integer] :max_results
+    #   The maximum number of results to return in the response.
+    #
+    # @option params [String] :next_token
+    #   A token to use for paginating results that are returned in the
+    #   response. Set the value of this parameter to null for the first
+    #   request to a list action. For subsequent calls, use the `NextToken`
+    #   value returned from the previous request to continue listing results
+    #   after the first page.
+    #
+    # @return [Types::ListOrganizationAdminAccountsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::ListOrganizationAdminAccountsResponse#admin_accounts #admin_accounts} => Array&lt;Types::AdminAccount&gt;
+    #   * {Types::ListOrganizationAdminAccountsResponse#next_token #next_token} => String
+    #
+    # The returned {Seahorse::Client::Response response} is a pageable response and is Enumerable. For details on usage see {Aws::PageableResponse PageableResponse}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.list_organization_admin_accounts({
+    #     max_results: 1,
+    #     next_token: "String",
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.admin_accounts #=> Array
+    #   resp.admin_accounts[0].admin_account_id #=> String
+    #   resp.admin_accounts[0].admin_status #=> String, one of "ENABLED", "DISABLE_IN_PROGRESS"
+    #   resp.next_token #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListOrganizationAdminAccounts AWS API Documentation
+    #
+    # @overload list_organization_admin_accounts(params = {})
+    # @param [Hash] params ({})
+    def list_organization_admin_accounts(params = {}, options = {})
+      req = build_request(:list_organization_admin_accounts, params)
+      req.send_request(options)
+    end
+
+    # Returns a list of publishing destinations associated with the
+    # specified `detectorId`.
+    #
+    # @option params [required, String] :detector_id
+    #   The ID of the detector to retrieve publishing destinations for.
+    #
+    # @option params [Integer] :max_results
+    #   The maximum number of results to return in the response.
+    #
+    # @option params [String] :next_token
+    #   A token to use for paginating results that are returned in the
+    #   response. Set the value of this parameter to null for the first
+    #   request to a list action. For subsequent calls, use the `NextToken`
+    #   value returned from the previous request to continue listing results
+    #   after the first page.
+    #
+    # @return [Types::ListPublishingDestinationsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::ListPublishingDestinationsResponse#destinations #destinations} => Array&lt;Types::Destination&gt;
+    #   * {Types::ListPublishingDestinationsResponse#next_token #next_token} => String
+    #
+    # The returned {Seahorse::Client::Response response} is a pageable response and is Enumerable. For details on usage see {Aws::PageableResponse PageableResponse}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.list_publishing_destinations({
+    #     detector_id: "DetectorId", # required
+    #     max_results: 1,
+    #     next_token: "String",
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.destinations #=> Array
+    #   resp.destinations[0].destination_id #=> String
+    #   resp.destinations[0].destination_type #=> String, one of "S3"
+    #   resp.destinations[0].status #=> String, one of "PENDING_VERIFICATION", "PUBLISHING", "UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY", "STOPPED"
+    #   resp.next_token #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListPublishingDestinations AWS API Documentation
+    #
+    # @overload list_publishing_destinations(params = {})
+    # @param [Hash] params ({})
+    def list_publishing_destinations(params = {}, options = {})
+      req = build_request(:list_publishing_destinations, params)
+      req.send_request(options)
+    end
+
+    # Lists tags for a resource. Tagging is currently supported for
+    # detectors, finding filters, IP sets, threat intel sets, publishing
+    # destination, with a limit of 50 tags per resource. When invoked, this
+    # operation returns all assigned tags for a given resource.
+    #
+    # @option params [required, String] :resource_arn
+    #   The Amazon Resource Name (ARN) for the given GuardDuty resource.
+    #
+    # @return [Types::ListTagsForResourceResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::ListTagsForResourceResponse#tags #tags} => Hash&lt;String,String&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.list_tags_for_resource({
+    #     resource_arn: "GuardDutyArn", # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.tags #=> Hash
+    #   resp.tags["TagKey"] #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListTagsForResource AWS API Documentation
+    #
+    # @overload list_tags_for_resource(params = {})
+    # @param [Hash] params ({})
+    def list_tags_for_resource(params = {}, options = {})
+      req = build_request(:list_tags_for_resource, params)
+      req.send_request(options)
+    end
+
+    # Lists the ThreatIntelSets of the GuardDuty service specified by the
+    # detector ID. If you use this operation from a member account, the
+    # ThreatIntelSets associated with the administrator account are
+    # returned.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector that the threatIntelSet is associated
+    #   with.
+    #
+    # @option params [Integer] :max_results
+    #   You can use this parameter to indicate the maximum number of items
+    #   that you want in the response. The default value is 50. The maximum
+    #   value is 50.
+    #
+    # @option params [String] :next_token
+    #   You can use this parameter to paginate results in the response. Set
+    #   the value of this parameter to null on your first call to the list
+    #   action. For subsequent calls to the action, fill nextToken in the
+    #   request with the value of NextToken from the previous response to
+    #   continue listing data.
+    #
+    # @return [Types::ListThreatIntelSetsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::ListThreatIntelSetsResponse#threat_intel_set_ids #threat_intel_set_ids} => Array&lt;String&gt;
+    #   * {Types::ListThreatIntelSetsResponse#next_token #next_token} => String
+    #
+    # The returned {Seahorse::Client::Response response} is a pageable response and is Enumerable. For details on usage see {Aws::PageableResponse PageableResponse}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.list_threat_intel_sets({
+    #     detector_id: "DetectorId", # required
+    #     max_results: 1,
+    #     next_token: "String",
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.threat_intel_set_ids #=> Array
+    #   resp.threat_intel_set_ids[0] #=> String
+    #   resp.next_token #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListThreatIntelSets AWS API Documentation
+    #
+    # @overload list_threat_intel_sets(params = {})
+    # @param [Hash] params ({})
+    def list_threat_intel_sets(params = {}, options = {})
+      req = build_request(:list_threat_intel_sets, params)
+      req.send_request(options)
+    end
+
+    # Initiates the malware scan. Invoking this API will automatically
+    # create the [Service-linked role ][1] in the corresponding account.
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/ug/slr-permissions-malware-protection.html
+    #
+    # @option params [required, String] :resource_arn
+    #   Amazon Resource Name (ARN) of the resource for which you invoked the
+    #   API.
+    #
+    # @return [Types::StartMalwareScanResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::StartMalwareScanResponse#scan_id #scan_id} => String
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.start_malware_scan({
+    #     resource_arn: "ResourceArn", # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.scan_id #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/StartMalwareScan AWS API Documentation
+    #
+    # @overload start_malware_scan(params = {})
+    # @param [Hash] params ({})
+    def start_malware_scan(params = {}, options = {})
+      req = build_request(:start_malware_scan, params)
+      req.send_request(options)
+    end
+
+    # Turns on GuardDuty monitoring of the specified member accounts. Use
+    # this operation to restart monitoring of accounts that you stopped
+    # monitoring with the [StopMonitoringMembers][1] operation.
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/APIReference/API_StopMonitoringMembers.html
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector of the GuardDuty administrator account
+    #   associated with the member accounts to monitor.
+    #
+    # @option params [required, Array<String>] :account_ids
+    #   A list of account IDs of the GuardDuty member accounts to start
+    #   monitoring.
+    #
+    # @return [Types::StartMonitoringMembersResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::StartMonitoringMembersResponse#unprocessed_accounts #unprocessed_accounts} => Array&lt;Types::UnprocessedAccount&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.start_monitoring_members({
+    #     detector_id: "DetectorId", # required
+    #     account_ids: ["AccountId"], # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.unprocessed_accounts #=> Array
+    #   resp.unprocessed_accounts[0].account_id #=> String
+    #   resp.unprocessed_accounts[0].result #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/StartMonitoringMembers AWS API Documentation
+    #
+    # @overload start_monitoring_members(params = {})
+    # @param [Hash] params ({})
+    def start_monitoring_members(params = {}, options = {})
+      req = build_request(:start_monitoring_members, params)
+      req.send_request(options)
+    end
+
+    # Stops GuardDuty monitoring for the specified member accounts. Use the
+    # `StartMonitoringMembers` operation to restart monitoring for those
+    # accounts.
+    #
+    # With `autoEnableOrganizationMembers` configuration for your
+    # organization set to `ALL`, you'll receive an error if you attempt to
+    # stop monitoring the member accounts in your organization.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector associated with the GuardDuty
+    #   administrator account that is monitoring member accounts.
+    #
+    # @option params [required, Array<String>] :account_ids
+    #   A list of account IDs for the member accounts to stop monitoring.
+    #
+    # @return [Types::StopMonitoringMembersResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::StopMonitoringMembersResponse#unprocessed_accounts #unprocessed_accounts} => Array&lt;Types::UnprocessedAccount&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.stop_monitoring_members({
+    #     detector_id: "DetectorId", # required
+    #     account_ids: ["AccountId"], # required
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.unprocessed_accounts #=> Array
+    #   resp.unprocessed_accounts[0].account_id #=> String
+    #   resp.unprocessed_accounts[0].result #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/StopMonitoringMembers AWS API Documentation
+    #
+    # @overload stop_monitoring_members(params = {})
+    # @param [Hash] params ({})
+    def stop_monitoring_members(params = {}, options = {})
+      req = build_request(:stop_monitoring_members, params)
+      req.send_request(options)
+    end
+
+    # Adds tags to a resource.
+    #
+    # @option params [required, String] :resource_arn
+    #   The Amazon Resource Name (ARN) for the GuardDuty resource to apply a
+    #   tag to.
+    #
+    # @option params [required, Hash<String,String>] :tags
+    #   The tags to be added to a resource.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.tag_resource({
+    #     resource_arn: "GuardDutyArn", # required
+    #     tags: { # required
+    #       "TagKey" => "TagValue",
+    #     },
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/TagResource AWS API Documentation
+    #
+    # @overload tag_resource(params = {})
+    # @param [Hash] params ({})
+    def tag_resource(params = {}, options = {})
+      req = build_request(:tag_resource, params)
+      req.send_request(options)
+    end
+
+    # Unarchives GuardDuty findings specified by the `findingIds`.
+    #
+    # @option params [required, String] :detector_id
+    #   The ID of the detector associated with the findings to unarchive.
+    #
+    # @option params [required, Array<String>] :finding_ids
+    #   The IDs of the findings to unarchive.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.unarchive_findings({
+    #     detector_id: "DetectorId", # required
+    #     finding_ids: ["FindingId"], # required
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UnarchiveFindings AWS API Documentation
+    #
+    # @overload unarchive_findings(params = {})
+    # @param [Hash] params ({})
+    def unarchive_findings(params = {}, options = {})
+      req = build_request(:unarchive_findings, params)
+      req.send_request(options)
+    end
+
+    # Removes tags from a resource.
+    #
+    # @option params [required, String] :resource_arn
+    #   The Amazon Resource Name (ARN) for the resource to remove tags from.
+    #
+    # @option params [required, Array<String>] :tag_keys
+    #   The tag keys to remove from the resource.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.untag_resource({
+    #     resource_arn: "GuardDutyArn", # required
+    #     tag_keys: ["TagKey"], # required
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UntagResource AWS API Documentation
+    #
+    # @overload untag_resource(params = {})
+    # @param [Hash] params ({})
+    def untag_resource(params = {}, options = {})
+      req = build_request(:untag_resource, params)
+      req.send_request(options)
+    end
+
+    # Updates the Amazon GuardDuty detector specified by the detectorId.
+    #
+    # There might be regional differences because some data sources might
+    # not be available in all the Amazon Web Services Regions where
+    # GuardDuty is presently supported. For more information, see [Regions
+    # and endpoints][1].
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector to update.
+    #
+    # @option params [Boolean] :enable
+    #   Specifies whether the detector is enabled or not enabled.
+    #
+    # @option params [String] :finding_publishing_frequency
+    #   An enum value that specifies how frequently findings are exported,
+    #   such as to CloudWatch Events.
+    #
+    # @option params [Types::DataSourceConfigurations] :data_sources
+    #   Describes which data sources will be updated.
+    #
+    #   There might be regional differences because some data sources might
+    #   not be available in all the Amazon Web Services Regions where
+    #   GuardDuty is presently supported. For more information, see [Regions
+    #   and endpoints][1].
+    #
+    #
+    #
+    #   [1]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html
+    #
+    # @option params [Array<Types::DetectorFeatureConfiguration>] :features
+    #   Provides the features that will be updated for the detector.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.update_detector({
+    #     detector_id: "DetectorId", # required
+    #     enable: false,
+    #     finding_publishing_frequency: "FIFTEEN_MINUTES", # accepts FIFTEEN_MINUTES, ONE_HOUR, SIX_HOURS
+    #     data_sources: {
+    #       s3_logs: {
+    #         enable: false, # required
+    #       },
+    #       kubernetes: {
+    #         audit_logs: { # required
+    #           enable: false, # required
+    #         },
+    #       },
+    #       malware_protection: {
+    #         scan_ec2_instance_with_findings: {
+    #           ebs_volumes: false,
+    #         },
+    #       },
+    #     },
+    #     features: [
+    #       {
+    #         name: "S3_DATA_EVENTS", # accepts S3_DATA_EVENTS, EKS_AUDIT_LOGS, EBS_MALWARE_PROTECTION, RDS_LOGIN_EVENTS, EKS_RUNTIME_MONITORING, LAMBDA_NETWORK_LOGS
+    #         status: "ENABLED", # accepts ENABLED, DISABLED
+    #         additional_configuration: [
+    #           {
+    #             name: "EKS_ADDON_MANAGEMENT", # accepts EKS_ADDON_MANAGEMENT
+    #             status: "ENABLED", # accepts ENABLED, DISABLED
+    #           },
+    #         ],
+    #       },
+    #     ],
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateDetector AWS API Documentation
+    #
+    # @overload update_detector(params = {})
+    # @param [Hash] params ({})
+    def update_detector(params = {}, options = {})
+      req = build_request(:update_detector, params)
+      req.send_request(options)
+    end
+
+    # Updates the filter specified by the filter name.
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector that specifies the GuardDuty service
+    #   where you want to update a filter.
+    #
+    # @option params [required, String] :filter_name
+    #   The name of the filter.
+    #
+    # @option params [String] :description
+    #   The description of the filter. Valid characters include alphanumeric
+    #   characters, and special characters such as hyphen, period, colon,
+    #   underscore, parentheses (`\{ \}`, `[ ]`, and `( )`), forward slash,
+    #   horizontal tab, vertical tab, newline, form feed, return, and
+    #   whitespace.
+    #
+    # @option params [String] :action
+    #   Specifies the action that is to be applied to the findings that match
+    #   the filter.
+    #
+    # @option params [Integer] :rank
+    #   Specifies the position of the filter in the list of current filters.
+    #   Also specifies the order in which this filter is applied to the
+    #   findings.
+    #
+    # @option params [Types::FindingCriteria] :finding_criteria
+    #   Represents the criteria to be used in the filter for querying
+    #   findings.
+    #
+    # @return [Types::UpdateFilterResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::UpdateFilterResponse#name #name} => String
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.update_filter({
+    #     detector_id: "DetectorId", # required
+    #     filter_name: "String", # required
+    #     description: "FilterDescription",
+    #     action: "NOOP", # accepts NOOP, ARCHIVE
+    #     rank: 1,
+    #     finding_criteria: {
+    #       criterion: {
+    #         "String" => {
+    #           eq: ["String"],
+    #           neq: ["String"],
+    #           gt: 1,
+    #           gte: 1,
+    #           lt: 1,
+    #           lte: 1,
+    #           equals: ["String"],
+    #           not_equals: ["String"],
+    #           greater_than: 1,
+    #           greater_than_or_equal: 1,
+    #           less_than: 1,
+    #           less_than_or_equal: 1,
+    #         },
+    #       },
+    #     },
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.name #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateFilter AWS API Documentation
+    #
+    # @overload update_filter(params = {})
+    # @param [Hash] params ({})
+    def update_filter(params = {}, options = {})
+      req = build_request(:update_filter, params)
+      req.send_request(options)
+    end
+
+    # Marks the specified GuardDuty findings as useful or not useful.
+    #
+    # @option params [required, String] :detector_id
+    #   The ID of the detector associated with the findings to update feedback
+    #   for.
+    #
+    # @option params [required, Array<String>] :finding_ids
+    #   The IDs of the findings that you want to mark as useful or not useful.
+    #
+    # @option params [required, String] :feedback
+    #   The feedback for the finding.
+    #
+    # @option params [String] :comments
+    #   Additional feedback about the GuardDuty findings.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.update_findings_feedback({
+    #     detector_id: "DetectorId", # required
+    #     finding_ids: ["FindingId"], # required
+    #     feedback: "USEFUL", # required, accepts USEFUL, NOT_USEFUL
+    #     comments: "String",
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateFindingsFeedback AWS API Documentation
+    #
+    # @overload update_findings_feedback(params = {})
+    # @param [Hash] params ({})
+    def update_findings_feedback(params = {}, options = {})
+      req = build_request(:update_findings_feedback, params)
+      req.send_request(options)
+    end
+
+    # Updates the IPSet specified by the IPSet ID.
+    #
+    # @option params [required, String] :detector_id
+    #   The detectorID that specifies the GuardDuty service whose IPSet you
+    #   want to update.
+    #
+    # @option params [required, String] :ip_set_id
+    #   The unique ID that specifies the IPSet that you want to update.
+    #
+    # @option params [String] :name
+    #   The unique ID that specifies the IPSet that you want to update.
+    #
+    # @option params [String] :location
+    #   The updated URI of the file that contains the IPSet.
+    #
+    # @option params [Boolean] :activate
+    #   The updated Boolean value that specifies whether the IPSet is active
+    #   or not.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.update_ip_set({
+    #     detector_id: "DetectorId", # required
+    #     ip_set_id: "String", # required
+    #     name: "Name",
+    #     location: "Location",
+    #     activate: false,
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateIPSet AWS API Documentation
+    #
+    # @overload update_ip_set(params = {})
+    # @param [Hash] params ({})
+    def update_ip_set(params = {}, options = {})
+      req = build_request(:update_ip_set, params)
+      req.send_request(options)
+    end
+
+    # Updates the malware scan settings.
+    #
+    # There might be regional differences because some data sources might
+    # not be available in all the Amazon Web Services Regions where
+    # GuardDuty is presently supported. For more information, see [Regions
+    # and endpoints][1].
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html
+    #
+    # @option params [required, String] :detector_id
+    #   The unique ID of the detector that specifies the GuardDuty service
+    #   where you want to update scan settings.
+    #
+    # @option params [Types::ScanResourceCriteria] :scan_resource_criteria
+    #   Represents the criteria to be used in the filter for selecting
+    #   resources to scan.
+    #
+    # @option params [String] :ebs_snapshot_preservation
+    #   An enum value representing possible snapshot preservation settings.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.update_malware_scan_settings({
+    #     detector_id: "DetectorId", # required
+    #     scan_resource_criteria: {
+    #       include: {
+    #         "EC2_INSTANCE_TAG" => {
+    #           map_equals: [ # required
+    #             {
+    #               key: "TagKey", # required
+    #               value: "TagValue",
+    #             },
+    #           ],
+    #         },
+    #       },
+    #       exclude: {
+    #         "EC2_INSTANCE_TAG" => {
+    #           map_equals: [ # required
+    #             {
+    #               key: "TagKey", # required
+    #               value: "TagValue",
+    #             },
+    #           ],
+    #         },
+    #       },
+    #     },
+    #     ebs_snapshot_preservation: "NO_RETENTION", # accepts NO_RETENTION, RETENTION_WITH_FINDING
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateMalwareScanSettings AWS API Documentation
+    #
+    # @overload update_malware_scan_settings(params = {})
+    # @param [Hash] params ({})
+    def update_malware_scan_settings(params = {}, options = {})
+      req = build_request(:update_malware_scan_settings, params)
+      req.send_request(options)
+    end
+
+    # Contains information on member accounts to be updated.
+    #
+    # There might be regional differences because some data sources might
+    # not be available in all the Amazon Web Services Regions where
+    # GuardDuty is presently supported. For more information, see [Regions
+    # and endpoints][1].
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html
+    #
+    # @option params [required, String] :detector_id
+    #   The detector ID of the administrator account.
+    #
+    # @option params [required, Array<String>] :account_ids
+    #   A list of member account IDs to be updated.
+    #
+    # @option params [Types::DataSourceConfigurations] :data_sources
+    #   Describes which data sources will be updated.
+    #
+    # @option params [Array<Types::MemberFeaturesConfiguration>] :features
+    #   A list of features that will be updated for the specified member
+    #   accounts.
+    #
+    # @return [Types::UpdateMemberDetectorsResponse] Returns a {Seahorse::Client::Response response} object which responds to the following methods:
+    #
+    #   * {Types::UpdateMemberDetectorsResponse#unprocessed_accounts #unprocessed_accounts} => Array&lt;Types::UnprocessedAccount&gt;
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.update_member_detectors({
+    #     detector_id: "DetectorId", # required
+    #     account_ids: ["AccountId"], # required
+    #     data_sources: {
+    #       s3_logs: {
+    #         enable: false, # required
+    #       },
+    #       kubernetes: {
+    #         audit_logs: { # required
+    #           enable: false, # required
+    #         },
+    #       },
+    #       malware_protection: {
+    #         scan_ec2_instance_with_findings: {
+    #           ebs_volumes: false,
+    #         },
+    #       },
+    #     },
+    #     features: [
+    #       {
+    #         name: "S3_DATA_EVENTS", # accepts S3_DATA_EVENTS, EKS_AUDIT_LOGS, EBS_MALWARE_PROTECTION, RDS_LOGIN_EVENTS, EKS_RUNTIME_MONITORING, LAMBDA_NETWORK_LOGS
+    #         status: "ENABLED", # accepts ENABLED, DISABLED
+    #         additional_configuration: [
+    #           {
+    #             name: "EKS_ADDON_MANAGEMENT", # accepts EKS_ADDON_MANAGEMENT
+    #             status: "ENABLED", # accepts ENABLED, DISABLED
+    #           },
+    #         ],
+    #       },
+    #     ],
+    #   })
+    #
+    # @example Response structure
+    #
+    #   resp.unprocessed_accounts #=> Array
+    #   resp.unprocessed_accounts[0].account_id #=> String
+    #   resp.unprocessed_accounts[0].result #=> String
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateMemberDetectors AWS API Documentation
+    #
+    # @overload update_member_detectors(params = {})
+    # @param [Hash] params ({})
+    def update_member_detectors(params = {}, options = {})
+      req = build_request(:update_member_detectors, params)
+      req.send_request(options)
+    end
+
+    # Configures the delegated administrator account with the provided
+    # values. You must provide the value for either
+    # `autoEnableOrganizationMembers` or `autoEnable`.
+    #
+    # There might be regional differences because some data sources might
+    # not be available in all the Amazon Web Services Regions where
+    # GuardDuty is presently supported. For more information, see [Regions
+    # and endpoints][1].
+    #
+    #
+    #
+    # [1]: https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html
+    #
+    # @option params [required, String] :detector_id
+    #   The ID of the detector that configures the delegated administrator.
+    #
+    # @option params [Boolean] :auto_enable
+    #   Indicates whether to automatically enable member accounts in the
+    #   organization.
+    #
+    #   Even though this is still supported, we recommend using
+    #   `AutoEnableOrganizationMembers` to achieve the similar results.
+    #
+    # @option params [Types::OrganizationDataSourceConfigurations] :data_sources
+    #   Describes which data sources will be updated.
+    #
+    # @option params [Array<Types::OrganizationFeatureConfiguration>] :features
+    #   A list of features that will be configured for the organization.
+    #
+    # @option params [String] :auto_enable_organization_members
+    #   Indicates the auto-enablement configuration of GuardDuty for the
+    #   member accounts in the organization.
+    #
+    #   * `NEW`: Indicates that when a new account joins the organization,
+    #     they will have GuardDuty enabled automatically.
+    #
+    #   * `ALL`: Indicates that all accounts in the Amazon Web Services
+    #     Organization have GuardDuty enabled automatically. This includes
+    #     `NEW` accounts that join the organization and accounts that may have
+    #     been suspended or removed from the organization in GuardDuty.
+    #
+    #   * `NONE`: Indicates that GuardDuty will not be automatically enabled
+    #     for any accounts in the organization. GuardDuty must be managed for
+    #     each account individually by the administrator.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.update_organization_configuration({
+    #     detector_id: "DetectorId", # required
+    #     auto_enable: false,
+    #     data_sources: {
+    #       s3_logs: {
+    #         auto_enable: false, # required
+    #       },
+    #       kubernetes: {
+    #         audit_logs: { # required
+    #           auto_enable: false, # required
+    #         },
+    #       },
+    #       malware_protection: {
+    #         scan_ec2_instance_with_findings: {
+    #           ebs_volumes: {
+    #             auto_enable: false,
+    #           },
+    #         },
+    #       },
+    #     },
+    #     features: [
+    #       {
+    #         name: "S3_DATA_EVENTS", # accepts S3_DATA_EVENTS, EKS_AUDIT_LOGS, EBS_MALWARE_PROTECTION, RDS_LOGIN_EVENTS, EKS_RUNTIME_MONITORING, LAMBDA_NETWORK_LOGS
+    #         auto_enable: "NEW", # accepts NEW, NONE
+    #         additional_configuration: [
+    #           {
+    #             name: "EKS_ADDON_MANAGEMENT", # accepts EKS_ADDON_MANAGEMENT
+    #             auto_enable: "NEW", # accepts NEW, NONE
+    #           },
+    #         ],
+    #       },
+    #     ],
+    #     auto_enable_organization_members: "NEW", # accepts NEW, ALL, NONE
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateOrganizationConfiguration AWS API Documentation
+    #
+    # @overload update_organization_configuration(params = {})
+    # @param [Hash] params ({})
+    def update_organization_configuration(params = {}, options = {})
+      req = build_request(:update_organization_configuration, params)
+      req.send_request(options)
+    end
+
+    # Updates information about the publishing destination specified by the
+    # `destinationId`.
+    #
+    # @option params [required, String] :detector_id
+    #   The ID of the detector associated with the publishing destinations to
+    #   update.
+    #
+    # @option params [required, String] :destination_id
+    #   The ID of the publishing destination to update.
+    #
+    # @option params [Types::DestinationProperties] :destination_properties
+    #   A `DestinationProperties` object that includes the `DestinationArn`
+    #   and `KmsKeyArn` of the publishing destination.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.update_publishing_destination({
+    #     detector_id: "DetectorId", # required
+    #     destination_id: "String", # required
+    #     destination_properties: {
+    #       destination_arn: "String",
+    #       kms_key_arn: "String",
+    #     },
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdatePublishingDestination AWS API Documentation
+    #
+    # @overload update_publishing_destination(params = {})
+    # @param [Hash] params ({})
+    def update_publishing_destination(params = {}, options = {})
+      req = build_request(:update_publishing_destination, params)
+      req.send_request(options)
+    end
+
+    # Updates the ThreatIntelSet specified by the ThreatIntelSet ID.
+    #
+    # @option params [required, String] :detector_id
+    #   The detectorID that specifies the GuardDuty service whose
+    #   ThreatIntelSet you want to update.
+    #
+    # @option params [required, String] :threat_intel_set_id
+    #   The unique ID that specifies the ThreatIntelSet that you want to
+    #   update.
+    #
+    # @option params [String] :name
+    #   The unique ID that specifies the ThreatIntelSet that you want to
+    #   update.
+    #
+    # @option params [String] :location
+    #   The updated URI of the file that contains the ThreateIntelSet.
+    #
+    # @option params [Boolean] :activate
+    #   The updated Boolean value that specifies whether the ThreateIntelSet
+    #   is active or not.
+    #
+    # @return [Struct] Returns an empty {Seahorse::Client::Response response}.
+    #
+    # @example Request syntax with placeholder values
+    #
+    #   resp = client.update_threat_intel_set({
+    #     detector_id: "DetectorId", # required
+    #     threat_intel_set_id: "String", # required
+    #     name: "Name",
+    #     location: "Location",
+    #     activate: false,
+    #   })
+    #
+    # @see http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateThreatIntelSet AWS API Documentation
+    #
+    # @overload update_threat_intel_set(params = {})
+    # @param [Hash] params ({})
+    def update_threat_intel_set(params = {}, options = {})
+      req = build_request(:update_threat_intel_set, params)
+      req.send_request(options)
+    end
+
+    # @!endgroup
+
+    # @param params ({})
+    # @api private
+    def build_request(operation_name, params = {})
+      handlers = @handlers.for(operation_name)
+      context = Seahorse::Client::RequestContext.new(
+        operation_name: operation_name,
+        operation: config.api.operation(operation_name),
+        client: self,
+        params: params,
+        config: config)
+      context[:gem_name] = 'aws-sdk-guardduty'
+      context[:gem_version] = '1.76.0'
+      Seahorse::Client::Request.new(handlers, context)
+    end
+
+    # @api private
+    # @deprecated
+    def waiter_names
+      []
+    end
+
+    class << self
+
+      # @api private
+      attr_reader :identifier
+
+      # @api private
+      def errors_module
+        Errors
+      end
+
+    end
+  end
+end

@@ -1,0 +1,481 @@
+# frozen_string_literal: true
+
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the contributing guide for more information:
+# https://github.com/aws/aws-sdk-ruby/blob/version-3/CONTRIBUTING.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws::IoTDataPlane
+  module Types
+
+    # The specified version does not match the version of the document.
+    #
+    # @!attribute [rw] message
+    #   The message for the exception.
+    #   @return [String]
+    #
+    class ConflictException < Struct.new(
+      :message)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The input for the DeleteThingShadow operation.
+    #
+    # @!attribute [rw] thing_name
+    #   The name of the thing.
+    #   @return [String]
+    #
+    # @!attribute [rw] shadow_name
+    #   The name of the shadow.
+    #   @return [String]
+    #
+    class DeleteThingShadowRequest < Struct.new(
+      :thing_name,
+      :shadow_name)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The output from the DeleteThingShadow operation.
+    #
+    # @!attribute [rw] payload
+    #   The state information, in JSON format.
+    #   @return [String]
+    #
+    class DeleteThingShadowResponse < Struct.new(
+      :payload)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The input for the GetRetainedMessage operation.
+    #
+    # @!attribute [rw] topic
+    #   The topic name of the retained message to retrieve.
+    #   @return [String]
+    #
+    class GetRetainedMessageRequest < Struct.new(
+      :topic)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The output from the GetRetainedMessage operation.
+    #
+    # @!attribute [rw] topic
+    #   The topic name to which the retained message was published.
+    #   @return [String]
+    #
+    # @!attribute [rw] payload
+    #   The Base64-encoded message payload of the retained message body.
+    #   @return [String]
+    #
+    # @!attribute [rw] qos
+    #   The quality of service (QoS) level used to publish the retained
+    #   message.
+    #   @return [Integer]
+    #
+    # @!attribute [rw] last_modified_time
+    #   The Epoch date and time, in milliseconds, when the retained message
+    #   was stored by IoT.
+    #   @return [Integer]
+    #
+    # @!attribute [rw] user_properties
+    #   A base64-encoded JSON string that includes an array of JSON objects,
+    #   or null if the retained message doesn't include any user
+    #   properties.
+    #
+    #   The following example `userProperties` parameter is a JSON string
+    #   that represents two user properties. Note that it will be
+    #   base64-encoded:
+    #
+    #   `[\{"deviceName": "alpha"\}, \{"deviceCnt": "45"\}]`
+    #   @return [String]
+    #
+    class GetRetainedMessageResponse < Struct.new(
+      :topic,
+      :payload,
+      :qos,
+      :last_modified_time,
+      :user_properties)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The input for the GetThingShadow operation.
+    #
+    # @!attribute [rw] thing_name
+    #   The name of the thing.
+    #   @return [String]
+    #
+    # @!attribute [rw] shadow_name
+    #   The name of the shadow.
+    #   @return [String]
+    #
+    class GetThingShadowRequest < Struct.new(
+      :thing_name,
+      :shadow_name)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The output from the GetThingShadow operation.
+    #
+    # @!attribute [rw] payload
+    #   The state information, in JSON format.
+    #   @return [String]
+    #
+    class GetThingShadowResponse < Struct.new(
+      :payload)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # An unexpected error has occurred.
+    #
+    # @!attribute [rw] message
+    #   The message for the exception.
+    #   @return [String]
+    #
+    class InternalFailureException < Struct.new(
+      :message)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The request is not valid.
+    #
+    # @!attribute [rw] message
+    #   The message for the exception.
+    #   @return [String]
+    #
+    class InvalidRequestException < Struct.new(
+      :message)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # @!attribute [rw] thing_name
+    #   The name of the thing.
+    #   @return [String]
+    #
+    # @!attribute [rw] next_token
+    #   The token to retrieve the next set of results.
+    #   @return [String]
+    #
+    # @!attribute [rw] page_size
+    #   The result page size.
+    #   @return [Integer]
+    #
+    class ListNamedShadowsForThingRequest < Struct.new(
+      :thing_name,
+      :next_token,
+      :page_size)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # @!attribute [rw] results
+    #   The list of shadows for the specified thing.
+    #   @return [Array<String>]
+    #
+    # @!attribute [rw] next_token
+    #   The token to use to get the next set of results, or **null** if
+    #   there are no additional results.
+    #   @return [String]
+    #
+    # @!attribute [rw] timestamp
+    #   The Epoch date and time the response was generated by IoT.
+    #   @return [Integer]
+    #
+    class ListNamedShadowsForThingResponse < Struct.new(
+      :results,
+      :next_token,
+      :timestamp)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # @!attribute [rw] next_token
+    #   To retrieve the next set of results, the `nextToken` value from a
+    #   previous response; otherwise **null** to receive the first set of
+    #   results.
+    #   @return [String]
+    #
+    # @!attribute [rw] max_results
+    #   The maximum number of results to return at one time.
+    #   @return [Integer]
+    #
+    class ListRetainedMessagesRequest < Struct.new(
+      :next_token,
+      :max_results)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # @!attribute [rw] retained_topics
+    #   A summary list the account's retained messages. The information
+    #   returned doesn't include the message payloads of the retained
+    #   messages.
+    #   @return [Array<Types::RetainedMessageSummary>]
+    #
+    # @!attribute [rw] next_token
+    #   The token for the next set of results, or null if there are no
+    #   additional results.
+    #   @return [String]
+    #
+    class ListRetainedMessagesResponse < Struct.new(
+      :retained_topics,
+      :next_token)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The specified combination of HTTP verb and URI is not supported.
+    #
+    # @!attribute [rw] message
+    #   The message for the exception.
+    #   @return [String]
+    #
+    class MethodNotAllowedException < Struct.new(
+      :message)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The input for the Publish operation.
+    #
+    # @!attribute [rw] topic
+    #   The name of the MQTT topic.
+    #   @return [String]
+    #
+    # @!attribute [rw] qos
+    #   The Quality of Service (QoS) level. The default QoS level is 0.
+    #   @return [Integer]
+    #
+    # @!attribute [rw] retain
+    #   A Boolean value that determines whether to set the RETAIN flag when
+    #   the message is published.
+    #
+    #   Setting the RETAIN flag causes the message to be retained and sent
+    #   to new subscribers to the topic.
+    #
+    #   Valid values: `true` \| `false`
+    #
+    #   Default value: `false`
+    #   @return [Boolean]
+    #
+    # @!attribute [rw] payload
+    #   The message body. MQTT accepts text, binary, and empty (null)
+    #   message payloads.
+    #
+    #   Publishing an empty (null) payload with **retain** = `true` deletes
+    #   the retained message identified by **topic** from Amazon Web
+    #   Services IoT Core.
+    #   @return [String]
+    #
+    # @!attribute [rw] user_properties
+    #   A JSON string that contains an array of JSON objects. If you don’t
+    #   use Amazon Web Services SDK or CLI, you must encode the JSON string
+    #   to base64 format before adding it to the HTTP header.
+    #   `userProperties` is an HTTP header value in the API.
+    #
+    #   The following example `userProperties` parameter is a JSON string
+    #   which represents two User Properties. Note that it needs to be
+    #   base64-encoded:
+    #
+    #   `[\{"deviceName": "alpha"\}, \{"deviceCnt": "45"\}]`
+    #   @return [String]
+    #
+    # @!attribute [rw] payload_format_indicator
+    #   An `Enum` string value that indicates whether the payload is
+    #   formatted as UTF-8. `payloadFormatIndicator` is an HTTP header value
+    #   in the API.
+    #   @return [String]
+    #
+    # @!attribute [rw] content_type
+    #   A UTF-8 encoded string that describes the content of the publishing
+    #   message.
+    #   @return [String]
+    #
+    # @!attribute [rw] response_topic
+    #   A UTF-8 encoded string that's used as the topic name for a response
+    #   message. The response topic is used to describe the topic which the
+    #   receiver should publish to as part of the request-response flow. The
+    #   topic must not contain wildcard characters.
+    #   @return [String]
+    #
+    # @!attribute [rw] correlation_data
+    #   The base64-encoded binary data used by the sender of the request
+    #   message to identify which request the response message is for when
+    #   it's received. `correlationData` is an HTTP header value in the
+    #   API.
+    #   @return [String]
+    #
+    # @!attribute [rw] message_expiry
+    #   A user-defined integer value that represents the message expiry
+    #   interval in seconds. If absent, the message doesn't expire. For
+    #   more information about the limits of `messageExpiry`, see [Amazon
+    #   Web Services IoT Core message broker and protocol limits and quotas
+    #   ][1] from the Amazon Web Services Reference Guide.
+    #
+    #
+    #
+    #   [1]: https://docs.aws.amazon.com/general/latest/gr/iot-core.html#message-broker-limits
+    #   @return [Integer]
+    #
+    class PublishRequest < Struct.new(
+      :topic,
+      :qos,
+      :retain,
+      :payload,
+      :user_properties,
+      :payload_format_indicator,
+      :content_type,
+      :response_topic,
+      :correlation_data,
+      :message_expiry)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The payload exceeds the maximum size allowed.
+    #
+    # @!attribute [rw] message
+    #   The message for the exception.
+    #   @return [String]
+    #
+    class RequestEntityTooLargeException < Struct.new(
+      :message)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The specified resource does not exist.
+    #
+    # @!attribute [rw] message
+    #   The message for the exception.
+    #   @return [String]
+    #
+    class ResourceNotFoundException < Struct.new(
+      :message)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # Information about a single retained message.
+    #
+    # @!attribute [rw] topic
+    #   The topic name to which the retained message was published.
+    #   @return [String]
+    #
+    # @!attribute [rw] payload_size
+    #   The size of the retained message's payload in bytes.
+    #   @return [Integer]
+    #
+    # @!attribute [rw] qos
+    #   The quality of service (QoS) level used to publish the retained
+    #   message.
+    #   @return [Integer]
+    #
+    # @!attribute [rw] last_modified_time
+    #   The Epoch date and time, in milliseconds, when the retained message
+    #   was stored by IoT.
+    #   @return [Integer]
+    #
+    class RetainedMessageSummary < Struct.new(
+      :topic,
+      :payload_size,
+      :qos,
+      :last_modified_time)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The service is temporarily unavailable.
+    #
+    # @!attribute [rw] message
+    #   The message for the exception.
+    #   @return [String]
+    #
+    class ServiceUnavailableException < Struct.new(
+      :message)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The rate exceeds the limit.
+    #
+    # @!attribute [rw] message
+    #   The message for the exception.
+    #   @return [String]
+    #
+    class ThrottlingException < Struct.new(
+      :message)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # You are not authorized to perform this operation.
+    #
+    # @!attribute [rw] message
+    #   The message for the exception.
+    #   @return [String]
+    #
+    class UnauthorizedException < Struct.new(
+      :message)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The document encoding is not supported.
+    #
+    # @!attribute [rw] message
+    #   The message for the exception.
+    #   @return [String]
+    #
+    class UnsupportedDocumentEncodingException < Struct.new(
+      :message)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The input for the UpdateThingShadow operation.
+    #
+    # @!attribute [rw] thing_name
+    #   The name of the thing.
+    #   @return [String]
+    #
+    # @!attribute [rw] shadow_name
+    #   The name of the shadow.
+    #   @return [String]
+    #
+    # @!attribute [rw] payload
+    #   The state information, in JSON format.
+    #   @return [String]
+    #
+    class UpdateThingShadowRequest < Struct.new(
+      :thing_name,
+      :shadow_name,
+      :payload)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+    # The output from the UpdateThingShadow operation.
+    #
+    # @!attribute [rw] payload
+    #   The state information, in JSON format.
+    #   @return [String]
+    #
+    class UpdateThingShadowResponse < Struct.new(
+      :payload)
+      SENSITIVE = []
+      include Aws::Structure
+    end
+
+  end
+end
