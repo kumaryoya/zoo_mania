@@ -5,15 +5,15 @@
       <div class="top-inner-text overflow-hidden text-center">
         <% if @random_post.present? %>
           <div style="position: relative; text-align: center;">
-            <div style="display: inline-block;">
-              <%= image_tag @random_post.image.url, style: "width: 360px; height: 240px;" %>
-            </div>
             <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-2xl">
               <%= "これは#{@random_post.user.name}さんが" %><br>
               <%= "#{@random_post.zoo.name}で" %><br>
               <%= "撮った写真だゾゥ" %>
             </span>
             <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto" %>
+            <div style="display: inline-block;">
+              <%= render partial: 'posts/post', locals: { post: @random_post } %>
+            </div>
           </div>
         <% end %>
       </div>

@@ -21,6 +21,11 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, class: 'input input-bordered input-primary w-full' %>
       </div>
+      <div class="form-group mb-10">
+        <div><%= f.label :avatar %></div>
+        <div class="flex items-center justify-center"><%= f.file_field :avatar, class: 'form-control file-input file-input-bordered file-input-info w-full max-w-xs items-center justify-center', accept: 'image/*' %></div>
+        <div><%= f.hidden_field :avatar_cache %></div>
+      </div>
       <div class="d-grid mb-10">
         <%= f.submit t('defaults.register'), class: 'btn btn-primary text-white' %>
       </div>
