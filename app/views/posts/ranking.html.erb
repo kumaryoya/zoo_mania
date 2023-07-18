@@ -1,9 +1,15 @@
 <% content_for(:title, t('.title')) %>
-<div class="flex flex-col justify-center text-center main_image">
+<div class="main_image items-center justify-center text-center">
   <h1 class="text-3xl py-10"><%= t('.title') %></h1>
-  <ol class="mx-auto max-w-md">
-    <% @top_posts.each_with_index do |post, index| %>
-      <li class="text-2xl pb-10">第<%= index + 1 %>位 <%= render post %></li>
-    <% end %>
-  </ol>
+  <section class="main_image items-center justify-center text-center">
+    <div class="container mx-auto">
+      <div class="flex flex-wrap justify-center pb-10">
+        <ol>
+          <% @top_posts.each_with_index do |post, index| %>
+            <li class="text-2xl pb-10">第<%= index + 1 %>位 <%= render post %></li>
+          <% end %>
+        </ol>
+      </div>
+    </div>
+  </section>
 </div>

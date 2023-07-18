@@ -6,7 +6,7 @@
         <% if @random_post.present? %>
           <div style="position: relative; text-align: center;">
             <div style="display: inline-block;">
-              <%= image_tag @random_post.image.url, style: "width: 450px; height: 300px;" %>
+              <%= image_tag @random_post.image.url, style: "width: 360px; height: 240px;" %>
             </div>
             <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-2xl">
               <%= "これは#{@random_post.user.name}さんが" %><br>
@@ -21,7 +21,8 @@
   </div>
   <div class="treatment text-center">
     <p class="text-2xl">ZooManiaの使い方</p>
-    <p class="relative">ZooManiaは、動物園に焦点を当てたWebサービスです。</p>
+    <p class="relative">ZooManiaは、<br>
+                        動物園に焦点を当てたWebサービスです。</p>
   </div>
   <div class="treatment text-center">
     <p class="text-2xl mt-5">動物園ライブラリ機能</p>
@@ -45,7 +46,8 @@
     <p class="text-2xl mt-5">画像投稿機能</p>
     <p class="relative">ZooManiaでは動物園で撮った写真を<br>
                         投稿することができます。<br>
-                        行った動物園のタグを付けて、どんどん投稿してください。<br>
+                        行った動物園のタグを付けて、<br>
+                        どんどん投稿してください。<br>
                         素敵なお写真をお待ちしています。<br>
     </p>
   </div>
