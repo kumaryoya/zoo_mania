@@ -3,7 +3,7 @@
   <div class="card-body">
     <h2 class="card-title pl-2"><%= post.title %></h2>
     <p><%= post.user.name %></p>
-    <p><%= post.zoo.name%></p>
+    <p class="link link-primary"><%= link_to post.zoo.name, zoo_path(post.zoo) %></p>
     <div class="card-actions justify-end">
       <% if current_user && current_user == post.user %>
         <%= link_to "https://twitter.com/share?url=#{request.url}&text=#{post.user.name}さんの今回の学習時間は分でした！%0A&hashtags=StudyingTracker", target: '_blank', class: 'btn btn-secondary text-white' do %>

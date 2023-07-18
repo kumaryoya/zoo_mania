@@ -47,8 +47,9 @@
         <div class="items-center justify-center text-center pb-10">
           <% @favorite_zoos.each do |favorite_zoo| %>
             <div class="flex items-center justify-center text-center mb-10">
-              <span class="text-2xl pr-2">第<%= favorite_zoo.rank %>位</span>
-              <span class="text-2xl pr-2"><%= favorite_zoo.zoo.name %></span>
+              <div class="text-2xl link link-primary pr-2">
+                第<%= favorite_zoo.rank %>位 <%= link_to favorite_zoo.zoo.name, zoo_path(favorite_zoo.zoo) %>
+              </div>
               <%= link_to t('defaults.destroy'), user_favorite_zoo_path(current_user, favorite_zoo), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white" %>
             </div>
           <% end %>

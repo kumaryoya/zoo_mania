@@ -35,12 +35,14 @@ ja:
       success_password_change: "パスワードを変更できたゾゥ"
       fail_password_change: "パスワードが変更できなかったゾゥ"
   passwords:
+    edit:
+      title: "プロフィール変更"
     update:
       success: "変更できたゾゥ"
       fail: "変更できなかったゾゥ"
   posts:
     index:
-      title: "投稿一覧"
+      title: "みんなの投稿"
       no_result: "投稿がありません"
     new:
       title: "新規投稿"
@@ -55,7 +57,7 @@ ja:
     destroy:
       success_delete_post: "投稿を削除できたゾゥ"
     ranking:
-      title: "投稿ランキング"
+      title: "いいねランキング"
   profiles:
     edit:
       title: "プロフィール編集"
