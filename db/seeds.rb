@@ -1,6 +1,12 @@
 User.create!(
   [
     {
+      name: "name",
+      email: "hoge@example.com",
+      password: "password",
+      password_confirmation: "password",
+    },
+    {
       name: "aaa",
       email: "aaa@aaa",
       password: "aaa",
