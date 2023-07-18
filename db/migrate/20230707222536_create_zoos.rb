@@ -4,6 +4,7 @@ class CreateZoos < ActiveRecord::Migration[7.0]
       t.string :name, null: false
       t.string :location, null: false
       t.string :area, null: false
+      t.string :prefecture, null: false
       t.string :link, null: false
       t.timestamps
     end

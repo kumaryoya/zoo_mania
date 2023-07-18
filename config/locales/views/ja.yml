@@ -13,10 +13,13 @@ ja:
     inquiry: "お問い合わせ"
     favorite_zoo: "お気に入り動物園"
     posts: "投稿一覧"
+    optional: "(任意)"
   message:
     require_login: "ログインしてほしいゾゥ"
     no_authority: "アクセス権限がないゾゥ"
   favorite_zoos:
+    new:
+      title: "お気に入り動物園"
     create:
       success_create_favotite_zoo: "お気に入りの動物園を追加できたゾゥ"
       fail_create_favotite_zoo: "お気に入りの動物園を追加できなかったゾゥ"
@@ -58,6 +61,12 @@ ja:
       success_delete_post: "投稿を削除できたゾゥ"
     ranking:
       title: "いいねランキング"
+    my_posts:
+      title: "じぶんの投稿"
+      no_result: "投稿がありません"
+    my_like_posts:
+      title: "いいねした投稿"
+      no_result: "投稿がありません"
   profiles:
     edit:
       title: "プロフィール編集"
