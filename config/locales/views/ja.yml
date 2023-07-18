@@ -13,10 +13,13 @@ ja:
     inquiry: "お問い合わせ"
     favorite_zoo: "お気に入り動物園"
     posts: "投稿一覧"
+    optional: "(任意)"
   message:
     require_login: "ログインしてほしいゾゥ"
     no_authority: "アクセス権限がないゾゥ"
   favorite_zoos:
+    index:
+      title: "いいねした投稿"
     create:
       success_create_favotite_zoo: "お気に入りの動物園を追加できたゾゥ"
       fail_create_favotite_zoo: "お気に入りの動物園を追加できなかったゾゥ"

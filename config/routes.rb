@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resource :profile,only: %i[show edit update]
   resources :users, only: %i[new create] do
     resource :password, only: %i[edit update]
-    resources :favorite_zoos, only: %i[create destroy]
+    resources :favorite_zoos, only: %i[index create destroy]
   end
   resources :zoos, only: %i[index show] do
     collection do

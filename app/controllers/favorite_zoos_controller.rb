@@ -2,6 +2,10 @@ class FavoriteZoosController < ApplicationController
   before_action :require_login
   before_action :set_user, only: %i[create destroy]
 
+  def index
+    @posts = current_user.likes.includes(:post, :user).order(created_at: :desc).map(&:post)
+  end
+
   def create
     @favorite_zoo = @user.favorite_zoos.build(favorite_zoo_params)
     if @favorite_zoo.save
