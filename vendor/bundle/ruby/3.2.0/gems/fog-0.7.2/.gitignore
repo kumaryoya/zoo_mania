@@ -1,0 +1,13 @@
+*~
+*.gem
+*.rbc
+*.sw?
+.bundle
+.DS_Store
+docs/_site/*
+coverage
+doc/*
+Gemfile.lock
+rdoc
+pkg
+spec/credentials.yml
