@@ -1,0 +1,37 @@
+<% content_for(:title, t('.title')) %>
+<div class="main_image">
+  <div class="text-center">
+    <div class="pt-10">
+      <div class="md:grid justify-items-stretch">
+        <div class="font-bold md:w-2/3 xl:w-1/3 justify-self-center text-3xl pb-5"><%= t('defaults.favorite_zoo') %></div>
+        <div class="main_image flex items-center justify-center text-center pb-5">
+          <%= form_with(model: [@user, @favorite_zoo], url: user_favorite_zoos_path(@user)) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <div class="flex flex-col items-center text-2xl pb-5">
+              <%= f.label :rank %>
+              <%= f.select :rank, (1..3).to_a, { prompt: "順位を選択してください" } %>
+            </div>
+            <div class="flex flex-col items-center text-2xl">
+              <%= f.label :zoo_id %>
+              <%= f.collection_select :zoo_id, Zoo.all, :id, :name, { prompt: "動物園を選択してください" } %>
+            </div>
+            <%= f.submit class: "btn btn-primary text-white font-bold my-5" %>
+          <% end %>
+        </div>
+        <div class="items-center justify-center text-center pb-10">
+          <% @favorite_zoos.each do |favorite_zoo| %>
+            <div class="flex items-center justify-center text-center mb-10">
+              <div class="text-2xl link link-primary pr-2">
+                第<%= favorite_zoo.rank %>位 <%= link_to favorite_zoo.zoo.name, zoo_path(favorite_zoo.zoo) %>
+              </div>
+              <%= link_to t('defaults.destroy'), user_favorite_zoo_path(current_user, favorite_zoo), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white" %>
+            </div>
+          <% end %>
+          <%= link_to "https://twitter.com/share?url=#{request.url}&text=#{current_user.name}さんの今回の学習時間は分でした！%0A&hashtags=StudyingTracker", target: '_blank', class: 'btn btn-secondary text-white' do %>
+            <i class="fab fa-twitter fa-2xl"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

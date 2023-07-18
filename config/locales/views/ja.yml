@@ -18,6 +18,8 @@ ja:
     require_login: "ログインしてほしいゾゥ"
     no_authority: "アクセス権限がないゾゥ"
   favorite_zoos:
+    new:
+      title: "お気に入り動物園"
     create:
       success_create_favotite_zoo: "お気に入りの動物園を追加できたゾゥ"
       fail_create_favotite_zoo: "お気に入りの動物園を追加できなかったゾゥ"
