@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resource :profile,only: %i[show edit update]
   resources :users, only: %i[new create] do
     resource :password, only: %i[edit update]
-    resources :favorite_zoos, only: %i[index create destroy]
+    resources :favorite_zoos, only: %i[create destroy]
   end
   resources :zoos, only: %i[index show] do
     collection do
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     collection do
       get 'ranking', to: 'posts#ranking'
       get 'my_posts', to: 'posts#my_posts'
+      get 'my_like_posts', to: 'posts#my_like_posts'
     end
   end
 end
