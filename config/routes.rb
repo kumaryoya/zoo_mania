@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resource :likes, only: [:create, :destroy]
     collection do
       get 'ranking', to: 'posts#ranking'
+      get 'my_posts', to: 'posts#my_posts'
     end
   end
 end
