@@ -1,9 +1,9 @@
 ja:
   defaults:
     login: "ログイン"
-    loginpage: "ログインページへ"
+    loginpage: "ログイン"
     register: "登録"
-    register_page: "登録ページへ"
+    register_page: "ユーザー登録"
     logout: "ログアウト"
     logout?: "ログアウトしますか？"
     edit: "編集"
