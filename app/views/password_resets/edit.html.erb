@@ -1,23 +1,19 @@
 <% content_for(:title, t('.title')) %>
-<div class="container main_image">
-    <div class="row">
-        <div class=" col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-            <h1>パスワードリセット</h1>
-            <%= form_with model:@user,url:password_reset_path(@token),local: true do |f|%>
-                <div class="form-group">
-                    <%=f.label :email%>
-                    <%=@user.email%>
-                </div>
-                <div class="form-group">
-                    <%=f.label :password%>
-                    <%=f.password_field :password,class: "form-control"%>
-                </div>
-                <div class="form-group">
-                    <%=f.label :password_confirmation%>
-                    <%=f.password_field :password_confirmation,class: "form-control"%>
-                </div>
-                <%=f.submit "更新する",class:"btn btn-primary"%>
-            <%end%>
-        </div>
-    </div>
+<div class="flex justify-center text-center main_image">
+  <div>
+    <h1 class="text-3xl pt-28 pb-20"><%= t('.title') %></h1>
+    <%= form_with model:@user,url:password_reset_path(@token),local: true do |f|%>
+      <div class="form-group pb-20">
+          <%=f.label :password%>
+          <%=f.password_field :password,class: "form-control"%>
+      </div>
+      <div class="form-group pb-20">
+          <%=f.label :password_confirmation%>
+          <%=f.password_field :password_confirmation,class: "form-control"%>
+      </div>
+      <div class="d-grid pb-36">
+        <%= f.submit t('defaults.update'), class: 'btn btn-primary text-white' %>
+      </div>
+    <%end%>
+  </div>
 </div>
