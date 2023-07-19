@@ -6,7 +6,7 @@
     <p class="link link-primary"><%= link_to post.zoo.name, zoo_path(post.zoo) %></p>
     <div class="card-actions justify-end">
       <% if current_user && current_user == post.user %>
-        <%= link_to "https://twitter.com/share?url=#{request.url}&text=#{post.user.name}さんの今回の学習時間は分でした！%0A&hashtags=StudyingTracker", target: '_blank', class: 'btn btn-secondary text-white' do %>
+        <%= link_to "https://twitter.com/share?url=https://www.zoomania.top/&text=#{post.user.name}さんが#{post.zoo.name}で撮った写真を投稿しました！%0A&hashtags=ZooMania&hashtags=#{post.zoo.name}", class: 'btn btn-secondary text-white', target: '_blank' do %>
           <i class="fab fa-twitter fa-2xl"></i>
         <% end %>
         <%= link_to  t('defaults.edit'), edit_post_path(post), class: "btn btn-accent text-white" %>

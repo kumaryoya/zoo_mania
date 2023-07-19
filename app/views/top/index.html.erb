@@ -11,9 +11,9 @@
               <%= "撮った写真だゾゥ" %>
             </span>
             <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto" %>
-            <div style="display: inline-block;">
-              <%= render partial: 'posts/post', locals: { post: @random_post } %>
-            </div>
+          </div>
+          <div class="animation-rotateY mx-auto flex flex-wrap justify-center" >
+            <%= render partial: 'posts/post', locals: { post: @random_post } %>
           </div>
         <% end %>
       </div>
