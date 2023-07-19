@@ -7,7 +7,7 @@ class GoogleLoginApiController < ApplicationController
     payload = Google::Auth::IDTokens.verify_oidc(params[:credential], aud: '288360666860-8fku5g6vlc42pabvmc7ui2iuebef29un.apps.googleusercontent.com')
     if user = User.find_by(email: payload['email'])
       session[:user_id] = user.id
-      redirect_to zoos_path, notice: t('.success')
+      redirect_to root_path, notice: t('.success')
     else
       user = User.new(email: payload['email'], name: 'name', password: 'password', password_confirmation: 'password')
       if user.save
