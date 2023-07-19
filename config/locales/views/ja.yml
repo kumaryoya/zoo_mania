@@ -14,6 +14,8 @@ ja:
     favorite_zoo: "お気に入り動物園"
     posts: "投稿一覧"
     optional: "(任意)"
+    send: "送信"
+    update: "更新"
   message:
     require_login: "ログインしてほしいゾゥ"
     no_authority: "アクセス権限がないゾゥ"
@@ -32,8 +34,12 @@ ja:
       fail: "ログインできなかったゾゥ"
       unauthorized_access: "不正なアクセスだゾゥ"
   password_resets:
+    new:
+      title: "パスワードリセット申請"
     create:
       sent_email: "メールを送信したゾゥ"
+    edit:
+      title: "パスワード変更"
     update:
       success_password_change: "パスワードを変更できたゾゥ"
       fail_password_change: "パスワードが変更できなかったゾゥ"
