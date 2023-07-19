@@ -5,7 +5,7 @@ class PasswordsController < ApplicationController
 
   def update
     if password_changed? && @user.update(user_params)
-      redirect_to zoos_path, notice: t('.success')
+      redirect_to root_path, notice: t('.success')
     else
       flash.now[:danger] = t('.fail')
       render :edit, status: :unprocessable_entity
