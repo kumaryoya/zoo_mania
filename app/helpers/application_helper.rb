@@ -1,18 +1,18 @@
 module ApplicationHelper
-  def page_title(page_title = '')
-    base_title = 'ZooMania'
-    page_title.empty? ? base_title : "#{page_title} | #{base_title}"
-  end
-
   def default_meta_tags
     {
+      site: 'ZooMania',
+      title: '動物園情報提供サービス',
       reverse: true,
       charset: 'utf-8',
-      description: 'みんなで動物園に行こう！',
-      keywords: '動物園,動物園一覧,動物',
+      description: '動物園に行こう！',
+      keywords: '動物,動物園,動物園一覧',
       canonical: request.original_url,
       separator: '|',
       og: {
+        site_name: :site,
+        title: :title,
+        description: :description,
         type: 'website',
         url: request.original_url,
         image: image_url('ogp.png'),
