@@ -6,8 +6,6 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-      site: 'ZooMania',
-      title: "ZooMania",
       reverse: true,
       charset: 'utf-8',
       description: 'みんなで動物園に行こう！',
@@ -15,9 +13,6 @@ module ApplicationHelper
       canonical: request.original_url,
       separator: '|',
       og: {
-        site_name: :site,
-        title: :title,
-        description: :description,
         type: 'website',
         url: request.original_url,
         image: image_url('ogp.png'),
