@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
-  has_many :favorite_zoos
+  has_many :favorite_zoos, dependent: :destroy
   has_many :zoos, through: :favorite_zoos
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
