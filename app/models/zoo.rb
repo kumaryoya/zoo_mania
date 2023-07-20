@@ -17,4 +17,8 @@ class Zoo < ApplicationRecord
       .having('COUNT(favorite_zoos.id) > 0')
       .order('COUNT(favorite_zoos.id) DESC')
   }
+
+  def self.top_10
+    top_ranked.limit(10)
+  end
 end

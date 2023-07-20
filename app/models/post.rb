@@ -18,4 +18,8 @@ class Post < ApplicationRecord
   def liked?(user)
     likes.where(user_id: user.id).exists?
   end
+
+  def self.top_10
+    top_ranked.limit(10)
+  end
 end
