@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
-@import 'bootstrap';
 
 .header_image {
   background-image: url("header.jpeg");
