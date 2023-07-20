@@ -16,14 +16,15 @@
         <div class="font-bold text-xl", scope="row"><%= t(User.human_attribute_name(:email)) %></div>
         <div class="font-bold text-xl"><%= current_user.email %></div>
       </div>
-      <div class="mb-8">
+      <div class="mb-16">
         <div class="font-bold text-xl", scope="row"><%= t(User.human_attribute_name(:avatar)) %></div>
         <div class="avatar">
-          <div class="w-16 rounded-full mb-20">
+          <div class="w-16 rounded-full">
             <%= image_tag current_user.avatar.url %>
           </div>
         </div>
       </div>
+      <%= link_to t('defaults.withdrawal'), user_path(current_user.id), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white mb-20" %>
     </div>
   </div>
 </div>

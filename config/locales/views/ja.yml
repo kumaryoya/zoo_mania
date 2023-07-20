@@ -8,6 +8,7 @@ ja:
     logout?: "ログアウトしますか？"
     edit: "編集"
     destroy: "削除"
+    withdrawal: "退会"
     destroy?: "削除しますか？"
     share: "共有"
     inquiry: "お問い合わせ"
@@ -95,6 +96,8 @@ ja:
     create:
       success: "ユーザー登録が完了したゾゥ"
       fail: "ユーザー登録に失敗したゾゥ"
+    destroy:
+      success: "退会できたゾゥ"
   zoos:
     index:
       title: "動物園一覧"
