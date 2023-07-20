@@ -11,3 +11,6 @@ Metrics/MethodLength:
 
 Rails/UniqueValidationWithoutIndex:
   Enabled: false
+
+Style/HashSyntax:
+  Enabled: false
