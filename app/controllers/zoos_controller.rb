@@ -5,7 +5,7 @@ class ZoosController < ApplicationController
 
   def show
     @zoo = Zoo.find(params[:id])
-    @posts = @zoo.posts
+    @posts = @zoo.posts.page(params[:page]).per(12)
   end
 
   def ranking
