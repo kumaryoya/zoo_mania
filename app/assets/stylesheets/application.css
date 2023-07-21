@@ -41,7 +41,6 @@
   100% { transform: perspective(500px) rotateY(1080deg); }
 }
 
-/* 使用例 */
 .animation-rotateY {
   animation: rotateY 3s;
 }

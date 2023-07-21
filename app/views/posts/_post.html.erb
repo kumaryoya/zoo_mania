@@ -1,14 +1,14 @@
 <div class="card w-96 shadow-xl post_image m-3">
   <figure class="p-5"><%= image_tag post.image_url, alt:"Posts" %></figure>
-  <div class="card-body">
-    <h2 class="card-title pl-2"><%= post.title %></h2>
-    <p><%= post.user.name %></p>
-    <p class="link link-primary"><%= link_to post.zoo.name, zoo_path(post.zoo) %></p>
+  <div class="card-body items-center justify-center text-center flex space-between　">
+    <h2 class="text-2xl py-2"><%= post.title %></h2>
+    <p class="text-xl py-2"><%= post.user.name %></p>
+    <p class="link link-primary text-l py-2"><%= link_to post.zoo.name, zoo_path(post.zoo) %></p>
     <div class="card-actions justify-end">
-      <% if current_user && current_user == post.user %>
-        <%= link_to "https://twitter.com/share?url=https://www.zoomania.top/&text=#{post.user.name}さんが#{post.zoo.name}で撮った写真を投稿しました！%0A&hashtags=ZooMania&hashtags=#{post.zoo.name}", class: 'btn btn-secondary text-white', target: '_blank' do %>
+        <%= link_to "https://twitter.com/share?url=https://www.zoomania.top/&text=#{post.user.name}さんが#{post.title}を投稿しました！%0A&hashtags=ZooMania&hashtags=#{post.zoo.name}", class: 'btn btn-secondary text-white', target: '_blank' do %>
           <i class="fab fa-twitter fa-2xl"></i>
         <% end %>
+      <% if current_user && current_user == post.user %>
         <%= link_to  t('defaults.edit'), edit_post_path(post), class: "btn btn-accent text-white" %>
         <%= link_to t('defaults.destroy'), post_path(post), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white" %>
       <% elsif current_user %>
