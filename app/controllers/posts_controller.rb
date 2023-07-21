@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to posts_path, notice: t('.success_create_post')
+      redirect_to post_path(@post), notice: t('.success_create_post')
     else
       flash.now['danger'] = t('.fail_create_post')
       render :new, status: :unprocessable_entity
