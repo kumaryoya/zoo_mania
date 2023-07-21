@@ -44,3 +44,14 @@
 .animation-rotateY {
   animation: rotateY 3s;
 }
+
+.small-size {
+  width: 200px;
+  height: auto;
+}
+
+.parent-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
