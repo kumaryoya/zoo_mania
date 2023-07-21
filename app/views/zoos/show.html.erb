@@ -6,7 +6,7 @@
     <h2 class="text-2xl pb-10">所在地<br>
                               <%= @zoo.location %></h2>
     <div class="link link-primary text-2xl font-bold">
-      <%= link_to "公式HPリンク", @zoo.link %>
+      <%= link_to "公式HPリンク", @zoo.link, target: :_blank, rel: "noopener noreferrer" %>
     </div>
   </div>
   <div class="main_image items-center justify-center text-center">
