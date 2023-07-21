@@ -1,1 +1,1 @@
-<%= turbo_stream.append "js-like-button-for-post-#{params[:post_id]}", partial: "likes/like", locals: { post: @post } %>
+<%= turbo_stream.replace "js-like-button-for-post-#{params[:post_id]}", partial: "likes/like", locals: { post: @post } %>
