@@ -4,7 +4,14 @@
     <h2 class="text-xl py-2 link link-primary">
       <%= link_to post.title, post_path(post) %>
     </h2>
-    <p class="text-xl py-2"><%= post.user.name %></p>
+    <div class="flex items-center">
+      <p class="text-xl p-2"><%= post.user.name %></p>
+      <div class="avatar">
+        <div class="w-8 h-8 rounded-full">
+          <%= image_tag post.user.avatar.url %>
+        </div>
+      </div>
+    </div>
     <p class="link link-primary text-l py-2"><%= link_to post.zoo.name, zoo_path(post.zoo) %></p>
     <div class="card-actions justify-end">
       <% if current_user && current_user == post.user %>
