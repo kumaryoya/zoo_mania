@@ -1,10 +1,10 @@
 ja:
   defaults:
-    login: "ログイン"
+    login: "ログインする"
     loginpage: "ログイン"
-    register: "登録"
+    register: "登録する"
     register_page: "ユーザー登録"
-    logout: "ログアウト"
+    logout: "ログアウトする"
     logout?: "ログアウトしますか？"
     edit: "編集"
     destroy: "削除"
@@ -116,4 +116,4 @@ ja:
   password_reset:
     new:
       title: "パスワード再発行手続き"
-      to_page: "パスワードを忘れた場合"
+      to_page: "パスワードを忘れた場合はこちら"
