@@ -15,6 +15,7 @@ module.exports = {
       colors: {
         "white": "#FFFFFF",
         "brown": "#412E1D",
+        "star": "#c76f23",
         "twitter": "#3597DE",
       },
     },
