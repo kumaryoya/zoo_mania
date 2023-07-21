@@ -9,6 +9,6 @@ class ZoosController < ApplicationController
   end
 
   def ranking
-    @top_zoos = Zoo.top_10
+    @top_zoos = Zoo.top_ten
   end
 end

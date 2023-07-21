@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   end
 
   def ranking
-    @top_posts = Post.top_10
+    @top_posts = Post.top_ten
   end
 
   def my_posts
