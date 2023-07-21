@@ -59,6 +59,8 @@ ja:
     create:
       success_create_post: "投稿できたゾゥ"
       fail_create_post: "投稿できなかったゾゥ"
+    show:
+      title: "投稿詳細"
     edit:
       title: "投稿編集"
     update:

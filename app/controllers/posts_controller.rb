@@ -20,6 +20,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def edit; end
 
   def update
@@ -37,7 +41,7 @@ class PostsController < ApplicationController
   end
 
   def ranking
-    @top_posts = Post.top_10
+    @top_posts = Post.top_ten
   end
 
   def my_posts

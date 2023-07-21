@@ -18,7 +18,7 @@ class Zoo < ApplicationRecord
       .order('COUNT(favorite_zoos.id) DESC')
   }
 
-  def self.top_10
+  def self.top_ten
     top_ranked.limit(10)
   end
 end
