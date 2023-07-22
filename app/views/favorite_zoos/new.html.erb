@@ -30,7 +30,7 @@
             </div>
           <% end %>
           <% if current_user.favorite_zoos.present? %>
-            <%= link_to "https://twitter.com/share?url=https://www.zoomania.top/&text=#{current_user.name}さんがお気に入りの動物園を登録しました！%0A&hashtags=ZooMania", class: 'btn btn-secondary text-white', target: '_blank' do %>
+            <%= link_to "https://twitter.com/share?url=https://www.zoomania.top/zoos/ranking/&text=#{current_user.name}さんがお気に入りの動物園を登録しました！%0A&hashtags=ZooMania", class: 'btn btn-secondary text-white', target: '_blank' do %>
               <i class="fab fa-twitter fa-2xl"></i>
             <% end %>
           <% end %>
