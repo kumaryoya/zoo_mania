@@ -2,7 +2,7 @@ class Admin::PostsController < Admin::BaseController
     before_action :find_post, only: %i[show edit update destroy]
 
     def index
-      @posts = Post.all.includes(:user).includes(:zoo).order(created_at: :asc).page(params[:page]).per(12)
+      @posts = Post.all.includes(:user).includes(:zoo).order(created_at: :asc)
     end
 
     def show; end
