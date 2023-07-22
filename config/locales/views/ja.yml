@@ -17,6 +17,7 @@ ja:
     optional: "(任意)"
     send: "送信"
     update: "更新"
+    like: " いいね"
   message:
     require_login: "ログインしてほしいゾゥ"
     no_authority: "アクセス権限がないゾゥ"
@@ -61,6 +62,7 @@ ja:
       fail_create_post: "投稿できなかったゾゥ"
     show:
       title: "投稿詳細"
+      like_user: "いいねした人"
     edit:
       title: "投稿編集"
     update:
