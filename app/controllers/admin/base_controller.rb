@@ -10,8 +10,8 @@ class Admin::BaseController < ApplicationController
   end
 
   def check_admin
-    unless current_user && current_user.admin?
-      redirect_to root_path, alert: t('message.no_authority')
-    end
+    return if current_user.admin?
+
+    redirect_to root_path, alert: t('message.no_authority')
   end
 end
