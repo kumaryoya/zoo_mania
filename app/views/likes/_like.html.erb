@@ -1,9 +1,15 @@
 <% if post.liked?(current_user) %>
-  <%= link_to post_likes_path(post), data: { turbo_method: :delete }, remote: true, id: "js-like-button-for-post-#{post.id}" do %>
-    <span class="text-4xl" style="color:yellow;">★</span>
+  <%= link_to post_likes_path(post), data: { turbo_method: :delete }, remote: true, id: "js-like-button-for-post-#{post.id}", class: "like-button" do %>
+    <div class="flex items-center">
+      <span class="text-4xl mx-1" style="color:yellow;">★</span>
+      <span class="mx-1"><%= post.likes.count %> いいね</span>
+    </div>
   <% end %>
 <% else %>
-  <%= link_to post_likes_path(post), data: { turbo_method: :post }, remote: true, id: "js-like-button-for-post-#{post.id}" do %>
-    <span class="text-4xl" style="color:white;">★</span>
+  <%= link_to post_likes_path(post), data: { turbo_method: :post }, remote: true, id: "js-like-button-for-post-#{post.id}", class: "like-button" do %>
+    <div class="flex items-center">
+      <span class="text-4xl mx-1" style="color:white;">★</span>
+      <span class="mx-1"><%= post.likes.count %> いいね</span>
+    </div>
   <% end %>
 <% end %>
