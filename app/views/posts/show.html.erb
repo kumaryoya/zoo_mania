@@ -14,9 +14,9 @@
         </div>
       </div>
       <p class="link link-primary text-l py-2"><%= link_to @post.zoo.name, zoo_path(@post.zoo) %></p>
-      <div class="card-actions justify-end">
+      <div class="card-actions justify-end pb-5">
         <% set_meta_tags  og: { image: image_url(@post.image_url) }, twitter: { image: image_url(@post.image_url) } %>
-        <%= link_to "https://twitter.com/share?url=#{ request.url }&text=#{@post.user.name}さんが#{@post.title}を投稿しました！%0A&hashtags=ZooMania&hashtags=#{@post.zoo.name}", class: 'btn btn-secondary text-white', target: '_blank' do %>
+        <%= link_to "https://twitter.com/share?url=#{ request.url }&text=#{@post.user.name}さんが「#{@post.title}」を投稿しました！%0A&hashtags=ZooMania&hashtags=#{@post.zoo.name}", class: 'btn btn-secondary text-white', target: '_blank' do %>
           <i class="fab fa-twitter fa-2xl"></i>
         <% end %>
         <% if current_user && current_user == @post.user %>
@@ -30,6 +30,15 @@
           </td>
         <% end %>
       </div>
+      <% if @post.likes.any? %>
+        <span class="mx-1"><%= @post.likes.count %><%= t('defaults.like') %></span>
+        <p class="text-xl"><%= t('.like_user') %></p>
+        <ul>
+          <% @post.likes.each do |like| %>
+            <li class="text-xl"><%= like.user.name %></li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </div>
 </div>
