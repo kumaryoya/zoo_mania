@@ -23,7 +23,7 @@ class GoogleLoginApiController < ApplicationController
 
   def verify_g_csrf_token
     if cookies["g_csrf_token"].blank? || params[:g_csrf_token].blank? || cookies["g_csrf_token"] != params[:g_csrf_token]
-      redirect_to root_path, alert: t("message.no_authority")
+      redirect_to root_path, fail: "unauthorized_access"
     end
   end
 end

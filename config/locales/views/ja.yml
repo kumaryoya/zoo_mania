@@ -119,12 +119,3 @@ ja:
     new:
       title: "パスワード再発行手続き"
       to_page: "パスワードを忘れた場合はこちら"
-  admin:
-    user_sessions:
-      new:
-        title: "ログイン"
-      create:
-        success: "ログインできたゾゥ"
-        fail: "ログインできなかったゾゥ"
-      destroy:
-        success: "ログアウトしたゾゥ"

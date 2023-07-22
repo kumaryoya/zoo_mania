@@ -22,8 +22,3 @@ ja:
         rank: "順位"
         zoo: "動物園"
         zoo_id: "動物園"
-    enums:
-      user:
-        role:
-          general: '一般'
-          admin: '管理者'
