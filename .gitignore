@@ -35,3 +35,4 @@ config/environments/*.local.yml
 public/sitemap.xml
 public/sitemap.xml.gz
 /.env
+node_modules
