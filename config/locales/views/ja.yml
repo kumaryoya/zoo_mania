@@ -6,6 +6,7 @@ ja:
     register_page: "ユーザー登録"
     logout: "ログアウトする"
     logout?: "ログアウトしますか？"
+    show: "詳細"
     edit: "編集"
     destroy: "削除"
     withdrawal: "退会"
@@ -130,3 +131,17 @@ ja:
         fail: "ログインできなかったゾゥ"
       destroy:
         success: "ログアウトしたゾゥ"
+    users:
+      index:
+        title: "ユーザ一一覧"
+      show:
+        title: "ユーザー詳細"
+      edit:
+        title: "ユーザー編集"
+    posts:
+      index:
+        title: "投稿一覧"
+      show:
+        title: "投稿詳細"
+      edit:
+        title: "投稿編集"

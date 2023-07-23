@@ -1,13 +1,13 @@
 <% content_for(:title, @post.title) %>
-<div class="container">
+<div class="pt-20 pb-28 px-20 main_image">
   <div class="row">
     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-      <h1><%= t('.title') %></h1>
+      <h1 class="py-10 text-3xl"><%= t('.title') %></h1>
       <div class="text-right mb-3">
-        <%= link_to t('defaults.edit'), edit_admin_post_path(@post), class: 'btn btn-success' %>
-        <%= link_to t('defaults.destroy'), admin_post_path(@post), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white" %>
+        <%= link_to t('defaults.edit'), edit_admin_post_path(@post), class: 'btn btn-accent text-white mx-1' %>
+        <%= link_to t('defaults.destroy'), admin_post_path(@post), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white mx-1" %>
       </div>
-      <table class="table table-bordered bg-white">
+      <table class="table table-bordered">
         <tr>
           <th scope="row"><%= Post.human_attribute_name(:id) %></th>
           <td><%= @post.id %></td>

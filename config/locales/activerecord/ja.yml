@@ -10,6 +10,8 @@ ja:
         password: "パスワード"
         password_confirmation: "パスワード確認"
         avatar: "アバター"
+        role: "権限"
+        created_at: "作成日時"
       zoo:
         name: "名称"
         location: "所在地"
@@ -18,12 +20,14 @@ ja:
         title: "タイトル"
         zoo_id: "動物園"
         image: "画像"
+        user: "ユーザー"
+        created_at: "作成日時"
       favorite_zoo:
         rank: "順位"
         zoo: "動物園"
         zoo_id: "動物園"
-    enums:
-      user:
-        role:
-          general: '一般'
-          admin: '管理者'
+  enums:
+    user:
+      role:
+        general: '一般'
+        admin: '管理者'

@@ -1,13 +1,13 @@
 <% content_for(:title, t('.title')) %>
-<div class="container">
+<div class="p-20 main_image">
   <div class="row">
     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-      <h1><%= t('.title') %></h1>
+      <h1 class="py-10 text-3xl"><%= t('.title') %></h1>
       <div class="text-right mb-3">
-        <%= link_to t('defaults.edit'), edit_admin_user_path(@user), class: 'btn btn-success' %>
-        <%= link_to t('defaults.delete'), admin_user_path(@user), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white" %>
+        <%= link_to t('defaults.edit'), edit_admin_user_path(@user), class: 'btn btn-accent text-white mx-1' %>
+        <%= link_to t('defaults.destroy'), admin_user_path(@user), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white mx-1" %>
       </div>
-      <table class="table table-bordered bg-white">
+      <table class="table table-bordered">
         <tr>
           <th scope="row"><%= User.human_attribute_name(:id) %></th>
           <td><%= @user.id %></td>
@@ -22,7 +22,13 @@
         </tr>
         <tr>
           <th scope="row"><%= User.human_attribute_name(:avatar) %></th>
-          <td><%= image_tag @user.avatar.url %></td>
+          <td>
+            <div class="avatar">
+              <div class="w-16 rounded-full">
+                <%= image_tag current_user.avatar.url %>
+              </div>
+            </div>
+          </td>
         </tr>
         <tr>
           <th scope="row"><%= User.human_attribute_name(:created_at) %></th>
