@@ -142,4 +142,6 @@ ja:
       index:
         title: "投稿一覧"
       show:
-        title: ""
+        title: "投稿詳細"
+      edit:
+        title: "投稿編集"

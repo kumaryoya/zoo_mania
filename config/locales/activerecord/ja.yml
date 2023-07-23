@@ -20,6 +20,8 @@ ja:
         title: "タイトル"
         zoo_id: "動物園"
         image: "画像"
+        user: "ユーザー"
+        created_at: "作成日時"
       favorite_zoo:
         rank: "順位"
         zoo: "動物園"
