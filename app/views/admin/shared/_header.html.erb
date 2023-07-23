@@ -1,8 +1,8 @@
 <header class="admin_image">
   <div class="container mx-auto flex flex-wrap flex-col md:flex-row items-center justify-center py-20">
     <% if logged_in? %>
-      <%= link_to (t 'users.index.title'), admin_users_path, class: "btn btn-primary text-white mx-5" %>
-      <%= link_to (t 'posts.index.title'), admin_posts_path, class: "btn btn-primary text-white mx-5" %>
+      <%= link_to (t 'admin.users.index.title'), admin_users_path, class: "btn btn-primary text-white mx-5" %>
+      <%= link_to (t 'admin.posts.index.title'), admin_posts_path, class: "btn btn-primary text-white mx-5" %>
       <%= link_to (t 'defaults.logout'), admin_logout_path, data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.logout?') }, class: "btn btn-primary text-white mx-5" %>
     <% end %>
   </div>
