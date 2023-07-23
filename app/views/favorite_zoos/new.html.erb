@@ -1,9 +1,20 @@
 <% content_for(:title, t('.title')) %>
 <div class="main_image">
   <div class="text-center">
-    <div class="pt-28">
+    <div class="pt-16">
       <div class="md:grid justify-items-stretch">
         <div class="font-bold md:w-2/3 xl:w-1/3 justify-self-center text-3xl pb-16"><%= t('defaults.favorite_zoo') %></div>
+        <div style="position: relative; text-align: center;" class="pb-16">
+          <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-xl">
+            ここではみんなのお気に入りの動物園のうち<br>
+            トップ3を登録してほしいゾゥ<br>
+            ただし、注意点が3つあるゾゥ<br>
+            1つの順位に対して、1つしか動物園は登録できないゾゥ<br>
+            1つの動物園は、複数の順位には登録できないゾゥ<br>
+            お気に入りを変更する場合は、1度削除してから再度登録してほしいゾゥ<br>
+          </span>
+          <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto" %>
+        </div>
         <div class="main_image flex items-center justify-center text-center pb-8">
           <% if @user.favorite_zoos.count < 3 %>
             <%= form_with(model: [@user, @favorite_zoo], url: user_favorite_zoos_path(@user)) do |f| %>
