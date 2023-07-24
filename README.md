@@ -45,6 +45,9 @@ ZooManiaは、基本的には全ての方が利用対象ですが、特にしば
 ### その後の機能  
 * スタンプラリー機能  
 * 位置情報による動物園レコメンド機能  
+* 動物園詳細ページにGoogleMap表示機能  
+* LINE通知機能  
+* 動物園一覧、投稿一覧における動物園検索・絞り込み機能  
   
 ## ER図  
 https://drive.google.com/file/d/1_pQxUKZrC1k24aTPgWRItufAuhLA7goB/view?usp=sharing  
