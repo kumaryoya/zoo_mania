@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
   resources :zoos, only: %i[index show] do
     collection do
-      get 'ranking', to: 'zoos#ranking'
+      get 'ranking'
     end
   end
   resources :password_resets, only: %i[new create edit update]
