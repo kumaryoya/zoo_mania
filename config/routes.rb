@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   namespace :admin do
     root to: 'top#index'
     get 'login', to: 'user_sessions#new'
@@ -7,7 +8,6 @@ Rails.application.routes.draw do
     resources :users, only: %i[index show edit update destroy]
     resources :posts, only: %i[index show edit update destroy]
   end
-  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   root "top#index"
   get 'privacy_policy', to: 'top#privacy_policy'
   get 'terms_of_service', to: 'top#terms_of_service'
@@ -22,16 +22,16 @@ Rails.application.routes.draw do
   end
   resources :zoos, only: %i[index show] do
     collection do
-      get 'ranking', to: 'zoos#ranking'
+      get 'ranking'
     end
   end
   resources :password_resets, only: %i[new create edit update]
   resources :posts, only: %i[index new create show edit update destroy] do
-    resource :likes, only: [:create, :destroy]
+    resource :likes, only: %i[create destroy]
     collection do
-      get 'ranking', to: 'posts#ranking'
-      get 'my_posts', to: 'posts#my_posts'
-      get 'my_like_posts', to: 'posts#my_like_posts'
+      get 'ranking'
+      get 'my_posts'
+      get 'my_like_posts'
     end
   end
 end
