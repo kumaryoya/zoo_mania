@@ -2,12 +2,39 @@
 <div class="flex flex-col justify-center text-center main_image">
   <h1 class="text-3xl py-10"><%= t('.title') %></h1>
   <div>
-    <h2 class="text-2xl pb-10"><%= @zoo.name %></h2>
-    <h2 class="text-2xl pb-10">所在地<br>
-                              <%= @zoo.location %></h2>
-    <div class="link link-primary text-2xl font-bold">
+    <h2 class="text-2xl pb-10">名称<br>
+                              <%= @zoo.name %></h2>
+    <div class="link link-primary text-2xl font-bold pb-10">
       <%= link_to "公式HPリンク", @zoo.link, target: :_blank, rel: "noopener noreferrer" %>
     </div>
+    <h2 class="text-2xl pb-5">所在地<br>
+                              <%= @zoo.location %></h2>
+    <div style="width: 400px; height: 300px; display: flex; justify-content: center; align-items: center; margin: 0 auto;">
+      <div id="map" style="width: 100%; height: 100%;"></div>
+    </div>
+    <script>
+      function initMap() {
+        var location = '<%= @zoo.location %>';
+        var mapOptions = {
+          center: { lat: 0, lng: 0 },
+          zoom: 7
+        };
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: location }, function(results, status) {
+          if (status === 'OK') {
+            map.setCenter(results[0].geometry.location);
+            new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+          } else {
+            console.log('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
   </div>
   <div class="main_image items-center justify-center text-center">
     <h1 class="text-3xl py-10"><%= t 'defaults.posts' %></h1>
