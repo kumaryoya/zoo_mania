@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
-  before_action :find_post, only: %i[edit update destroy]
+  before_action :set_post, only: %i[edit update destroy]
 
   def index
     @posts = Post.all.includes(:user).includes(:zoo).order(created_at: :desc).page(params[:page]).per(12)
@@ -58,7 +58,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :zoo_id, :image, :image_cache)
   end
 
-  def find_post
+  def set_post
     @post = current_user.posts.find(params[:id])
   end
 end

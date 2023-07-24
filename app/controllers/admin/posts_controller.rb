@@ -1,5 +1,5 @@
 class Admin::PostsController < Admin::BaseController
-  before_action :find_post, only: %i[show edit update destroy]
+  before_action :set_post, only: %i[show edit update destroy]
 
   def index
     @posts = Post.all.includes(:user).includes(:zoo).order(created_at: :asc)
@@ -29,7 +29,7 @@ class Admin::PostsController < Admin::BaseController
     params.require(:post).permit(:title, :zoo_id, :image, :image_cache)
   end
 
-  def find_post
+  def set_post
     @post = Post.find(params[:id])
   end
 end
