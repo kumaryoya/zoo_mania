@@ -53,6 +53,7 @@ class PostsController < ApplicationController
   end
 
   def stamp_rally
+    @zoos = Zoo.all
   end
 
   private
