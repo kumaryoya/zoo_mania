@@ -79,6 +79,8 @@ ja:
     my_like_posts:
       title: "いいねした投稿"
       no_result: "投稿がありません"
+    stamp_rally:
+      title: "スタンプラリー"
   profiles:
     edit:
       title: "プロフィール編集"

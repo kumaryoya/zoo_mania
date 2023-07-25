@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       get 'ranking'
       get 'my_posts'
       get 'my_like_posts'
+      get "stamp_rally"
     end
   end
 end

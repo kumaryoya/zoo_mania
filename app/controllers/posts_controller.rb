@@ -52,6 +52,9 @@ class PostsController < ApplicationController
     @posts = current_user.likes.includes(:post, :user).order(created_at: :desc).map(&:post)
   end
 
+  def stamp_rally
+  end
+
   private
 
   def post_params
