@@ -10,6 +10,7 @@ ja:
     edit: "編集"
     destroy: "削除"
     withdrawal: "退会"
+    withdrawal?: "退会しますか？"
     destroy?: "削除しますか？"
     share: "共有"
     inquiry: "お問い合わせ"
