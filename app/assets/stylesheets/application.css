@@ -43,7 +43,7 @@
 }
 
 .paper_image {
-  background-image: url("paper.jpeg");
+  background-image: url("paper.jpg");
   background-size: cover;
   background-position: center;
 }
