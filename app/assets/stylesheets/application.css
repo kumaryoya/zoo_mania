@@ -42,6 +42,12 @@
   background-position: center;
 }
 
+.paper_image {
+  background-image: url("paper.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
 @keyframes rotateY {
   0% { transform: perspective(500px) rotateY(0deg); }
   100% { transform: perspective(500px) rotateY(1080deg); }

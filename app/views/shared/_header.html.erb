@@ -33,6 +33,7 @@
             <%= link_to (t "favorite_zoos.new.title"), new_user_favorite_zoo_path(current_user), class: "btn btn-primary text-white my-1" %>
             <%= link_to (t "posts.my_posts.title"), my_posts_posts_path, class: "btn btn-primary text-white my-1" %>
             <%= link_to (t "posts.my_like_posts.title"), my_like_posts_posts_path, class: "btn btn-primary text-white my-1" %>
+            <%= link_to (t "posts.stamp_rally.title"), stamp_rally_posts_path, class: "btn btn-primary text-white my-1" %>
             <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.logout?') }, class: "btn btn-primary text-white my-1" %>
           </ul>
       <% else %>

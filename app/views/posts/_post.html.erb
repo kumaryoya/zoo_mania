@@ -13,16 +13,19 @@
       </div>
     </div>
     <p class="link link-primary text-l py-2"><%= link_to post.zoo.name, zoo_path(post.zoo) %></p>
-    <div class="card-actions justify-end">
-      <% if current_user && current_user == post.user %>
-        <%= link_to  t('defaults.edit'), edit_post_path(post), class: "btn btn-accent text-white" %>
-        <%= link_to t('defaults.destroy'), post_path(post), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white" %>
-      <% elsif current_user %>
+    <div class="card-actions pb-2">
+      <% if current_user %>
         <td>
           <div id="js-like-button-for-post-<%= post.id %>" data-turbo-frame="js-like-button-for-post-<%= post.id %>">
             <%= render "likes/like", post: post %>
           </div>
         </td>
+      <% end %>
+    </div>
+    <div class="card-actions">
+      <% if current_user && current_user == post.user %>
+        <%= link_to  t('defaults.edit'), edit_post_path(post), class: "btn btn-accent text-white" %>
+        <%= link_to t('defaults.destroy'), post_path(post), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white" %>
       <% end %>
     </div>
   </div>
