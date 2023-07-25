@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-      <%= link_to t('defaults.withdrawal'), user_path(current_user.id), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white mb-20" %>
+      <%= link_to t('defaults.withdrawal'), user_path(current_user.id), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.withdrawal?') }, class: "btn btn-neutral text-white mb-20" %>
     </div>
   </div>
 </div>
