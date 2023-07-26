@@ -1,7 +1,7 @@
 class ZoosController < ApplicationController
   def index
     @q = Zoo.ransack(params[:q])
-    @zoos_by_area = @q.result(distinct: true).all.group_by(&:area)
+    @zoos_by_area = @q.result(distinct: true).order(id: :asc).all.group_by(&:area)
   end
 
   def show
