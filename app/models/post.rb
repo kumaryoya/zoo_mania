@@ -23,11 +23,11 @@ class Post < ApplicationRecord
     top_ranked.limit(10)
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["zoo"]
+  def self.ransackable_attributes(*)
+    %w[zoo]
   end
 
-  def self.ransackable_associations(auth_object = nil)
-    ["zoo"]
+  def self.ransackable_associations(*)
+    %w[zoo]
   end
 end
