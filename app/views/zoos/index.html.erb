@@ -1,27 +1,34 @@
 <% content_for(:title, t('.title')) %>
 <div class="flex flex-col justify-center text-center main_image">
-  <h1 class="text-3xl pt-10 pb-5"><%= t('.title') %></h1>
+  <h1 class="text-3xl pt-10 pb-10"><%= t('.title') %></h1>
   <div style="position: relative; text-align: center;">
     <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-xl">
       名前の先頭に★マークのある動物園は<br>
       その動物園の投稿があるってことだゾゥ<br>
       投稿は各動物園の詳細ページでも見れるゾゥ<br>
     </span>
-    <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto" %>
+    <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto pb-10" %>
   </div>
+  <%= search_form_for @q do |f| %>
+    <div class="flex items-center justify-center pb-10">
+      <%= f.select :area_cont, options_for_select(["北海道地方", "東北地方", "関東地方", "中部地方", "関西地方", "中国地方", "四国地方", "九州地方"]), { include_blank: "地方" }, class: 'input input-bordered input-primary mx-1' %>
+      <%= f.search_field :name_cont, class: 'input input-bordered input-primary mx-1', placeholder: '名称' %>
+      <%= f.submit '検索', class: 'btn btn-primary text-white mx-1' %>
+    </div>
+  <% end %>
   <div class="pb-10">
     <% @zoos_by_area.each do |area, zoos| %>
       <div class="text-2xl mt-8 mb-2"><%= area %></div>
       <ul>
-  <% zoos.each do |zoo| %>
-    <li class="text-xl link link-primary pb-1">
-      <% if zoo.posts.any? %>
-        <span class="text-2xl text-star">★</span>
-      <% end %>
-      <%= link_to "#{zoo.name}(#{zoo.prefecture})", zoo_path(zoo) %>
-    </li>
-  <% end %>
-</ul>
+        <% zoos.each do |zoo| %>
+          <li class="text-xl link link-primary pb-1">
+            <% if zoo.posts.any? %>
+              <span class="text-2xl text-star">★</span>
+            <% end %>
+            <%= link_to "#{zoo.name}(#{zoo.prefecture})", zoo_path(zoo) %>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
   </div>
 </div>
