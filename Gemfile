@@ -28,6 +28,7 @@ gem 'dotenv-rails'
 gem 'carrierwave-aws'
 gem 'kaminari'
 gem 'enum_help'
+gem 'ransack'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
