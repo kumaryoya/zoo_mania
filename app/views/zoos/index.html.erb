@@ -12,7 +12,7 @@
   <%= search_form_for @q do |f| %>
     <div class="flex items-center justify-center pb-16">
       <%= f.select :area_cont, options_for_select(["北海道地方", "東北地方", "関東地方", "中部地方", "関西地方", "中国地方", "四国地方", "九州地方"]), { include_blank: "地方" }, class: 'input input-bordered input-primary mx-1', style: 'width: 125px;' %>
-      <%= f.search_field :name_cont, class: 'input input-bordered input-primary mx-1', placeholder: '名称', style: 'width: 180px;' %>
+      <%= f.search_field :name_cont, class: 'input input-bordered input-primary mx-1', placeholder: '動物園名', style: 'width: 180px;' %>
       <%= f.submit '検索', class: 'btn btn-primary text-white mx-1' %>
     </div>
   <% end %>
