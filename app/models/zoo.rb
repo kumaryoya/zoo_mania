@@ -22,7 +22,7 @@ class Zoo < ApplicationRecord
     top_ranked.limit(10)
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["area", "name"]
+  def self.ransackable_attributes(*)
+    %w[area name]
   end
 end
