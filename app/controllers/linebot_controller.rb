@@ -1,3 +1,5 @@
 class LinebotController < ApplicationController
-  def callback; end
+  def callback
+    head :ok
+  end
 end
