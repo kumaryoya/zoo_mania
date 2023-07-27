@@ -85,6 +85,6 @@ class PostsController < ApplicationController
       ]
     }
     response = http.post(url.path, body.to_json, headers)
-    puts "LINE通知のレスポンス: #{response.body}"
+    Rails.logger.info "LINE通知のレスポンス: #{response.body}"
   end
 end
