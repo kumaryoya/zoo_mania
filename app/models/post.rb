@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  require 'net/http'
+  require 'json'
+
   belongs_to :user
   belongs_to :zoo
   has_many :likes, dependent: :destroy

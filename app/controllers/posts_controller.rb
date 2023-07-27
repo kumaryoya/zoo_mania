@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
+      notify_line('新しい投稿があるゾゥ！')
       redirect_to post_path(@post), notice: t('.success_create_post')
     else
       flash.now['danger'] = t('.fail_create_post')
@@ -65,5 +66,25 @@ class PostsController < ApplicationController
 
   def set_post
     @post = current_user.posts.find(params[:id])
+  end
+
+  def notify_line(message)
+    url = URI.parse('https://api.line.me/v2/bot/message/broadcast')
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    headers = {
+      'Content-Type' => 'application/json',
+      'Authorization' => "Bearer #{ENV['LINE_CHANNEL_ACCESS_TOKEN']}"
+    }
+    body = {
+      messages: [
+        {
+          type: 'text',
+          text: message
+        }
+      ]
+    }
+    response = http.post(url.path, body.to_json, headers)
+    puts "LINE通知のレスポンス: #{response.body}"
   end
 end
