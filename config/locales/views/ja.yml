@@ -114,6 +114,8 @@ ja:
       no_result: "投稿がありません"
     ranking:
       title: "動物園ランキング"
+    recommend:
+      title: "おすすめの動物園"
   top:
     index:
       title: "トップページ"

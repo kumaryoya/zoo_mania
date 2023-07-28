@@ -1,0 +1,85 @@
+<% content_for(:title, t('.title')) %>
+<div class="flex flex-col justify-center text-center main_image pb-20">
+  <h1 class="text-3xl py-20"><%= t('.title') %></h1>
+  <div style="position: relative; text-align: center;">
+    <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-xl">
+      まだ投稿がない動物園のうち<br>
+      現在地から近い動物園5つを<br>
+      僕からおすすめするゾゥ<br>
+    </span>
+    <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto pb-16" %>
+  </div>
+  <div>
+    <div style="width: 400px; height: 300px; display: flex; justify-content: center; align-items: center; margin: 0 auto;">
+      <div id="map" style="width: 100%; height: 100%;"></div>
+    </div>
+    <script>
+      function initMap() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var userLocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var mapOptions = {
+              center: userLocation,
+              zoom: 7
+            };
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            var geocoder = new google.maps.Geocoder();
+            var infoWindow = new google.maps.InfoWindow();
+            var userMarker = new google.maps.Marker({
+              map: map,
+              position: userLocation,
+              icon: {
+                url: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                scaledSize: new google.maps.Size(40, 40)
+              }
+            });
+            var nearbyZoos = [];
+            <% @zoos.each do |zoo| %>
+              var location_<%= zoo.id %> = '<%= zoo.location %>';
+              geocoder.geocode({ address: location_<%= zoo.id %> }, function(results, status) {
+                if (status === 'OK') {
+                  var zooLocation = results[0].geometry.location;
+                  var distance = google.maps.geometry.spherical.computeDistanceBetween(userLocation, zooLocation);
+                  nearbyZoos.push({
+                    distance: distance,
+                    location: zooLocation,
+                    name: '<%= zoo.name %>',
+                    id: <%= zoo.id %>
+                  });
+                  if (nearbyZoos.length === <%= @zoos.length %>) {
+                    nearbyZoos.sort(function(a, b) {
+                      return a.distance - b.distance;
+                    });
+                    if (nearbyZoos.length > 5) {
+                      nearbyZoos = nearbyZoos.slice(0, 5);
+                    }
+                    nearbyZoos.forEach(function(zoo) {
+                      var marker = new google.maps.Marker({
+                        map: map,
+                        position: zoo.location
+                      });
+                      marker.setIcon('https://maps.google.com/mapfiles/ms/icons/red-dot.png');
+                      marker.addListener('click', function() {
+                        var content = '<h3><a href="/zoos/' + zoo.id + '">' + zoo.name + '</a></h3>';
+                        infoWindow.setContent(content);
+                        infoWindow.open(map, marker);
+                      });
+                    });
+                  }
+                } else {
+                  console.log('Geocode was not successful for the following reason: ' + status);
+                }
+              });
+            <% end %>
+          });
+        } else {
+          console.log('Geolocation is not supported by this browser.');
+        }
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap&libraries=geometry" async defer></script>
+  </div>
+</div>

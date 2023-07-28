@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :zoos, only: %i[index show] do
     collection do
       get 'ranking'
+      get "recommend"
     end
   end
   resources :password_resets, only: %i[new create edit update]
