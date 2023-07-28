@@ -14,9 +14,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      if Rails.env.production?
-        notify_line("新しい投稿があるゾゥ！\n\n「#{@post.title}」\nhttps://www.zoomania.top/posts/#{@post.id}")
-      end
+      notify_line("新しい投稿があるゾゥ！\n\n「#{@post.title}」\nhttps://www.zoomania.top/posts/#{@post.id}") if Rails.env.production?
       redirect_to post_path(@post), notice: t('.success_create_post')
     else
       flash.now['danger'] = t('.fail_create_post')
