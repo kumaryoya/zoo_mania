@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
   resources :zoos, only: %i[index show] do
     collection do
+      get 'map'
       get 'ranking'
       get "recommend"
     end

@@ -6,6 +6,7 @@
         <label tabindex="0" class="btn btn-primary text-white">動物園</label>
         <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
           <%= link_to (t 'zoos.index.title'), zoos_path, class: "btn btn-primary text-white my-1" %>
+          <%= link_to (t 'zoos.map.title'), map_zoos_path, class: "btn btn-primary text-white my-1" %>
           <%= link_to (t 'zoos.ranking.title'), ranking_zoos_path, class: "btn btn-primary text-white my-1" %>
           <% if logged_in? %>
             <%= link_to (t 'zoos.recommend.title'), recommend_zoos_path, class: "btn btn-primary text-white my-1" %>
