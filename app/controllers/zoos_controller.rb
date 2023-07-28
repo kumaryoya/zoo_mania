@@ -1,6 +1,4 @@
 class ZoosController < ApplicationController
-  before_action :require_login, only: %i[recommend]
-
   def index
     @q = Zoo.ransack(params[:q])
     @zoos_by_area = @q.result(distinct: true).order(id: :asc).all.group_by(&:area)
@@ -20,7 +18,11 @@ class ZoosController < ApplicationController
   end
 
   def recommend
-    user_post_zoo_ids = current_user.posts.pluck(:zoo_id)
-    @zoos = Zoo.where.not(id: user_post_zoo_ids)
+    if logged_in?
+      user_post_zoo_ids = current_user.posts.pluck(:zoo_id)
+      @zoos = Zoo.where.not(id: user_post_zoo_ids)
+    else
+      @zoos = Zoo.all
+    end
   end
 end

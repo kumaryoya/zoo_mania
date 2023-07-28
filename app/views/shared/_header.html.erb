@@ -8,9 +8,7 @@
           <%= link_to (t 'zoos.index.title'), zoos_path, class: "btn btn-primary text-white my-1" %>
           <%= link_to (t 'zoos.map.title'), map_zoos_path, class: "btn btn-primary text-white my-1" %>
           <%= link_to (t 'zoos.ranking.title'), ranking_zoos_path, class: "btn btn-primary text-white my-1" %>
-          <% if logged_in? %>
-            <%= link_to (t 'zoos.recommend.title'), recommend_zoos_path, class: "btn btn-primary text-white my-1" %>
-          <% end %>
+          <%= link_to (t 'zoos.recommend.title'), recommend_zoos_path, class: "btn btn-primary text-white my-1" %>
         </ul>
       </div>
       <div class="dropdown dropdown-hover mx-1">

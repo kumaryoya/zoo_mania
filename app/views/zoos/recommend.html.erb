@@ -3,7 +3,9 @@
   <h1 class="text-3xl py-20"><%= t('.title') %></h1>
   <div style="position: relative; text-align: center;">
     <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-xl">
-      まだ写真の投稿がない動物園のうち<br>
+      <% if logged_in? %>
+        まだ写真の投稿がない動物園のうち<br>
+      <% end %>
       現在地から近い動物園5つを<br>
       僕からおすすめするゾゥ<br>
     </span>
