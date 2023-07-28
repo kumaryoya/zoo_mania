@@ -11,6 +11,10 @@ class ZoosController < ApplicationController
     @posts = @zoo.posts.page(params[:page]).per(12)
   end
 
+  def map
+    @zoos = Zoo.all
+  end
+
   def ranking
     @top_zoos = Zoo.top_ten
   end

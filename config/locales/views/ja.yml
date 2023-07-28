@@ -112,6 +112,8 @@ ja:
     show:
       title: "動物園詳細"
       no_result: "投稿がありません"
+    map:
+      title: "動物園日本地図"
     ranking:
       title: "動物園ランキング"
     recommend:
