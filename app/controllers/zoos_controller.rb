@@ -12,4 +12,6 @@ class ZoosController < ApplicationController
   def ranking
     @top_zoos = Zoo.top_ten
   end
+
+  def recommend; end
 end
