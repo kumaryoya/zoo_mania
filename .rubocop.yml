@@ -17,3 +17,6 @@ Style/HashSyntax:
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+AllCops:
+    SuggestExtensions: false
