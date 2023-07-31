@@ -83,5 +83,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  config.before(:each, type: :system, js: true) do
+    driven_by(:rack_test)
+  end
+
   Webdrivers::Chromedriver.required_version = "114.0.5735.90"
 end
