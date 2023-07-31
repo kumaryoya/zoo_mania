@@ -98,6 +98,19 @@ RSpec.describe 'Users', type: :system do
     end
   end
 
+  describe 'ユーザー削除' do
+    context 'ユーザー削除' do
+      it 'ユーザーの退会が成功する' do
+        login_as(@user)
+        visit profile_path
+        click_on '退会'
+        expect(page.accept_confirm).to eq '退会しますか？'
+        expect(page).to have_content '退会できたゾゥ'
+        expect(page).to have_current_path(root_path)
+      end
+    end
+  end
+
   describe 'ユーザーログイン' do
     context '有効な値を入力したとき' do
       it 'ログインが成功する' do
@@ -128,6 +141,44 @@ RSpec.describe 'Users', type: :system do
         click_link 'ログアウトする'
         expect(page.accept_confirm).to eq 'ログアウトしますか？'
         expect(page).to have_current_path(login_path)
+      end
+    end
+  end
+
+  describe 'プロフィール' do
+    context '有効な値を入力したとき' do
+      it 'ニックネームが変更される' do
+        login_as(@user)
+        visit profile_path
+        click_on '編集'
+        fill_in 'ニックネーム', with: 'profile_edit'
+        click_button '更新する'
+        expect(page).to have_content 'プロフィールを更新できたゾゥ'
+        expect(page).to have_content 'profile_edit'
+        expect(page).to have_current_path(profile_path)
+      end
+
+      it 'メールアドレスが変更される' do
+        login_as(@user)
+        visit profile_path
+        click_on '編集'
+        fill_in 'メールアドレス', with: 'profile_edit@example.com'
+        click_button '更新する'
+        expect(page).to have_content 'プロフィールを更新できたゾゥ'
+        expect(page).to have_content 'profile_edit@example.com'
+        expect(page).to have_current_path(profile_path)
+      end
+    end
+
+    context '無効な値を入力したとき' do
+      it '更新されない' do
+        login_as(@user)
+        visit profile_path
+        click_on '編集'
+        fill_in 'ニックネーム', with: ''
+        click_button '更新する'
+        expect(page).to have_content 'プロフィールを更新できなかったゾゥ'
+        expect(page).to have_current_path(edit_profile_path)
       end
     end
   end
