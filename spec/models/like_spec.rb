@@ -13,6 +13,12 @@ RSpec.describe Like, type: :model do
     expect(FactoryBot.build(:like, post_id: "")).to be_invalid
   end
 
+  it "違う投稿ならいいねできる" do
+    like = FactoryBot.create(:like)
+    different_post = FactoryBot.create(:post)
+    expect(FactoryBot.build(:like, user: like.user, post: different_post)).to be_valid
+  end
+
   it "同じ投稿にはいいねできない" do
     like = FactoryBot.create(:like)
     expect(FactoryBot.build(:like, user: like.user, post: like.post)).to be_invalid
