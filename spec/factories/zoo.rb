@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :zoo do
-    name { "name" }
-    location { "location" }
-    area { "area" }
-    prefecture { "prefecture" }
-    link { "link" }
+    sequence(:name) { |n| "name#{n}" }
+    sequence(:location) { |n| "location#{n}" }
+    sequence(:area) { |n| "area#{n}" }
+    sequence(:prefecture) { |n| "prefecture#{n}" }
+    sequence(:link) { |n| "link#{n}" }
   end
 end

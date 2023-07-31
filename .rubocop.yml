@@ -6,6 +6,9 @@ require:
 require:
   - rubocop-rails
 
+Metrics/BlockLength:
+  Max: 200
+
 Metrics/MethodLength:
   Max: 50
 

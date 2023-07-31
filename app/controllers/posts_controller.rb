@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to posts_path, notice: t('.success_update_post')
+      redirect_to post_path(@post), notice: t('.success_update_post')
     else
       flash.now['danger'] = t('.fail_update_post')
       render :edit, status: :unprocessable_entity
