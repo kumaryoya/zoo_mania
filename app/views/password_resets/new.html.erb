@@ -1,13 +1,13 @@
 <% content_for(:title, t('.title')) %>
 <div class="flex justify-center text-center main_image">
   <div>
-    <h1 class="text-3xl pt-40 pb-28"><%= t('.title') %></h1>
+    <h1 class="text-4xl py-20"><%= t('.title') %></h1>
     <%= form_with url:password_resets_path, method: :post,local: true do |f|%>
       <div class="form-group pb-20">
-        <%= f.label :email, User.human_attribute_name(:email), class: "mb-10" %>
-        <%= f.email_field :email, class: 'form-control input input-bordered input-primary w-full' %>
+        <%= f.label :email, User.human_attribute_name(:email), class: "text-2xl" %>
+        <%= f.email_field :email, class: 'form-control input input-bordered input-primary w-full mt-5' %>
       </div>
-      <div class="d-grid pb-36">
+      <div class="d-grid pb-20">
         <%= f.submit t('defaults.send'), class: 'btn btn-primary text-white' %>
       </div>
     <% end %>
