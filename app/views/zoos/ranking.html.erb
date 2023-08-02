@@ -1,8 +1,8 @@
 <% content_for(:title, t('.title')) %>
 <div class="flex flex-col justify-center text-center main_image">
-  <h1 class="text-5xl pt-16 pb-10"><%= t('.title') %></h1>
+  <h1 class="text-4xl py-20"><%= t('.title') %></h1>
   <div style="position: relative; text-align: center;" class="pb-10">
-    <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-2xl">
+    <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-xl">
       みんなが登録してくれた<br>
       お気に入り動物園の結果を集計して<br>
       トップ10をランキング形式で<br>
@@ -12,9 +12,9 @@
   </div>
   <ol class="pb-10">
     <% @top_zoos.each_with_index do |zoo, index| %>
-      <li class="text-4xl pb-16">
+      <li class="text-4xl pb-10">
         <div class="parent-container">
-          <%= image_tag("#{format('%02d', index + 1)}.png", alt: "#{index + 1}st Place", class: 'small-size pb-4') %>
+          <%= image_tag("#{format('%02d', index + 1)}.png", alt: "#{index + 1}st Place", class: 'small-size pb-5') %>
         </div>
         <%= link_to zoo.name, zoo_path(zoo), class: "link link-primary" %>
       </li>

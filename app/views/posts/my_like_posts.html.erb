@@ -1,16 +1,14 @@
 <% content_for(:title, t('.title')) %>
 <div class="main_image items-center justify-center text-center">
-  <h1 class="text-3xl py-10"><%= t '.title' %></h1>
+  <h1 class="text-4xl py-20"><%= t '.title' %></h1>
   <section class="main_image items-center justify-center text-center">
     <div class="container mx-auto">
-      <div class="flex flex-wrap justify-center pb-10">
+      <div class="flex flex-wrap justify-center pb-20">
         <% if @posts.present? %>
           <%= render @posts %>
         <% else %>
-          <p class="text-2xl"><%= t('.no_result') %></p>
+          <p class="text-4xl py-20"><%= t('.no_result') %></p>
         <% end %>
-      </div>
-      <div class="flex justify-center text-center text-3xl pb-16">
       </div>
     </div>
   </section>

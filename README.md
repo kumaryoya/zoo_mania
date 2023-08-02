@@ -1,4 +1,12 @@
 # ZooMania  
+<img src="app/assets/images/logo.jpg" width="200x200">  
+  
+## サービスURL  
+https://www.zoomania.top/  
+  
+ゲストユーザーアカウント  
+* メールアドレス hoge@example.com  
+* パスワード password  
   
 ## サービス概要  
 ZooMania（ズーマニア）は、動物園に行きたいという気持ちを喚起するサービスです。  
@@ -32,6 +40,7 @@ ZooManiaは、基本的には全ての方が利用対象ですが、特にしば
 * ログイン・ログアウト機能  
 * Googleアカウントログイン・ログアウト機能  
 * パスワード再設定機能  
+* プロフィール表示・編集機能  
 * 動物園一覧・詳細表示機能  
 * 動物園詳細ページにGoogleMap表示機能  
 * 動物園日本地図機能  
@@ -41,15 +50,14 @@ ZooManiaは、基本的には全ての方が利用対象ですが、特にしば
 * 投稿いいね機能  
 * 投稿いいねランキング表示機能  
 * 動物園一覧、投稿一覧における動物園検索・絞り込み機能  
-* プロフィール表示・編集機能  
-* Twitter共有機能  
-* 管理ユーザー機能  
-* スタンプラリー機能  
-* LINE通知機能  
+* 動物園スタンプラリー機能  
 * 位置情報による動物園レコメンド機能  
+* Twitter共有機能  
+* LINE通知機能  
+* 管理ユーザー機能  
   
 ## ER図  
-https://drive.google.com/file/d/1_pQxUKZrC1k24aTPgWRItufAuhLA7goB/view?usp=sharing  
+<img src="app/assets/images/ER.jpg" width="800x1200">  
   
 ## 技術選定  
 * Ruby 3.2.2  

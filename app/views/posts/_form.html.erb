@@ -2,13 +2,13 @@
   <div class="flex items-center justify-center text-center relative">
     <%= render 'shared/error_messages', object: f.object %>
   </div>
-  <div class="flex items-center justify-center text-center relative pb-8">
+  <div class="flex items-center justify-center text-center relative pb-10">
     <div class="form-group items-center text-2xl">
       <%= f.label :title %>
       <%= f.text_field :title, class: 'form-control input input-bordered input-primary w-full' %>
     </div>
   </div>
-  <div class="flex items-center justify-center text-center relative pb-8">
+  <div class="flex items-center justify-center text-center relative pb-10">
     <div class="form-group items-center text-2xl">
       <%= f.label :zoo_id %>
       <%= f.collection_select :zoo_id, Zoo.all, :id, :name, {}, class: 'form-control select select-primary text-xl w-full' %>
@@ -21,7 +21,7 @@
       <%= f.hidden_field :image_cache %>
     </div>
   </div>
-  <div class="flex items-center justify-center text-center relative pt-16">
+  <div class="flex items-center justify-center text-center relative pt-20">
     <div class="form-group items-center">
       <%= f.submit class: 'btn btn-primary font-bold text-white' %>
     </div>

@@ -5,7 +5,7 @@
     <%= form_with url:password_resets_path, method: :post,local: true do |f|%>
       <div class="form-group pb-20">
         <%= f.label :email, User.human_attribute_name(:email), class: "text-2xl" %>
-        <%= f.email_field :email, class: 'form-control input input-bordered input-primary w-full mt-5' %>
+        <%= f.email_field :email, class: 'form-control input input-bordered input-primary w-full' %>
       </div>
       <div class="d-grid pb-20">
         <%= f.submit t('defaults.send'), class: 'btn btn-primary text-white' %>
