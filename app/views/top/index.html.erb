@@ -1,77 +1,46 @@
 <% content_for :title, t('.title') %>
-<div class="main_image font-bold">
-  <div class="top-wrapper overflow-hidden text-brown">
-    <div class="h-auto w-screen flex justify-center items-center my-10">
-      <div class="top-inner-text overflow-hidden text-center">
-        <% if @random_post.present? %>
-          <div style="position: relative; text-align: center;">
-            <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-2xl">
-              <%= "これは#{@random_post.user.name}さんが" %><br>
-              <%= "#{@random_post.zoo.name}で" %><br>
-              <%= "撮った写真だゾゥ" %>
-            </span>
-            <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto" %>
-          </div>
-          <div class="animation-rotateY mx-auto flex flex-wrap justify-center" >
-            <%= render partial: 'posts/post', locals: { post: @random_post } %>
-          </div>
-        <% end %>
+<div class="main_image">
+  <div class="flex items-center justify-center pt-20">
+    <div class="w-16 rounded-full">
+      <%= image_tag "animalface_kuma.png" %>
+    </div>
+    <p class="text-4xl p-2">ようこそ</p>
+    <div class="avatar">
+      <div class="w-16 rounded-full">
+        <%= image_tag "animalface_kuma.png" %>
       </div>
     </div>
   </div>
-  <div class="treatment text-center">
-    <p class="text-2xl">ZooManiaの使い方</p>
-    <p class="relative">ZooManiaは、<br>
-                        動物園に焦点を当てたWebサービスです。</p>
+  <div class="flex items-center justify-center pb-10">
+    <div class="w-16 rounded-full">
+      <%= image_tag "animalface_zou.png" %>
+    </div>
+    <p class="text-4xl p-2">ZOOManiaへ</p>
+    <div class="avatar">
+      <div class="w-16 rounded-full">
+        <%= image_tag "animalface_zou.png" %>
+      </div>
+    </div>
   </div>
-  <div class="treatment text-center">
-    <p class="text-2xl mt-5">動物園ライブラリ機能</p>
-    <p class="relative">動物園一覧ページには、<br>
-                        日本にある動物園の情報が掲載されています。<br>
-                        各動物園の詳細ページでは、<br>
-                        所在地や公式HPへのリンクなどが確認できます。<br>
-                        様々な動物園をチェックしてみてください。<br>
-    </p>
-  </div>
-  <div class="treatment text-center">
-    <p class="text-2xl mt-5">動物園お気に入り機能</p>
-    <p class="relative">プロフィールからお気に入りの動物園を<br>
-                        最大3つまで登録できます。<br>
-                        皆さまのお気に入り結果を集計し、<br>
-                        トップ10をランキング形式で表示します。<br>
-                        ぜひご登録をよろしくお願いします。<br>
-    </p>
-  </div>
-  <div class="treatment text-center">
-    <p class="text-2xl mt-5">画像投稿機能</p>
-    <p class="relative">ZooManiaでは動物園で撮った写真を<br>
-                        投稿することができます。<br>
-                        行った動物園のタグを付けて、<br>
-                        どんどん投稿してください。<br>
-                        素敵なお写真をお待ちしています。<br>
-    </p>
-  </div>
-  <div class="treatment text-center">
-    <p class="text-2xl mt-5">投稿いいね機能</p>
-    <p class="relative">他のユーザーの投稿にいいねすることができます。<br>
-                        いいねの数が多い投稿のトップ10を<br>
-                        ランキング形式で表示します。<br>
-                        ナイスショットな投稿をお待ちしています。<br>
-    </p>
-  </div>
-  <div class="treatment text-center">
-    <p class="text-2xl mt-5">注意点</p>
-    <p class="relative">動物園で撮影された写真の投稿をお願いしております。<br>
-                        不適切な投稿は削除される可能性がありますので、<br>
-                        予めご了承ください。<br>
-    </p>
-  </div>
-<div class="treatment text-center pb-10">
-    <p class="text-2xl mt-5">動物園の選定基準</p>
-    <p class="relative">ZooManiaに登録されている動物園は、<br>
-                        日本動物園水族館協会に加盟していることを基準として、<br>
-                        選定しております。<br>
-                        予めご了承ください。<br>
-    </p>
+  <% if @random_post.present? %>
+    <div class="animation-rotateY mx-auto flex flex-wrap justify-center pb-5" >
+      <%= render partial: 'posts/post', locals: { post: @random_post } %>
+    </div>
+    <div style="position: relative; text-align: center;">
+      <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-2xl">
+        <%= "これは#{@random_post.user.name}さんが" %><br>
+        <%= "#{@random_post.zoo.name}で" %><br>
+        <%= "撮った写真だゾゥ" %>
+      </span>
+      <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto pb-10" %>
+    </div>
+  <% end %>
+  <div class="items-center text-center pb-20">
+    <p class="text-2xl">初めての方はこちらで<br>
+                        使い方を見てほしいゾゥ</p>
+    <br>
+    <i class="fa-solid fa-arrow-down fa-beat-fade fa-2xl pb-5"></i>
+    <br>
+    <%= link_to (t 'top.how_to_use.title'), how_to_use_path, class: "text-3xl link link-primary text-center justify-center items-center pb-20"%>
   </div>
 </div>
