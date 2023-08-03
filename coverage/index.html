@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-08-02T21:19:54+09:00">2023-08-02T21:19:54+09:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-08-03T18:14:10+09:00">2023-08-03T18:14:10+09:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  95.98%
+  95.99%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.01
+         3.0
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>820</b> relevant lines,
-    <span class="green"><b>787</b> lines covered</span> and
+    <b>822</b> relevant lines,
+    <span class="green"><b>789</b> lines covered</span> and
     <span class="red"><b>33</b> lines missed. </span>
     (<span class="green">
-  95.98%
+  95.99%
 </span>
 )
   </div>
@@ -128,11 +128,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#524d8e069f5213e12766441dd4401798d362bcac" class="src_link" title="app/controllers/top_controller.rb">app/controllers/top_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">9</td>
-            <td class="cell--number">5</td>
-            <td class="cell--number">5</td>
+            <td class="cell--number">11</td>
+            <td class="cell--number">6</td>
+            <td class="cell--number">6</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">5.60</td>
+            <td class="cell--number">4.83</td>
             
           </tr>
         
@@ -590,9 +590,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#0e0b99c772542e42ab4d21ac2ff543066404c69f" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">41</td>
-            <td class="cell--number">34</td>
-            <td class="cell--number">34</td>
+            <td class="cell--number">42</td>
+            <td class="cell--number">35</td>
+            <td class="cell--number">35</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -2907,8 +2907,8 @@
     
 
     <div class="t-line-summary">
-      <b>5</b> relevant lines.
-      <span class="green"><b>5</b> lines covered</span> and
+      <b>6</b> relevant lines.
+      <span class="green"><b>6</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -2981,7 +2981,7 @@
 
             
 
-            <code class="ruby">  def privacy_policy; end</code>
+            <code class="ruby">  def how_to_use; end</code>
           </li>
         </div>
       
@@ -3003,12 +3003,34 @@
 
             
 
-            <code class="ruby">  def terms_of_service; end</code>
+            <code class="ruby">  def privacy_policy; end</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="9">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="10">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def terms_of_service; end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="11">
             
             
 
@@ -17035,8 +17057,8 @@
     
 
     <div class="t-line-summary">
-      <b>34</b> relevant lines.
-      <span class="green"><b>34</b> lines covered</span> and
+      <b>35</b> relevant lines.
+      <span class="green"><b>35</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -17175,7 +17197,7 @@
 
             
 
-            <code class="ruby">  get &#39;privacy_policy&#39;, to: &#39;top#privacy_policy&#39;</code>
+            <code class="ruby">  get &#39;how_to_use&#39;, to: &#39;top#how_to_use&#39;</code>
           </li>
         </div>
       
@@ -17186,7 +17208,7 @@
 
             
 
-            <code class="ruby">  get &#39;terms_of_service&#39;, to: &#39;top#terms_of_service&#39;</code>
+            <code class="ruby">  get &#39;privacy_policy&#39;, to: &#39;top#privacy_policy&#39;</code>
           </li>
         </div>
       
@@ -17197,7 +17219,7 @@
 
             
 
-            <code class="ruby">  get &#39;login&#39;, to: &#39;user_sessions#new&#39;</code>
+            <code class="ruby">  get &#39;terms_of_service&#39;, to: &#39;top#terms_of_service&#39;</code>
           </li>
         </div>
       
@@ -17208,7 +17230,7 @@
 
             
 
-            <code class="ruby">  post &#39;login&#39;, to: &#39;user_sessions#create&#39;</code>
+            <code class="ruby">  get &#39;login&#39;, to: &#39;user_sessions#new&#39;</code>
           </li>
         </div>
       
@@ -17219,7 +17241,7 @@
 
             
 
-            <code class="ruby">  delete &#39;logout&#39;, to: &#39;user_sessions#destroy&#39;</code>
+            <code class="ruby">  post &#39;login&#39;, to: &#39;user_sessions#create&#39;</code>
           </li>
         </div>
       
@@ -17230,7 +17252,7 @@
 
             
 
-            <code class="ruby">  post &#39;google_login_api/callback&#39;, to: &#39;google_login_api#callback&#39;</code>
+            <code class="ruby">  delete &#39;logout&#39;, to: &#39;user_sessions#destroy&#39;</code>
           </li>
         </div>
       
@@ -17241,7 +17263,7 @@
 
             
 
-            <code class="ruby">  post &#39;/callback&#39; =&gt; &#39;linebot#callback&#39;</code>
+            <code class="ruby">  post &#39;google_login_api/callback&#39;, to: &#39;google_login_api#callback&#39;</code>
           </li>
         </div>
       
@@ -17252,7 +17274,7 @@
 
             
 
-            <code class="ruby">  resource :profile,only: %i[show edit update]</code>
+            <code class="ruby">  post &#39;/callback&#39; =&gt; &#39;linebot#callback&#39;</code>
           </li>
         </div>
       
@@ -17263,7 +17285,7 @@
 
             
 
-            <code class="ruby">  resources :users, only: %i[new create destroy] do</code>
+            <code class="ruby">  resource :profile,only: %i[show edit update]</code>
           </li>
         </div>
       
@@ -17274,7 +17296,7 @@
 
             
 
-            <code class="ruby">    resource :password, only: %i[edit update]</code>
+            <code class="ruby">  resources :users, only: %i[new create destroy] do</code>
           </li>
         </div>
       
@@ -17285,29 +17307,29 @@
 
             
 
+            <code class="ruby">    resource :password, only: %i[edit update]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="23">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">    resources :favorite_zoos, only: %i[new create destroy]</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="23">
+          <li class="never" data-hits="" data-linenumber="24">
             
             
 
             
 
             <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="24">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  resources :zoos, only: %i[index show] do</code>
           </li>
         </div>
       
@@ -17318,7 +17340,7 @@
 
             
 
-            <code class="ruby">    collection do</code>
+            <code class="ruby">  resources :zoos, only: %i[index show] do</code>
           </li>
         </div>
       
@@ -17329,7 +17351,7 @@
 
             
 
-            <code class="ruby">      get &#39;map&#39;</code>
+            <code class="ruby">    collection do</code>
           </li>
         </div>
       
@@ -17340,7 +17362,7 @@
 
             
 
-            <code class="ruby">      get &#39;ranking&#39;</code>
+            <code class="ruby">      get &#39;map&#39;</code>
           </li>
         </div>
       
@@ -17351,18 +17373,18 @@
 
             
 
-            <code class="ruby">      get &quot;recommend&quot;</code>
+            <code class="ruby">      get &#39;ranking&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="29">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="29">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      get &quot;recommend&quot;</code>
           </li>
         </div>
       
@@ -17373,18 +17395,18 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="31">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="31">
+            
             
 
             
 
-            <code class="ruby">  resources :password_resets, only: %i[new create edit update]</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -17395,7 +17417,7 @@
 
             
 
-            <code class="ruby">  resources :posts, only: %i[index new create show edit update destroy] do</code>
+            <code class="ruby">  resources :password_resets, only: %i[new create edit update]</code>
           </li>
         </div>
       
@@ -17406,7 +17428,7 @@
 
             
 
-            <code class="ruby">    resource :likes, only: %i[create destroy]</code>
+            <code class="ruby">  resources :posts, only: %i[index new create show edit update destroy] do</code>
           </li>
         </div>
       
@@ -17417,7 +17439,7 @@
 
             
 
-            <code class="ruby">    collection do</code>
+            <code class="ruby">    resource :likes, only: %i[create destroy]</code>
           </li>
         </div>
       
@@ -17428,7 +17450,7 @@
 
             
 
-            <code class="ruby">      get &#39;ranking&#39;</code>
+            <code class="ruby">    collection do</code>
           </li>
         </div>
       
@@ -17439,7 +17461,7 @@
 
             
 
-            <code class="ruby">      get &#39;my_posts&#39;</code>
+            <code class="ruby">      get &#39;ranking&#39;</code>
           </li>
         </div>
       
@@ -17450,7 +17472,7 @@
 
             
 
-            <code class="ruby">      get &#39;my_like_posts&#39;</code>
+            <code class="ruby">      get &#39;my_posts&#39;</code>
           </li>
         </div>
       
@@ -17461,18 +17483,18 @@
 
             
 
-            <code class="ruby">      get &quot;stamp_rally&quot;</code>
+            <code class="ruby">      get &#39;my_like_posts&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="39">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="39">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      get &quot;stamp_rally&quot;</code>
           </li>
         </div>
       
@@ -17483,12 +17505,23 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="41">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="42">
             
             
 
