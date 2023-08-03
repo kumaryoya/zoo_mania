@@ -3,7 +3,8 @@
   <h1 class="text-4xl py-20"><%= t '.title' %></h1>
   <%= search_form_for @q do |f| %>
     <div class="flex items-center justify-center pb-20">
-      <%= f.select :zoo_area_cont, options_for_select(["北海道地方", "東北地方", "関東地方", "中部地方", "関西地方", "中国地方", "四国地方", "九州地方"]), { include_blank: "地方" }, class: 'input input-bordered input-primary mx-1', style: 'width: 125px;' %>
+      <% selected_area = params[:q][:zoo_area_cont] if params[:q].present? %>
+      <%= f.select :zoo_area_cont, options_for_select(["北海道地方", "東北地方", "関東地方", "中部地方", "関西地方", "中国地方", "四国地方", "九州地方"], selected: selected_area), { include_blank: "地方" }, class: 'input input-bordered input-primary mx-1', style: 'width: 125px;' %>
       <%= f.search_field :zoo_name_cont, class: 'input input-bordered input-primary mx-1', placeholder: '動物園名', style: 'width: 180px;' %>
       <%= f.submit '検索', class: 'btn btn-primary text-white mx-1' %>
     </div>
