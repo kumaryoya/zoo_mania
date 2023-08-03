@@ -121,6 +121,8 @@ ja:
   top:
     index:
       title: "トップページ"
+    how_to_use:
+      title: "ZooManiaの使い方"
     privacy_policy:
       title: "プライバシーポリシー"
     terms_of_service:
