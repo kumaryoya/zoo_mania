@@ -45,8 +45,9 @@
                 if (status === 'OK') {
                   var zooLocation = results[0].geometry.location;
                   var distance = google.maps.geometry.spherical.computeDistanceBetween(userLocation, zooLocation);
+                  var distanceKm = (distance / 1000).toFixed(2);
                   nearbyZoos.push({
-                    distance: distance,
+                    distance: distanceKm,
                     location: zooLocation,
                     name: '<%= zoo.name %>',
                     id: <%= zoo.id %>
@@ -58,7 +59,15 @@
                     if (nearbyZoos.length > 5) {
                       nearbyZoos = nearbyZoos.slice(0, 5);
                     }
+                    var zoosListContainer = document.getElementById("zoos-ul");
+                    zoosListContainer.innerHTML = "";
                     nearbyZoos.forEach(function(zoo) {
+                      var listItem = document.createElement("li");
+                      var link = document.createElement("a");
+                      link.href = "/zoos/" + zoo.id;
+                      link.textContent = zoo.name + '（' + zoo.distance + 'km）';
+                      listItem.appendChild(link);
+                      zoosListContainer.appendChild(listItem);
                       var marker = new google.maps.Marker({
                         map: map,
                         position: zoo.location
@@ -106,6 +115,10 @@
       名称を押すとその動物園の<br>
       詳細ページに飛べるゾゥ<br>
     </span>
-    <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto" %>
+    <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto pb-5" %>
+  </div>
+  <div class="zoos-list">
+    <h2 class="text-2xl pb-2">おすすめ動物園一覧</h2>
+    <ul class="text-lg link link-primary" id="zoos-ul"></ul>
   </div>
 </div>
