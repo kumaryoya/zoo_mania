@@ -1,4 +1,4 @@
-const CACHE_NAME = 'weather_app_cache';
+const CACHE_NAME = 'zoomania_cache';
 const urlsToCache = [
   '/',
 ];
