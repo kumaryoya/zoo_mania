@@ -1189,7 +1189,7 @@
           1,
           1,
           null,
-          111,
+          112,
           null,
           null,
           null,
@@ -1424,7 +1424,7 @@
           null,
           null,
           1,
-          7,
+          12,
           null,
           null,
           1,
@@ -1432,11 +1432,11 @@
           null,
           null,
           1,
-          36,
+          312,
           null,
           null,
           1,
-          18,
+          156,
           null,
           null
         ]
@@ -2094,7 +2094,7 @@
           null,
           null,
           1,
-          18,
+          156,
           null,
           null
         ]
@@ -2134,7 +2134,7 @@
         "lines": [
           1,
           1,
-          24,
+          2,
           null,
           null,
           1,
@@ -2142,45 +2142,6 @@
           1,
           null,
           1,
-          null
-        ]
-      },
-      "/Users/ryoyaokuma/workspace/runteq/zoo_mania/app/controllers/favorite_zoos_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          15,
-          15,
-          null,
-          null,
-          1,
-          10,
-          10,
-          6,
-          null,
-          4,
-          4,
-          4,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          10,
-          null,
-          null,
-          1,
-          26,
-          null,
           null
         ]
       },
@@ -2191,8 +2152,8 @@
           1,
           null,
           1,
-          3,
-          3,
+          26,
+          26,
           null,
           null,
           1,
@@ -2274,6 +2235,45 @@
           null,
           0,
           0,
+          null,
+          null
+        ]
+      },
+      "/Users/ryoyaokuma/workspace/runteq/zoo_mania/app/controllers/favorite_zoos_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          15,
+          15,
+          null,
+          null,
+          1,
+          10,
+          10,
+          6,
+          null,
+          4,
+          4,
+          4,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          10,
+          null,
+          null,
+          1,
+          26,
           null,
           null
         ]
@@ -2366,6 +2366,6 @@
         ]
       }
     },
-    "timestamp": 1691054050
+    "timestamp": 1691171080
   }
 }

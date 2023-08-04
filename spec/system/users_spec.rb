@@ -15,7 +15,7 @@ RSpec.describe 'Users', type: :system do
         fill_in 'パスワード確認', with: 'password'
         click_button '登録する'
         expect(page).to have_content 'ユーザー登録が完了したゾゥ'
-        expect(page).to have_current_path(root_path)
+        expect(page).to have_current_path(posts_path)
       end
     end
 
@@ -119,7 +119,7 @@ RSpec.describe 'Users', type: :system do
         fill_in 'パスワード', with: 'password'
         click_button 'ログインする'
         expect(page).to have_content 'ログインできたゾゥ'
-        expect(page).to have_current_path(root_path)
+        expect(page).to have_current_path(posts_path)
       end
 
       it 'ログインが失敗する' do
