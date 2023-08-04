@@ -2,7 +2,7 @@
   "name": "ZooMania",
   "short_name": "ZooMania",
   "start_url": "/",
-  "display": "minimal-ui",
+  "display": "standalone",
   "background_color": "#412E1D",
   "theme_color": "#412E1D",
   "icons": [
