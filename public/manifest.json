@@ -3,8 +3,8 @@
   "short_name": "ZooMania",
   "start_url": "/",
   "display": "fullscreen",
-  "background_color": "#325B2F",
-  "theme_color": "#325B2F",
+  "background_color": "#412E1D",
+  "theme_color": "#412E1D",
   "icons": [
     {
       "src": "/assets/images/logo.jpg",
