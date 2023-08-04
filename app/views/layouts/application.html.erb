@@ -11,6 +11,7 @@
     </script>
     <%= display_meta_tags(default_meta_tags) %>
     <%= favicon_link_tag('favicon.ico') %>
+    <link rel="manifest" href="/manifest.json">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -19,6 +20,19 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service_worker.js')
+            .then((registration) => {
+              console.log('Service Worker registered:', registration);
+            })
+            .catch((error) => {
+              console.error('Service Worker registration failed:', error);
+            });
+        });
+      }
+    </script>
     <%= render 'shared/header' %>
     <%= render 'shared/flash_message' %>
     <%= yield %>
