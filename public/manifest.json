@@ -1,10 +1,10 @@
 {
-  "name": "RUNTEQお天気アプリ",
-  "short_name": "天気アプリ",
+  "name": "ZooMania",
+  "short_name": "ZooMania",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#007bff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/logo.jpg",
