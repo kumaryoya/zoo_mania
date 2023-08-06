@@ -55,6 +55,7 @@ ZooManiaは、基本的には全ての方が利用対象ですが、特にしば
 * Twitter共有機能  
 * LINE通知機能  
 * 管理ユーザー機能  
+* PWA機能  
   
 ## ER図  
 <img src="app/assets/images/ER.jpg" width="800x1200">  
