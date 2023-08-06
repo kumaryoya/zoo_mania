@@ -54,7 +54,9 @@ ZooManiaは、基本的には全ての方が利用対象ですが、特にしば
 * 位置情報による動物園レコメンド機能  
 * Twitter共有機能  
 * LINE通知機能  
+* PWA機能  
 * 管理ユーザー機能  
+* テスト機能（RSpec）  
   
 ## ER図  
 <img src="app/assets/images/ER.jpg" width="800x1200">  
