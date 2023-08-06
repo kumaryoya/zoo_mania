@@ -65,4 +65,5 @@ ZooManiaは、基本的には全ての方が利用対象ですが、特にしば
 * Node.js 20.2.0  
 * CSS tailwind, daisyUI  
 * Webアプリケーションサーバ heroku  
+* データベース PostgreSQL  
 * ファイルサーバ AWS S3  

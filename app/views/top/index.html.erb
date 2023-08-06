@@ -1,46 +1,63 @@
-<% content_for :title, t('.title') %>
 <div class="main_image">
-  <div class="flex items-center justify-center pt-20">
-    <div class="w-16 rounded-full">
-      <%= image_tag "animalface_kuma.png" %>
-    </div>
-    <p class="text-4xl p-2">ようこそ</p>
-    <div class="avatar">
-      <div class="w-16 rounded-full">
-        <%= image_tag "animalface_kuma.png" %>
-      </div>
-    </div>
+  <div class="image-container">
+    <%= image_tag "top1.jpg", class: "fullscreen-image active", id: "image1" %>
+    <%= image_tag "top2.jpg", class: "fullscreen-image", id: "image2" %>
+    <%= image_tag "top3.jpg", class: "fullscreen-image", id: "image3" %>
+    <%= image_tag "top4.jpg", class: "fullscreen-image", id: "image4" %>
+    <%= image_tag "top5.jpg", class: "fullscreen-image", id: "image5" %>
   </div>
-  <div class="flex items-center justify-center pb-10">
-    <div class="w-16 rounded-full">
-      <%= image_tag "animalface_zou.png" %>
-    </div>
-    <p class="text-4xl p-2">ZooManiaへ</p>
-    <div class="avatar">
-      <div class="w-16 rounded-full">
-        <%= image_tag "animalface_zou.png" %>
-      </div>
-    </div>
-  </div>
-  <% if @random_post.present? %>
-    <div class="animation-rotateY mx-auto flex flex-wrap justify-center pb-5" >
-      <%= render partial: 'posts/post', locals: { post: @random_post } %>
-    </div>
-    <div style="position: relative; text-align: center;">
-      <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-2xl">
-        <%= "これは#{@random_post.user.name}さんが" %><br>
-        <%= "#{@random_post.zoo.name}で" %><br>
-        <%= "撮った写真だゾゥ" %>
-      </span>
-      <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto pb-10" %>
-    </div>
-  <% end %>
-  <div class="items-center text-center pb-20">
-    <p class="text-2xl">初めての方はこちらで<br>
-                        使い方を見てほしいゾゥ</p>
+  <div class="items-center text-center py-20">
+    <p class="text-4xl">ZooManiaでできること</p>
     <br>
     <i class="fa-solid fa-arrow-down fa-beat-fade fa-2xl pb-5"></i>
     <br>
     <%= link_to (t 'top.how_to_use.title'), how_to_use_path, class: "text-3xl link link-primary text-center justify-center items-center pb-20"%>
   </div>
 </div>
+<style>
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+  }
+  .fullscreen-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 4s ease-in-out;
+    opacity: 0;
+  }
+  .active {
+    opacity: 1;
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const images = [
+      "<%= asset_path('top1.jpg') %>",
+      "<%= asset_path('top2.jpg') %>",
+      "<%= asset_path('top3.jpg') %>",
+      "<%= asset_path('top4.jpg') %>",
+      "<%= asset_path('top5.jpg') %>",
+    ];
+    let currentIndex = 0;
+    const imageElements = document.querySelectorAll(".fullscreen-image");
+    function crossDissolve() {
+      currentIndex = (currentIndex + 1) % images.length;
+      const nextImagePath = images[currentIndex];
+      const nextImageElement = imageElements[currentIndex];
+      const currentImageElement = imageElements[currentIndex === 0 ? images.length - 1 : currentIndex - 1];
+      nextImageElement.src = nextImagePath;
+      currentImageElement.classList.remove("active");
+      nextImageElement.classList.add("active");
+      setTimeout(function () {
+        crossDissolve();
+      }, 8000);
+    }
+    crossDissolve();
+  });
+</script>

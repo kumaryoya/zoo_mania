@@ -31,6 +31,7 @@ gem 'enum_help'
 gem 'ransack'
 gem 'line-bot-api'
 gem 'simplecov', require: false, group: :test
+gem 'sassc'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
