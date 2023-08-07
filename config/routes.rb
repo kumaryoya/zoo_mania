@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     resources :posts, only: %i[index show edit update destroy]
   end
   root "top#index"
-  get 'how_to_use', to: 'top#how_to_use'
   get 'privacy_policy', to: 'top#privacy_policy'
   get 'terms_of_service', to: 'top#terms_of_service'
   get 'login', to: 'user_sessions#new'
