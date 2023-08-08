@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-08-05T02:44:40+09:00">2023-08-05T02:44:40+09:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-08-08T14:28:32+09:00">2023-08-08T14:28:32+09:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  95.99%
+  95.98%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.71
+         3.72
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>822</b> relevant lines,
-    <span class="green"><b>789</b> lines covered</span> and
+    <b>820</b> relevant lines,
+    <span class="green"><b>787</b> lines covered</span> and
     <span class="red"><b>33</b> lines missed. </span>
     (<span class="green">
-  95.99%
+  95.98%
 </span>
 )
   </div>
@@ -128,11 +128,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#524d8e069f5213e12766441dd4401798d362bcac" class="src_link" title="app/controllers/top_controller.rb">app/controllers/top_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">11</td>
-            <td class="cell--number">6</td>
-            <td class="cell--number">6</td>
+            <td class="cell--number">9</td>
+            <td class="cell--number">5</td>
+            <td class="cell--number">5</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.17</td>
+            <td class="cell--number">1.20</td>
             
           </tr>
         
@@ -590,9 +590,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#0e0b99c772542e42ab4d21ac2ff543066404c69f" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">42</td>
-            <td class="cell--number">35</td>
-            <td class="cell--number">35</td>
+            <td class="cell--number">41</td>
+            <td class="cell--number">34</td>
+            <td class="cell--number">34</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -1588,7 +1588,7 @@
 
             
 
-            <code class="ruby">  before_action :require_login, only: %i[new create edit update destroy]</code>
+            <code class="ruby">  before_action :require_login, only: %i[new create edit update destroy my_posts my_like_posts stamp_rally]</code>
           </li>
         </div>
       
@@ -2907,8 +2907,8 @@
     
 
     <div class="t-line-summary">
-      <b>6</b> relevant lines.
-      <span class="green"><b>6</b> lines covered</span> and
+      <b>5</b> relevant lines.
+      <span class="green"><b>5</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -2948,7 +2948,7 @@
 
             
 
-            <code class="ruby">    @random_post = Post.order(&quot;RANDOM()&quot;).first</code>
+            <code class="ruby">    @random_zpost = Post.order(&quot;RANDOM()&quot;).first</code>
           </li>
         </div>
       
@@ -2981,7 +2981,7 @@
 
             
 
-            <code class="ruby">  def how_to_use; end</code>
+            <code class="ruby">  def privacy_policy; end</code>
           </li>
         </div>
       
@@ -3003,34 +3003,12 @@
 
             
 
-            <code class="ruby">  def privacy_policy; end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="9">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="10">
-            <span class="hits">1</span>
-            
-
-            
-
             <code class="ruby">  def terms_of_service; end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="11">
+          <li class="never" data-hits="" data-linenumber="9">
             
             
 
@@ -17057,8 +17035,8 @@
     
 
     <div class="t-line-summary">
-      <b>35</b> relevant lines.
-      <span class="green"><b>35</b> lines covered</span> and
+      <b>34</b> relevant lines.
+      <span class="green"><b>34</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -17197,7 +17175,7 @@
 
             
 
-            <code class="ruby">  get &#39;how_to_use&#39;, to: &#39;top#how_to_use&#39;</code>
+            <code class="ruby">  get &#39;privacy_policy&#39;, to: &#39;top#privacy_policy&#39;</code>
           </li>
         </div>
       
@@ -17208,7 +17186,7 @@
 
             
 
-            <code class="ruby">  get &#39;privacy_policy&#39;, to: &#39;top#privacy_policy&#39;</code>
+            <code class="ruby">  get &#39;terms_of_service&#39;, to: &#39;top#terms_of_service&#39;</code>
           </li>
         </div>
       
@@ -17219,7 +17197,7 @@
 
             
 
-            <code class="ruby">  get &#39;terms_of_service&#39;, to: &#39;top#terms_of_service&#39;</code>
+            <code class="ruby">  get &#39;login&#39;, to: &#39;user_sessions#new&#39;</code>
           </li>
         </div>
       
@@ -17230,7 +17208,7 @@
 
             
 
-            <code class="ruby">  get &#39;login&#39;, to: &#39;user_sessions#new&#39;</code>
+            <code class="ruby">  post &#39;login&#39;, to: &#39;user_sessions#create&#39;</code>
           </li>
         </div>
       
@@ -17241,7 +17219,7 @@
 
             
 
-            <code class="ruby">  post &#39;login&#39;, to: &#39;user_sessions#create&#39;</code>
+            <code class="ruby">  delete &#39;logout&#39;, to: &#39;user_sessions#destroy&#39;</code>
           </li>
         </div>
       
@@ -17252,7 +17230,7 @@
 
             
 
-            <code class="ruby">  delete &#39;logout&#39;, to: &#39;user_sessions#destroy&#39;</code>
+            <code class="ruby">  post &#39;google_login_api/callback&#39;, to: &#39;google_login_api#callback&#39;</code>
           </li>
         </div>
       
@@ -17263,7 +17241,7 @@
 
             
 
-            <code class="ruby">  post &#39;google_login_api/callback&#39;, to: &#39;google_login_api#callback&#39;</code>
+            <code class="ruby">  post &#39;/callback&#39; =&gt; &#39;linebot#callback&#39;</code>
           </li>
         </div>
       
@@ -17274,7 +17252,7 @@
 
             
 
-            <code class="ruby">  post &#39;/callback&#39; =&gt; &#39;linebot#callback&#39;</code>
+            <code class="ruby">  resource :profile,only: %i[show edit update]</code>
           </li>
         </div>
       
@@ -17285,7 +17263,7 @@
 
             
 
-            <code class="ruby">  resource :profile,only: %i[show edit update]</code>
+            <code class="ruby">  resources :users, only: %i[new create destroy] do</code>
           </li>
         </div>
       
@@ -17296,7 +17274,7 @@
 
             
 
-            <code class="ruby">  resources :users, only: %i[new create destroy] do</code>
+            <code class="ruby">    resource :password, only: %i[edit update]</code>
           </li>
         </div>
       
@@ -17307,23 +17285,12 @@
 
             
 
-            <code class="ruby">    resource :password, only: %i[edit update]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="23">
-            <span class="hits">1</span>
-            
-
-            
-
             <code class="ruby">    resources :favorite_zoos, only: %i[new create destroy]</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="24">
+          <li class="never" data-hits="" data-linenumber="23">
             
             
 
@@ -17334,7 +17301,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="25">
+          <li class="covered" data-hits="1" data-linenumber="24">
             <span class="hits">1</span>
             
 
@@ -17345,7 +17312,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="26">
+          <li class="covered" data-hits="1" data-linenumber="25">
             <span class="hits">1</span>
             
 
@@ -17356,7 +17323,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="27">
+          <li class="covered" data-hits="1" data-linenumber="26">
             <span class="hits">1</span>
             
 
@@ -17367,7 +17334,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="28">
+          <li class="covered" data-hits="1" data-linenumber="27">
             <span class="hits">1</span>
             
 
@@ -17378,7 +17345,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="29">
+          <li class="covered" data-hits="1" data-linenumber="28">
             <span class="hits">1</span>
             
 
@@ -17389,7 +17356,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="30">
+          <li class="never" data-hits="" data-linenumber="29">
             
             
 
@@ -17400,7 +17367,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="31">
+          <li class="never" data-hits="" data-linenumber="30">
             
             
 
@@ -17411,7 +17378,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="32">
+          <li class="covered" data-hits="1" data-linenumber="31">
             <span class="hits">1</span>
             
 
@@ -17422,7 +17389,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="33">
+          <li class="covered" data-hits="1" data-linenumber="32">
             <span class="hits">1</span>
             
 
@@ -17433,7 +17400,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="34">
+          <li class="covered" data-hits="1" data-linenumber="33">
             <span class="hits">1</span>
             
 
@@ -17444,7 +17411,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="35">
+          <li class="covered" data-hits="1" data-linenumber="34">
             <span class="hits">1</span>
             
 
@@ -17455,7 +17422,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="36">
+          <li class="covered" data-hits="1" data-linenumber="35">
             <span class="hits">1</span>
             
 
@@ -17466,7 +17433,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="37">
+          <li class="covered" data-hits="1" data-linenumber="36">
             <span class="hits">1</span>
             
 
@@ -17477,7 +17444,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="38">
+          <li class="covered" data-hits="1" data-linenumber="37">
             <span class="hits">1</span>
             
 
@@ -17488,7 +17455,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="39">
+          <li class="covered" data-hits="1" data-linenumber="38">
             <span class="hits">1</span>
             
 
@@ -17499,7 +17466,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="40">
+          <li class="never" data-hits="" data-linenumber="39">
             
             
 
@@ -17510,7 +17477,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="41">
+          <li class="never" data-hits="" data-linenumber="40">
             
             
 
@@ -17521,7 +17488,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="42">
+          <li class="never" data-hits="" data-linenumber="41">
             
             
 

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: %i[new create edit update destroy]
+  before_action :require_login, only: %i[new create edit update destroy my_posts my_like_posts stamp_rally]
   before_action :set_post, only: %i[edit update destroy]
 
   def index
