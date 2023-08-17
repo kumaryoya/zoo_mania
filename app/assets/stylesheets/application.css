@@ -15,8 +15,7 @@
  */
 
 .header_image {
-  background-image: url("header.jpeg");
-  background-size: cover;
+  background-image: url("header.jpg");
   background-position: center;
 }
 
