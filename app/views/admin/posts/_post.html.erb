@@ -13,7 +13,7 @@
   </td>
   <td>
     <%= link_to t('defaults.show'), admin_post_path(post), class: 'btn btn-info text-white mx-1' %>
-    <%= link_to t('defaults.edit'), edit_admin_post_path(post), class: 'btn btn-accent text-white mx-1' %>
+    <%= link_to t('defaults.edit'), edit_admin_post_path(post), class: 'btn btn-accent text-brown mx-1' %>
     <%= link_to t('defaults.destroy'), admin_post_path(post), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white mx-1" %>
   </td>
 </tr>

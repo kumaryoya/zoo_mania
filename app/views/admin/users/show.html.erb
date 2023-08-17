@@ -4,7 +4,7 @@
     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
       <h1 class="py-10 text-3xl"><%= t('.title') %></h1>
       <div class="text-right mb-3">
-        <%= link_to t('defaults.edit'), edit_admin_user_path(@user), class: 'btn btn-accent text-white mx-1' %>
+        <%= link_to t('defaults.edit'), edit_admin_user_path(@user), class: 'btn btn-accent text-brown mx-1' %>
         <%= link_to t('defaults.destroy'), admin_user_path(@user), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white mx-1" %>
       </div>
       <table class="table table-bordered">
