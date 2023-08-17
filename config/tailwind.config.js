@@ -14,6 +14,7 @@ module.exports = {
       },
       colors: {
         "white": "#FFFFFF",
+        "main": "#D7EAAD",
         "brown": "#412E1D",
         "star": "#c76f23",
         "twitter": "#3597DE",
@@ -35,8 +36,8 @@ module.exports = {
         "info": "#412E1D",
         "secondary": "#3597DE",
         "success": "#3597DE",
-        "accent": "#A4CC38",
-        "warning": "#A4CC38",
+        "accent": "#D7EAAD",
+        "warning": "#D7EAAD",
         "neutral": "#69031E",
         "error": "#69031E",
       },
