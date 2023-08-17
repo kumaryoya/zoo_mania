@@ -27,7 +27,7 @@
           <i class="fab fa-twitter fa-2xl"></i>
         <% end %>
         <% if current_user && current_user == @post.user %>
-          <%= link_to t('defaults.edit'), edit_post_path(@post), class: "btn btn-accent text-white" %>
+          <%= link_to t('defaults.edit'), edit_post_path(@post), class: "btn btn-accent text-brown" %>
           <%= link_to t('defaults.destroy'), post_path(@post), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white" %>
         <% end %>
       </div>
