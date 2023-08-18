@@ -137,7 +137,7 @@ RSpec.describe 'Users', type: :system do
     context 'ログインしているとき' do
       it 'ログアウトが成功する' do
         login_as(@user)
-        find('.header_image .avatar').click
+        find('.bg-main .avatar').click
         click_link 'ログアウトする'
         expect(page.accept_confirm).to eq 'ログアウトしますか？'
         expect(page).to have_current_path(login_path)
