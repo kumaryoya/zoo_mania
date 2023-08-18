@@ -1,16 +1,26 @@
 <% content_for(:title, t('.title')) %>
 <div class="flex flex-col justify-center text-center main_image pb-20">
-  <h1 class="text-4xl py-20"><%= t('.title') %></h1>
+  <h1 class="text-4xl pt-20 pb-10"><%= t('.title') %></h1>
   <div style="position: relative; text-align: center;">
-    <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-xl">
+    <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-xl pb-5">
       <% if logged_in? %>
         まだ写真の投稿がない動物園のうち<br>
       <% end %>
       現在地から近い動物園5つを僕からおすすめするゾゥ<br>
     </span>
-    <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto pb-10" %>
   </div>
-  <div class="pb-10">
+  <div class="zoos-list mb-5">
+    <ul class="text-lg link link-primary" id="zoos-ul"></ul>
+  </div>
+  <div style="position: relative; text-align: center;">
+    <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-xl">
+      赤いピンが動物園の場所だゾゥ<br>
+      ピンを押すと動物園の名称が表示されるゾゥ<br>
+      名称を押すとその動物園の詳細ページに飛べるゾゥ<br>
+    </span>
+    <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto pb-5" %>
+  </div>
+  <div>
     <div style="width: 100%; height: calc(100vw * 3 / 4); display: flex; justify-content: center; align-items: center; margin: 0 auto;">
       <div id="map" style="width: 100%; height: 100%;"></div>
     </div>
@@ -106,17 +116,5 @@
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap&libraries=geometry" async defer></script>
-  </div>
-  <div style="position: relative; text-align: center;">
-    <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-xl">
-      赤いピンが動物園の場所だゾゥ<br>
-      ピンを押すと動物園の名称が表示されるゾゥ<br>
-      名称を押すとその動物園の詳細ページに飛べるゾゥ<br>
-    </span>
-    <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto pb-5" %>
-  </div>
-  <div class="zoos-list">
-    <h2 class="text-2xl pb-2">おすすめ動物園一覧</h2>
-    <ul class="text-lg link link-primary" id="zoos-ul"></ul>
   </div>
 </div>
