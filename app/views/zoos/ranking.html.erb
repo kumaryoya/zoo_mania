@@ -1,5 +1,5 @@
 <% content_for(:title, t('.title')) %>
-<div class="flex flex-col justify-center text-center main_image">
+<div class="main_image items-center justify-center text-center">
   <h1 class="text-4xl py-20"><%= t('.title') %></h1>
   <div style="position: relative; text-align: center;" class="pb-10">
     <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-xl">
@@ -7,14 +7,18 @@
     </span>
     <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto" %>
   </div>
-  <ol class="pb-10">
-    <% @top_zoos.each_with_index do |zoo, index| %>
-      <li class="text-4xl pb-10">
-        <div class="parent-container">
-          <%= image_tag("#{format('%02d', index + 1)}.png", alt: "#{index + 1}st Place", class: 'small-size pb-5') %>
-        </div>
-        <%= link_to zoo.name, zoo_path(zoo), class: "link link-primary" %>
-      </li>
-    <% end %>
-  </ol>
+  <section class="main_image items-center justify-center text-center">
+    <div class="container mx-auto">
+      <div class="flex flex-wrap justify-center pb-10">
+        <% @top_zoos.each_with_index do |zoo, index| %>
+          <ul class="text-2xl lg:text-4xl m-10">
+            <div class="parent-container">
+              <%= image_tag("#{format('%02d', index + 1)}.png", alt: "#{index + 1}st Place", class: 'small-size pb-5') %>
+            </div>
+            <%= link_to zoo.name, zoo_path(zoo), class: "link link-primary" %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </section>
 </div>

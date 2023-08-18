@@ -4,16 +4,14 @@
   <section class="main_image items-center justify-center text-center">
     <div class="container mx-auto">
       <div class="flex flex-wrap justify-center pb-10">
-        <ol>
-          <% @top_posts.each_with_index do |post, index| %>
-            <li class="text-2xl pb-10">
-              <div class="parent-container">
-                <%= image_tag("#{format('%02d', index + 1)}.png", alt: "#{index + 1}st Place", class: 'small-size') %>
-              </div>
-              <%= render post %>
-            </li>
-          <% end %>
-        </ol>
+        <% @top_posts.each_with_index do |post, index| %>
+          <ul class="text-2xl pb-10 <%= index == 0 ? 'mx-96' : '' %>">
+            <div class="parent-container">
+              <%= image_tag("#{format('%02d', index + 1)}.png", alt: "#{index + 1}st Place", class: 'small-size') %>
+            </div>
+            <%= render post %>
+          </ul>
+        <% end %>
       </div>
     </div>
   </section>
