@@ -29,6 +29,11 @@
   background-position: center;
 }
 
+.top_image {
+  background-image: url("top.jpg");
+  background-position: center;
+}
+
 .post_image {
   background-image: url("post.jpeg");
   background-size: cover;

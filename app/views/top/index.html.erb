@@ -1,125 +1,50 @@
-<div class="main_image">
-  <div class="image-container">
-    <%= image_tag "top1.jpg", class: "fullscreen-image active", id: "image1" %>
-    <%= image_tag "top2.jpg", class: "fullscreen-image", id: "image2" %>
-    <%= image_tag "top3.jpg", class: "fullscreen-image", id: "image3" %>
-    <%= image_tag "top4.jpg", class: "fullscreen-image", id: "image4" %>
-    <%= image_tag "top5.jpg", class: "fullscreen-image", id: "image5" %>
-    <%= image_tag "top6.jpg", class: "fullscreen-image", id: "image6" %>
-    <%= image_tag "top7.jpg", class: "fullscreen-image", id: "image7" %>
+<div class="top_image items-center text-center justify-center">
+  <div class="pb-16">
+    <%= image_tag "top1.jpg", alt: "ecommerce", class: "w-full" %>
   </div>
-  <div class="items-center text-center pt-20 pb-10">
-    <p class="text-4xl">ZooManiaでできること</p>
-    <p class="text-2xl pt-10">ZooManiaは動物園に焦点を当てたWebサービスです</p>
-    <div style="position: relative; text-align: center;" class="pt-10">
-      <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-xl">
-        僕はこのアプリの案内係だゾゥ<br>
-        よろしくだゾゥ<br>
-      </span>
-      <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto" %>
+  <i class="fa-solid fa-arrow-down fa-bounce fa-2xl" style="font-size: 500%; color: #412e1d;"></i>
+  <section class="overflow-hidden justify-center">
+    <div class="container px-5 py-16 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap justify-center">
+        <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 order-last lg:order-first flex flex-col justify-center">
+          <h2 class="text-sm tracking-widest"></h2>
+          <h1 class="text-4xl mt-5 mb-10">まずはここから！</h1>
+          <p class="leading-relaxed text-4xl link link-primary mb-10"><%= link_to (t 'posts.index.title'), posts_path %></p>
+          <p class="leading-relaxed text-2xl">みんなが動物園で撮った写真を見てみよう！</p>
+          <p class="leading-relaxed text-2xl">動物園に行った気分を味わえるかも？</p>
+        </div>
+        <%= image_tag "how1.jpg", alt: "ecommerce", class: "lg:w-1/2 w-full lg:h-full object-cover object-center rounded order-first lg:order-last" %>
+      </div>
     </div>
-  </div>
-</div>
-<section class="main_image items-center justify-center text-center">
-  <div class="container mx-auto">
-    <div class="flex flex-wrap justify-center pb-20">
-      <div class="w-96 shadow-xl post_image rounded-lg m-3">
-        <figure class="p-5"><%= image_tag "how6.jpg" %></figure>
-        <div class="card-body items-center justify-center text-center flex space-between">
-          <div class="flex items-center">
-            <p class="text-xl link link-primary p-2"><%= link_to "動物園ライブラリ機能", zoos_path %></p>
-          </div>
-        </div>
-      </div>
-      <div class="w-96 shadow-xl post_image rounded-lg m-3">
-        <figure class="p-5"><%= image_tag "how1.jpg" %></figure>
-        <div class="card-body items-center justify-center text-center flex space-between">
-          <div class="flex items-center">
-            <p class="text-xl link link-primary p-2"><%= link_to "画像投稿機能", posts_path %></p>
-          </div>
-        </div>
-      </div>
-      <div class="w-96 shadow-xl post_image rounded-lg m-3">
-        <figure class="p-5"><%= image_tag "how3.jpg" %></figure>
-        <div class="card-body items-center justify-center text-center flex space-between">
-          <div class="flex items-center">
-            <p class="text-xl link link-primary p-2"><%= link_to "スタンプラリー機能", stamp_rally_posts_path %></p>
-          </div>
-        </div>
-      </div>
-      <div class="w-96 shadow-xl post_image rounded-lg m-3">
-        <figure class="p-5"><%= image_tag "how5.jpg" %></figure>
-        <div class="card-body items-center justify-center text-center flex space-between">
-          <div class="flex items-center">
-            <p class="text-xl link link-primary p-2"><%= link_to "お気に入り動物園登録機能", ranking_zoos_path %></p>
-          </div>
-        </div>
-      </div>
-      <div class="w-96 shadow-xl post_image rounded-lg m-3">
-        <figure class="p-5"><%= image_tag "how4.jpg" %></figure>
-        <div class="card-body items-center justify-center text-center flex space-between">
-          <div class="flex items-center">
-            <p class="text-xl link link-primary p-2"><%= link_to "動物園おすすめ機能", recommend_zoos_path %></p>
-          </div>
-        </div>
-      </div>
-      <div class="w-96 shadow-xl post_image rounded-lg m-3">
-        <figure class="p-5"><%= image_tag "how2.jpg" %></figure>
-        <div class="card-body items-center justify-center text-center flex space-between">
-          <div class="flex items-center">
-            <p class="text-xl link link-primary p-2"><%= link_to "LINE通知機能", "https://lin.ee/K5xZIFE" %></p>
-          </div>
+  </section>
+  <i class="fa-solid fa-arrow-down fa-bounce fa-2xl" style="font-size: 500%; color: #412e1d;"></i>
+  <section class="overflow-hidden justify-center">
+    <div class="container px-5 py-16 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap justify-center">
+        <%= image_tag "how2.jpg", alt: "ecommerce", class: "lg:w-1/2 w-full lg:h-full object-cover object-center rounded" %>
+        <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 flex flex-col justify-center">
+          <h2 class="text-sm tracking-widest"></h2>
+          <h1 class="text-4xl mt-5 mb-10">次はここ！</h1>
+          <p class="leading-relaxed text-4xl link link-primary mb-10"><%= link_to (t 'zoos.recommend.title'), recommend_zoos_path %></p>
+          <p class="leading-relaxed text-2xl">現在地から近い動物園を調べてみよう！</p>
+          <p class="leading-relaxed text-2xl">意外と近くに動物園があるかも？</p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+  <i class="fa-solid fa-arrow-down fa-bounce fa-2xl" style="font-size: 500%; color: #412e1d;"></i>
+  <section class="overflow-hidden">
+    <div class="container px-5 py-16 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 order-last lg:order-first flex flex-col justify-center">
+          <h2 class="text-sm tracking-widest"></h2>
+          <h1 class="text-4xl mt-5 mb-10">動物園に行ってみよう！</h1>
+          <p class="leading-relaxed text-2xl">写真で見るよりも、癒されるはず！</p>
+          <p class="leading-relaxed text-2xl">そしてベストショットを投稿しよう！</p>
+        </div>
+        <%= image_tag "top2.jpg", alt: "ecommerce", class: "lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded order-first lg:order-last" %>
+      </div>
+    </div>
+  </section>
+  <h1 class="text-4xl pb-20">動物園で素敵な時間を！</h1>
 </div>
-<style>
-  .image-container {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-    overflow: hidden;
-  }
-  .fullscreen-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: opacity 4s ease-in-out;
-    opacity: 0;
-  }
-  .active {
-    opacity: 1;
-  }
-</style>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const images = [
-      "<%= asset_path('top1.jpg') %>",
-      "<%= asset_path('top2.jpg') %>",
-      "<%= asset_path('top3.jpg') %>",
-      "<%= asset_path('top4.jpg') %>",
-      "<%= asset_path('top5.jpg') %>",
-      "<%= asset_path('top6.jpg') %>",
-      "<%= asset_path('top7.jpg') %>",
-    ];
-    let currentIndex = 0;
-    const imageElements = document.querySelectorAll(".fullscreen-image");
-    function crossDissolve() {
-      currentIndex = (currentIndex + 1) % images.length;
-      const nextImagePath = images[currentIndex];
-      const nextImageElement = imageElements[currentIndex];
-      const currentImageElement = imageElements[currentIndex === 0 ? images.length - 1 : currentIndex - 1];
-      nextImageElement.src = nextImagePath;
-      currentImageElement.classList.remove("active");
-      nextImageElement.classList.add("active");
-      setTimeout(function () {
-        crossDissolve();
-      }, 8000);
-    }
-    crossDissolve();
-  });
-</script>

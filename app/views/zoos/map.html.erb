@@ -1,54 +1,54 @@
 <% content_for(:title, t('.title')) %>
 <div class="flex flex-col justify-center text-center main_image pb-20">
   <h1 class="text-4xl py-20"><%= t('.title') %></h1>
-  <div style="width: 100%; height: calc(100vw * 3 / 4); display: flex; justify-content: center; align-items: center; margin: 0 auto;">
-    <div id="map" style="width: 100%; height: 100%;"></div>
-  </div>
-  <div class="pb-10">
-  <script>
-    function initMap() {
-      var japanCenter = { lat: 36.982839, lng: 138.759455 };
-      var mapOptions = {
-        center: japanCenter,
-        zoom: 5
-      };
-      var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-      var geocoder = new google.maps.Geocoder();
-      var infoWindow = new google.maps.InfoWindow();
-      <% @zoos.each do |zoo| %>
-        var location_<%= zoo.id %> = '<%= zoo.location %>';
-        geocoder.geocode({ address: location_<%= zoo.id %> }, function(results, status) {
-          if (status === 'OK') {
-            var customIcon = {
-              url: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-              scaledSize: new google.maps.Size(20, 20),
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(20, 40),
-            };
-            var marker = new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location,
-              icon: customIcon,
-            });
-            marker.addListener('click', function() {
-              infoWindow.setContent('<h3><a href="/zoos/<%= zoo.id %>">' + '<%= zoo.name %>' + '</a></h3>');
-              infoWindow.open(map, marker);
-            });
-          } else {
-            console.log('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      <% end %>
-    }
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-  </div>
-    <div style="position: relative; text-align: center;">
+  <div style="position: relative; text-align: center;">
     <span style="display: flex; align-items: center; justify-content: center;" class="text-center text-xl">
       ピンをクリックして、どこにどんな動物園があるのか調べてほしいゾゥ<br>
       ピンを押すと動物園の名称が表示されるゾゥ<br>
       名称を押すとその動物園の詳細ページに飛べるゾゥ<br>
     </span>
-    <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto" %>
+    <%= image_tag "animalface_zou.png", class: "message-image w-16 rounded-full mx-auto pb-5" %>
+  </div>
+  <div style="width: 100%; height: calc(100vw * 3 / 4); display: flex; justify-content: center; align-items: center; margin: 0 auto;">
+    <div id="map" style="width: 100%; height: 100%;"></div>
+  </div>
+  <div>
+    <script>
+      function initMap() {
+        var japanCenter = { lat: 36.982839, lng: 138.759455 };
+        var mapOptions = {
+          center: japanCenter,
+          zoom: 5
+        };
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        var geocoder = new google.maps.Geocoder();
+        var infoWindow = new google.maps.InfoWindow();
+        <% @zoos.each do |zoo| %>
+          var location_<%= zoo.id %> = '<%= zoo.location %>';
+          geocoder.geocode({ address: location_<%= zoo.id %> }, function(results, status) {
+            if (status === 'OK') {
+              var customIcon = {
+                url: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                scaledSize: new google.maps.Size(20, 20),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(20, 40),
+              };
+              var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location,
+                icon: customIcon,
+              });
+              marker.addListener('click', function() {
+                infoWindow.setContent('<h3><a href="/zoos/<%= zoo.id %>">' + '<%= zoo.name %>' + '</a></h3>');
+                infoWindow.open(map, marker);
+              });
+            } else {
+              console.log('Geocode was not successful for the following reason: ' + status);
+            }
+          });
+        <% end %>
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
   </div>
 </div>
