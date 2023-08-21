@@ -20,6 +20,10 @@
             <%= render "likes/like", post: post %>
           </div>
         </td>
+      <% else %>
+        <td>
+          <%= post.likes.count %><%= t('defaults.like') %>
+        </td>
       <% end %>
     </div>
     <div class="card-actions">
