@@ -15,12 +15,16 @@
       </div>
       <p class="link link-primary text-l py-2"><%= link_to @post.zoo.name, zoo_path(@post.zoo) %></p>
       <% if current_user %>
-          <td>
-            <div id="js-like-button-for-post-<%= @post.id %>" data-turbo-frame="js-like-button-for-post-<%= @post.id %>">
-              <%= render "likes/like", post: @post %>
-            </div>
-          </td>
-        <% end %>
+        <td>
+          <div id="js-like-button-for-post-<%= @post.id %>" data-turbo-frame="js-like-button-for-post-<%= @post.id %>">
+            <%= render "likes/like", post: @post %>
+          </div>
+        </td>
+      <% else %>
+        <td>
+          <%= @post.likes.count %><%= t('defaults.like') %>
+        </td>
+      <% end %>
       <div class="card-actions justify-end pb-5">
         <% set_meta_tags  og: { image: image_url(@post.image_url) }, twitter: { image: image_url(@post.image_url) } %>
         <%= link_to "https://twitter.com/share?url=#{ request.url }&text=#{@post.user.name}さんが「#{@post.title}」を投稿しました！%0A&hashtags=ZooMania&hashtags=#{@post.zoo.name}", class: 'btn btn-secondary text-white', target: '_blank' do %>
