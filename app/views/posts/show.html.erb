@@ -25,6 +25,14 @@
           <%= @post.likes.count %><%= t('defaults.like') %>
         </td>
       <% end %>
+      <% if @post.likes.any? %>
+        <p class="text-xl"><%= t('.like_user') %></p>
+        <ul>
+          <% @post.likes.each do |like| %>
+            <li class="text-xl"><%= like.user.name %></li>
+          <% end %>
+        </ul>
+      <% end %>
       <div class="card-actions justify-end pb-5">
         <% set_meta_tags  og: { image: image_url(@post.image_url) }, twitter: { image: image_url(@post.image_url) } %>
         <%= link_to "https://twitter.com/share?url=#{ request.url }&text=#{@post.user.name}さんが「#{@post.title}」を投稿しました！%0A&hashtags=ZooMania&hashtags=#{@post.zoo.name}", class: 'btn btn-secondary text-white', target: '_blank' do %>
@@ -35,14 +43,6 @@
           <%= link_to t('defaults.destroy'), post_path(@post), data: { turbo_method: :delete, "turbo-confirm": (t 'defaults.destroy?') }, class: "btn btn-neutral text-white" %>
         <% end %>
       </div>
-      <% if @post.likes.any? %>
-        <p class="text-xl"><%= t('.like_user') %></p>
-        <ul>
-          <% @post.likes.each do |like| %>
-            <li class="text-xl"><%= like.user.name %></li>
-          <% end %>
-        </ul>
-      <% end %>
     </div>
   </div>
 </div>
