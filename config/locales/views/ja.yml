@@ -19,7 +19,8 @@ ja:
     optional: "(任意)"
     send: "送信"
     update: "更新"
-    like: " いいね"
+    like: "いいね"
+    admin_page: "管理画面"
   message:
     require_login: "ログインしてほしいゾゥ"
     no_authority: "アクセス権限がないゾゥ"
