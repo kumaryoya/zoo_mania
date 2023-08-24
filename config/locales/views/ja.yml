@@ -19,7 +19,8 @@ ja:
     optional: "(任意)"
     send: "送信"
     update: "更新"
-    like: " いいね"
+    like: "いいね"
+    admin_page: "管理画面"
   message:
     require_login: "ログインしてほしいゾゥ"
     no_authority: "アクセス権限がないゾゥ"
@@ -154,3 +155,8 @@ ja:
         title: "投稿詳細"
       edit:
         title: "投稿編集"
+      update:
+        success_update_post: "投稿を更新できたゾゥ"
+        fail_update_post: "投稿を更新できなかったゾゥ"
+      destroy:
+        success_delete_post: "投稿を削除できたゾゥ"
