@@ -5,7 +5,11 @@
     <div class="container mx-auto">
       <div class="flex flex-wrap justify-center pb-20">
         <% if @posts.present? %>
-          <%= render @posts %>
+          <% @posts.each do |post| %>
+            <ul>
+              <%= render post %>
+            </ul>
+          <% end %>
         <% else %>
           <p class="text-4xl pt-20"><%= t('.no_result') %></p>
         <% end %>
