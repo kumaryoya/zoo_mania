@@ -1,7 +1,7 @@
 <div class="card w-96 shadow-xl post_image m-3">
   <figure class="p-5"><%= image_tag post.image_url, alt:"Posts" %></figure>
   <div class="card-body items-center justify-center text-center flex space-between">
-    <h2 class="text-xl py-2 link link-primary">
+    <h2 class="text-xl pb-2 link link-primary">
       <%= link_to post.title, post_path(post) %>
     </h2>
     <div class="flex items-center">
