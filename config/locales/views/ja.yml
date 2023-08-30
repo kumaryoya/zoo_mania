@@ -21,6 +21,7 @@ ja:
     update: "更新"
     like: "いいね"
     admin_page: "管理画面"
+    homepage: "公式HPリンク"
   message:
     require_login: "ログインしてほしいゾゥ"
     no_authority: "アクセス権限がないゾゥ"
