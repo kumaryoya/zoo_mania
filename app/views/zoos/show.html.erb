@@ -5,7 +5,7 @@
     <h2 class="text-2xl pb-10">名称<br>
                               <%= @zoo.name %></h2>
     <div class="link link-primary text-2xl font-bold pb-10">
-      <%= link_to "公式HPリンク", @zoo.link, target: :_blank, rel: "noopener noreferrer" %>
+      <%= link_to (t "defaults.homepage"), @zoo.link, target: :_blank, rel: "noopener noreferrer" %>
     </div>
     <h2 class="text-xl lg:text-2xl pb-5">所在地<br>
                               <%= @zoo.location %></h2>
