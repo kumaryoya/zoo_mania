@@ -2,8 +2,6 @@ inherit_from: .rubocop_todo.yml
 
 require:
   - rubocop-capybara
-
-require:
   - rubocop-rails
 
 Metrics/BlockLength:
@@ -22,4 +20,20 @@ Style/ClassAndModuleChildren:
   Enabled: false
 
 AllCops:
-    SuggestExtensions: false
+  SuggestExtensions: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Lint/EmptyConditionalBody:
+  Enabled: false
+  autocorrect: true
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/BlockNesting:
+  Enabled: false
