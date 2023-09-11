@@ -13,9 +13,21 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    if @post.save
-      notify_line("新しい投稿があるゾゥ！\n\n「#{@post.title}」\nhttps://www.zoomania.top/posts/#{@post.id}") if Rails.env.production?
-      redirect_to post_path(@post), notice: t('.success_create_post')
+    if post_params[:image].present?
+      result = Vision.image_analysis(post_params[:image])
+      if result
+        if @post.save
+          notify_line("新しい投稿があるゾゥ！\n\n「#{@post.title}」\nhttps://www.zoomania.top/posts/#{@post.id}") if Rails.env.production?
+          redirect_to post_path(@post), notice: t('.success_create_post')
+        else
+          flash.now['danger'] = t('.fail_create_post')
+          render :new, status: :unprocessable_entity
+        end
+      else
+        flash.now['danger'] = t('defaults.inappropriate_image')
+        render :new, status: :unprocessable_entity
+      end
+    elsif @post.save
     else
       flash.now['danger'] = t('.fail_create_post')
       render :new, status: :unprocessable_entity
@@ -29,11 +41,24 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
-    if @post.update(post_params)
+    if post_params[:image].present?
+      result = Vision.image_analysis(post_params[:image])
+      if result
+        if @post.update(post_params)
+          redirect_to post_path(@post), notice: t('.success_update_post')
+        else
+          flash.now['danger'] = t('.fail_update_post')
+          render :edit, status: :unprocessable_entity
+        end
+      else
+        flash.now['danger'] = t('defaults.inappropriate_image')
+        render :new, status: :unprocessable_entity
+      end
+    elsif @post.update(post_params)
       redirect_to post_path(@post), notice: t('.success_update_post')
     else
       flash.now['danger'] = t('.fail_update_post')
-      render :edit, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
