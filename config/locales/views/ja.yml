@@ -22,6 +22,7 @@ ja:
     like: "いいね"
     admin_page: "管理画面"
     homepage: "公式HPリンク"
+    inappropriate_image: "不適切な画像だゾゥ"
   message:
     require_login: "ログインしてほしいゾゥ"
     no_authority: "アクセス権限がないゾゥ"
