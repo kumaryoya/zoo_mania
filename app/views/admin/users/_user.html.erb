@@ -9,6 +9,13 @@
     <%= user.email %>
   </td>
   <td>
+    <div class="avatar">
+      <div class="w-16 rounded-full">
+        <%= image_tag user.avatar.url %>
+      </div>
+    </div>
+  </td>
+  <td>
     <%= user.role_i18n %>
   </td>
   <td>
