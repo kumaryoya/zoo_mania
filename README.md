@@ -1,13 +1,6 @@
 # ZooMania  
 <img src="app/assets/images/logo.jpg" width="200x200">  
   
-## サービスURL  
-https://www.zoomania.top/  
-  
-ゲストユーザーアカウント  
-* メールアドレス hoge@example.com  
-* パスワード password  
-  
 ## サービス概要  
 ZooMania（ズーマニア）は、動物園に行きたいという気持ちを喚起するサービスです。  
   
