@@ -32,6 +32,7 @@ gem 'ransack'
 gem 'line-bot-api'
 gem 'simplecov', require: false, group: :test
 gem 'sassc'
+gem 'pg'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -39,7 +40,6 @@ group :development, :test do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-capybara'
-  gem "sqlite3", "~> 1.4"
 end
 
 group :development do
@@ -55,8 +55,4 @@ group :test do
   gem "factory_bot_rails"
   gem 'faker'
   gem 'database_cleaner'
-end
-
-group :production do
-  gem 'pg'
 end

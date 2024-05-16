@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh -c "rm -f tmp/pids/server.pid && ./bin/dev"
+    volumes:
+      - .:/zoo_mania
+      - node_modules:/zoo_mania/node_modules
+    ports:
+      - 3000:3000
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+volumes:
+  postgres_volume:
+  node_modules:
